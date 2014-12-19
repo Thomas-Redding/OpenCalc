@@ -38,7 +38,9 @@
     NSMutableString *path = [[NSMutableString alloc] initWithString: pathA];
     [path appendString:@"/Contents/Resources/Preferences.txt"];
     NSError *err = nil;
-    return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+    NSString *str = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+    NSLog(@"L=%@", str);
+    return str;
 }
 
 - (void) save {
@@ -47,6 +49,7 @@
     [path appendString:@"/Contents/Resources/Preferences.txt"];
     NSError *err = nil;
     NSString *newContents = [self toString];
+    NSLog(@"S=%@", newContents);
     [newContents writeToFile:path atomically:false encoding:NSUTF8StringEncoding error:&err];
 }
 

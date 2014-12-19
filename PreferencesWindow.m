@@ -36,7 +36,14 @@
 
 - (void)loadPreferences: (Preferences*) p {
     self.preferences = p;
-    [self.displayAxisCheckbox setState:self.preferences.drawAxes];
+    NSLog(@"X");
+    if(self.preferences.drawAxes) {
+        [self.displayAxisCheckbox setState:NSOnState];
+    }
+    else {
+        [self.displayAxisCheckbox setState:NSOffState];
+    }
+    
 }
 
 - (void) clearHarddrive {
