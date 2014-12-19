@@ -15,6 +15,11 @@
 @property Brain *brain;
 @property Preferences *preferences;
 
+@property double screenWidth;
+@property double screenHeight;
+@property double defaultWindowWidth;
+@property double defaultWindowHeight;
+
 @property NSButton *clearHarddriveButton;
 @property NSButton *displayAxisCheckbox;
 
