@@ -38,7 +38,6 @@
 		2839C6A119DCC38600D7407A /* MathFloor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2839C6A019DCC38600D7407A /* MathFloor.m */; };
 		283B94C319E07C7200CA7287 /* MathNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 283B94C219E07C7200CA7287 /* MathNull.m */; };
 		28415EEC1A0422E6008EBC4E /* GraphingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28415EEB1A0422E6008EBC4E /* GraphingView.m */; };
-		28415EEE1A042659008EBC4E /* Settings.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28415EED1A042659008EBC4E /* Settings.txt */; };
 		2850E47819D9CCBA00F65EE7 /* MathCosine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850E47719D9CCBA00F65EE7 /* MathCosine.m */; };
 		2850E47B19D9CCDD00F65EE7 /* MathTangent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850E47A19D9CCDD00F65EE7 /* MathTangent.m */; };
 		2850E47E19D9CCFC00F65EE7 /* MathCotangent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850E47D19D9CCFC00F65EE7 /* MathCotangent.m */; };
@@ -55,6 +54,7 @@
 		287A5C4B1A0AA04900D6B333 /* MathBinomialRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 287A5C4A1A0AA04900D6B333 /* MathBinomialRandom.m */; };
 		287A5C4E1A0AA15400D6B333 /* MathExponentialRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 287A5C4D1A0AA15400D6B333 /* MathExponentialRandom.m */; };
 		287A5C511A0AA1EB00D6B333 /* MathNormalRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 287A5C501A0AA1EB00D6B333 /* MathNormalRandom.m */; };
+		28847C931A43B75200900A52 /* Preferences.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28847C921A43B75200900A52 /* Preferences.txt */; };
 		288FEC5619D9DD5C006DB583 /* MathExponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 288FEC5519D9DD5C006DB583 /* MathExponent.m */; };
 		2890D9881A41197E0095855D /* GraphingTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2890D9871A41197E0095855D /* GraphingTableController.m */; };
 		2890D98E1A4132BF0095855D /* GraphingFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2890D98D1A4132BF0095855D /* GraphingFunction.m */; };
@@ -159,7 +159,6 @@
 		283B94C219E07C7200CA7287 /* MathNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathNull.m; sourceTree = "<group>"; };
 		28415EEA1A0422E6008EBC4E /* GraphingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphingView.h; sourceTree = "<group>"; };
 		28415EEB1A0422E6008EBC4E /* GraphingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphingView.m; sourceTree = "<group>"; };
-		28415EED1A042659008EBC4E /* Settings.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Settings.txt; sourceTree = "<group>"; };
 		2850E47619D9CCBA00F65EE7 /* MathCosine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathCosine.h; sourceTree = "<group>"; };
 		2850E47719D9CCBA00F65EE7 /* MathCosine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathCosine.m; sourceTree = "<group>"; };
 		2850E47919D9CCDD00F65EE7 /* MathTangent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathTangent.h; sourceTree = "<group>"; };
@@ -192,6 +191,7 @@
 		287A5C4D1A0AA15400D6B333 /* MathExponentialRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathExponentialRandom.m; sourceTree = "<group>"; };
 		287A5C4F1A0AA1EB00D6B333 /* MathNormalRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathNormalRandom.h; sourceTree = "<group>"; };
 		287A5C501A0AA1EB00D6B333 /* MathNormalRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathNormalRandom.m; sourceTree = "<group>"; };
+		28847C921A43B75200900A52 /* Preferences.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Preferences.txt; sourceTree = "<group>"; };
 		288FEC5419D9DD5C006DB583 /* MathExponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathExponent.h; sourceTree = "<group>"; };
 		288FEC5519D9DD5C006DB583 /* MathExponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathExponent.m; sourceTree = "<group>"; };
 		2890D9861A41197E0095855D /* GraphingTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphingTableController.h; sourceTree = "<group>"; };
@@ -553,8 +553,8 @@
 				28F31EE719D8BE1B008D25CD /* Info.plist */,
 				28F31EE819D8BE1B008D25CD /* main.m */,
 				2893D02619DF28C5002F04CF /* READ ME.txt */,
+				28847C921A43B75200900A52 /* Preferences.txt */,
 				2893D02819DF2F86002F04CF /* Memory.txt */,
-				28415EED1A042659008EBC4E /* Settings.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -702,10 +702,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				282CA7201A42311C004FA34E /* PreferencesWindow.xib in Resources */,
+				28847C931A43B75200900A52 /* Preferences.txt in Resources */,
 				28F31EEE19D8BE1B008D25CD /* Images.xcassets in Resources */,
 				2893D02A19DF2F86002F04CF /* Memory.txt in Resources */,
 				28F31EF119D8BE1C008D25CD /* MainMenu.xib in Resources */,
-				28415EEE1A042659008EBC4E /* Settings.txt in Resources */,
 				2893D02719DF28C5002F04CF /* READ ME.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -84,8 +84,8 @@
 - (IBAction)openPreferencesWindow:(id)sender {
     self.preferencesWindow = [[PreferencesWindow alloc] initWithWindowNibName:@"PreferencesWindow"];
     self.preferencesWindow.brain = self.brain;
-    self.preferencesWindow.preferences = self.preferences;
     [self.preferencesWindow showWindow:self.preferencesWindow];
+    [self.preferencesWindow loadPreferences:self.preferences];
 }
 
 @end
