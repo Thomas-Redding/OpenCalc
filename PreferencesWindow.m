@@ -32,21 +32,6 @@
     [self.displayAxisCheckbox setTarget:self];
     [self.displayAxisCheckbox setAction:@selector(displayAxis)];
     [self.window.contentView addSubview:self.displayAxisCheckbox];
-    
-    self.screenWidth = [NSScreen mainScreen].frame.size.width;
-    self.screenHeight = [NSScreen mainScreen].frame.size.height;
-    self.defaultWindowWidth = 300;
-    self.defaultWindowHeight = 200;
-    
-    if(self.screenWidth > self.defaultWindowWidth && self.screenHeight > self.self.defaultWindowHeight) {
-        [self.window setFrame:NSMakeRect(100, 100, 300, 200) display:true];
-        [self.window setFrame:NSMakeRect((self.screenWidth-self.defaultWindowWidth)/2, (self.screenHeight-self.defaultWindowHeight)/2, self.defaultWindowWidth, self.defaultWindowHeight) display:true];
-        [self.window setStyleMask:[self.window styleMask] & ~NSResizableWindowMask];
-    }
-    else {
-        // screen isn't big enough for preferences window, quit the application
-        [NSApp terminate:nil];
-    }
 }
 
 - (void)loadPreferences: (Preferences*) p {
