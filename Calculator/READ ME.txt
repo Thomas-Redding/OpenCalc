@@ -1,0 +1,49 @@
+
+I. SUPPORTED OPERATORS
+Unary
+	x!          factorial
+	-x          inverse
+Binary
+    =           definition
+	x==y        equality
+	x*y         multiplication
+	x+y         addition
+	x-y         subtraction
+	x/y         division
+	x^y         power
+
+II. DEFAULT FUNCTIONS
+Unary
+    sin(x)      sine
+    cos(x)      cosine
+    tan(x)      tangent
+    ctn(x)      cotangent
+    sec(x)      secant
+    csc(x)      cosecant
+    ln(x)       natural logarithm
+    log(x)      logarithm base 10
+    exp(x)      exponent
+    sqrt(x)     square-root
+    abs(x)      absolute vale
+    floor(x)    floor
+Other Predefined Functions
+    C(x,y)
+    rand()
+
+III. PREDEFINED VARIABLES
+    pi          3.141...
+    e           2.718...
+    phi         1.618...
+    i           i
+    last        last calculated value
+
+IV. USER-DETERMINED NAMES
+Variables names must begin with a string of letters. If a digit occurs, then every following character in that variables name must also be a digit.
+    EX: x   quails   quails514
+Function names must be a string of letters followed by an opening parantheses, a list of variables, and then a closing parantheses
+    EX: f(x)    quails(x)   quails(x, y)
+Note: If I define both x=3 and x(t)=t^2, then the calculator will recognize them as distinct entities.
+
+
+V. OTHER STUFF
+- pressing the "up" and "down" arrows" allows you to access expressions from history
