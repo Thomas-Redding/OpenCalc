@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Thomas Redding. All rights reserved.
 //
 
+// test comment #314
+
 #import <Cocoa/Cocoa.h>
 #import <AppKit/AppKit.h>
 
