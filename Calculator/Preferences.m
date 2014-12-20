@@ -13,6 +13,7 @@
 - (Preferences*) init {
     // set defaults
     self.drawAxes = false;
+    self.doesScrollZoom = false;
     
     // update with user-prefences
     NSString* str = [self load];
@@ -30,7 +31,38 @@
         if([[arr objectAtIndex:1] isEqual: @"true"]) {
             self.drawAxes = true;
         }
+        else {
+            self.drawAxes = false;
+        }
     }
+    else if([[arr objectAtIndex:0] isEqual: @"doesScrollZoom"]) {
+        if([[arr objectAtIndex:1] isEqual: @"true"]) {
+            self.doesScrollZoom = true;
+        }
+        else {
+            self.doesScrollZoom = false;
+        }
+    }
+}
+
+- (NSString*) toString {
+    NSMutableString *str = [[NSMutableString alloc] init];
+    
+    if(self.drawAxes) {
+        [str appendString:@"drawAxes:true"];
+    }
+    else {
+        [str appendString:@"drawAxes:false"];
+    }
+    
+    if(self.drawAxes) {
+        [str appendString:@"doesScrollZoom:true"];
+    }
+    else {
+        [str appendString:@"doesScrollZoom:false"];
+    }
+    
+    return str;
 }
 
 - (NSString*) load {
@@ -39,7 +71,6 @@
     [path appendString:@"/Contents/Resources/Preferences.txt"];
     NSError *err = nil;
     NSString *str = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
-    NSLog(@"L=%@", str);
     return str;
 }
 
@@ -49,19 +80,7 @@
     [path appendString:@"/Contents/Resources/Preferences.txt"];
     NSError *err = nil;
     NSString *newContents = [self toString];
-    NSLog(@"S=%@", newContents);
     [newContents writeToFile:path atomically:false encoding:NSUTF8StringEncoding error:&err];
-}
-
-- (NSString*) toString {
-    NSString *str;
-    if(self.drawAxes) {
-        str = [[NSString alloc] initWithFormat:@"drawAxes:true"];
-    }
-    else {
-        str = [[NSString alloc] initWithFormat:@"drawAxes:false"];
-    }
-    return str;
 }
 
 @end

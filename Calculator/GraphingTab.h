@@ -10,6 +10,7 @@
 #import "GraphingView.h"
 #import "GraphingTableController.h"
 #import "GraphingFunction.h"
+#import "RenderDimensions.h"
 
 @interface GraphingTab : Tab
 
@@ -27,13 +28,16 @@
 @property NSButton *addButton;
 @property NSButton *removeButton;
 
-@property double x;
-@property double y;
-@property double width;
-@property double height;
+@property RenderDimensions *renderDimensions;
+
 @property int steps;
+
+@property NSTimer *drawTimer;
+@property BOOL shouldRedraw;
 
 - (void) addFunc;
 - (void) removeFunc;
+- (void) timerFired;
+- (void) recomputeAllFunctions;
 
 @end

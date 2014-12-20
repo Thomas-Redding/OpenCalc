@@ -15,21 +15,64 @@
     self.string = @"";
     self.isVisible = true;
     self.points = [[NSMutableArray alloc] init];
+    self.type = '=';
     return self;
 }
 
 - (void) update: (double) start end: (double) end steps: (int) steps {
-    NSString *funcName = [[NSString alloc] initWithFormat:@"f%@", [self intToCharacter:self.index]];
-    NSString *str = [[NSString alloc] initWithFormat:@"%@(x)=%@", funcName , self.string];
-    [self.brain runAlgebra:str];
     
-    self.points = [[NSMutableArray alloc] init];
-    double x = start;
-    for(int i=0; i<=steps; i++) {
-        x += (end-start)/steps;
-        [self.points addObject:[NSNumber numberWithDouble:x]];
-        [self.points addObject:[NSNumber numberWithDouble:[self.brain graphRun:funcName x:x]]];
-        [self.points addObject:[NSNumber numberWithBool:true]];
+    NSString *ssss = self.string;
+    
+    
+    
+    
+    if(ssss.length == 0) {
+        // empty string
+        
+        NSString *funcName = [[NSString alloc] initWithFormat:@"f%@", [self intToCharacter:self.index]];
+        NSString *str = [[NSString alloc] initWithFormat:@"%@(x)=", funcName];
+        [self.brain runAlgebra:str];
+        self.points = [[NSMutableArray alloc] init];
+    }
+    else {
+        NSString *funcName = [[NSString alloc] initWithFormat:@"f%@", [self intToCharacter:self.index]];
+        NSString *str;
+        
+        if([self.string characterAtIndex:0] == '<') {
+            self.type = '<';
+            str = [[NSString alloc] initWithFormat:@"%@(x)=%@", funcName , [self.string substringFromIndex:1]];
+        }
+        else if([self.string characterAtIndex:0] == '>') {
+            self.type = '>';
+            str = [[NSString alloc] initWithFormat:@"%@(x)=%@", funcName , [self.string substringFromIndex:1]];
+        }
+        else if([self.string characterAtIndex:0] == 8804) {
+            self.type = 8804;
+            str = [[NSString alloc] initWithFormat:@"%@(x)=%@", funcName , [self.string substringFromIndex:1]];
+        }
+        else if([self.string characterAtIndex:0] == 8805) {
+            self.type = 8805;
+            str = [[NSString alloc] initWithFormat:@"%@(x)=%@", funcName , [self.string substringFromIndex:1]];
+        }
+        else if([self.string characterAtIndex:0] == 8800) {
+            self.type = 8800;
+            str = [[NSString alloc] initWithFormat:@"%@(x)=%@", funcName , [self.string substringFromIndex:1]];
+        }
+        else {
+            self.type = '=';
+            str = [[NSString alloc] initWithFormat:@"%@(x)=%@", funcName , self.string];
+        }
+        
+        [self.brain runAlgebra:str];
+        
+        self.points = [[NSMutableArray alloc] init];
+        double x = start;
+        for(int i=0; i<=steps; i++) {
+            x += (end-start)/steps;
+            [self.points addObject:[NSNumber numberWithDouble:x]];
+            [self.points addObject:[NSNumber numberWithDouble:[self.brain graphRun:funcName x:x]]];
+            [self.points addObject:[NSNumber numberWithBool:true]];
+        }
     }
 }
 

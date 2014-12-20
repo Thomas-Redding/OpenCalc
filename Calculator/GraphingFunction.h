@@ -14,7 +14,8 @@
 @property NSString *string;         // this function in string-form
 @property Boolean isVisible;        // should this function be graphed?
 @property Brain *brain;             // the global brain
-@property unsigned long index;                // my index in GraphingTab's formulas
+@property unsigned long index;      // my index in GraphingTab's formulas
+@property unichar type;
 
 // x1, y1, continuous1, x2, y2, continuous2, ...
 // units are not OpenGL coordinates - they are strictly Cartesian

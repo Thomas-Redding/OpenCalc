@@ -16,10 +16,12 @@
 @property Preferences *preferences;
 
 @property NSButton *clearHarddriveButton;
-@property NSButton *displayAxisCheckbox;
+@property NSButton *drawAxisCheckbox;
+@property NSButton *doesScrollZoomCheckbox;
 
 - (void) loadPreferences: (Preferences*) p;
 - (void) clearHarddrive;
-- (void) displayAxis;
+- (void) drawAxis;
+- (void) scrollZoom;
 
 @end

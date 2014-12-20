@@ -25,9 +25,6 @@
 		282B84E41A156DA400793C6D /* MathBinomialDensity.m in Sources */ = {isa = PBXBuildFile; fileRef = 282B84E31A156DA400793C6D /* MathBinomialDensity.m */; };
 		282B84E71A156F5C00793C6D /* MathBinomialDistribution.m in Sources */ = {isa = PBXBuildFile; fileRef = 282B84E61A156F5C00793C6D /* MathBinomialDistribution.m */; };
 		282B84EA1A15701400793C6D /* MathBinomialQuantile.m in Sources */ = {isa = PBXBuildFile; fileRef = 282B84E91A15701400793C6D /* MathBinomialQuantile.m */; };
-		282CA71F1A42311C004FA34E /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 282CA71D1A42311C004FA34E /* PreferencesWindow.m */; };
-		282CA7201A42311C004FA34E /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282CA71E1A42311C004FA34E /* PreferencesWindow.xib */; };
-		282CA72C1A4340B1004FA34E /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 282CA72B1A4340B1004FA34E /* Preferences.m */; };
 		2833E22F19D93C5A00D8686B /* MathMultiplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 2833E22E19D93C5A00D8686B /* MathMultiplication.m */; };
 		2833E23219D9492900D8686B /* MathAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2833E23119D9492900D8686B /* MathAddition.m */; };
 		2833E23519D949BC00D8686B /* MathSubtraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2833E23419D949BC00D8686B /* MathSubtraction.m */; };
@@ -45,6 +42,10 @@
 		2850E48419D9CD4C00F65EE7 /* MathCosecant.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850E48319D9CD4C00F65EE7 /* MathCosecant.m */; };
 		2850E48719D9CD6A00F65EE7 /* MathNaturalLogarithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850E48619D9CD6A00F65EE7 /* MathNaturalLogarithm.m */; };
 		2850E48A19D9CD9700F65EE7 /* MathLogBaseTen.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850E48919D9CD9700F65EE7 /* MathLogBaseTen.m */; };
+		285445B81A46210F0017B53C /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 285445B41A46210F0017B53C /* Preferences.m */; };
+		285445B91A46210F0017B53C /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 285445B61A46210F0017B53C /* PreferencesWindow.m */; };
+		285445BA1A46210F0017B53C /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285445B71A46210F0017B53C /* PreferencesWindow.xib */; };
+		285445BD1A4624D90017B53C /* RenderDimensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 285445BC1A4624D90017B53C /* RenderDimensions.m */; };
 		2859BA391A02C5C20062329B /* MathLogBaseTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2859BA381A02C5C20062329B /* MathLogBaseTwo.m */; };
 		2865ACE51A1571D6007FED08 /* GraphingTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 2865ACDE1A1571D6007FED08 /* GraphingTab.m */; };
 		2865ACE61A1571D6007FED08 /* MathErrorFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2865ACE01A1571D6007FED08 /* MathErrorFunction.m */; };
@@ -134,11 +135,6 @@
 		282B84E61A156F5C00793C6D /* MathBinomialDistribution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathBinomialDistribution.m; sourceTree = "<group>"; };
 		282B84E81A15701400793C6D /* MathBinomialQuantile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathBinomialQuantile.h; sourceTree = "<group>"; };
 		282B84E91A15701400793C6D /* MathBinomialQuantile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathBinomialQuantile.m; sourceTree = "<group>"; };
-		282CA71C1A42311C004FA34E /* PreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesWindow.h; path = ../PreferencesWindow.h; sourceTree = "<group>"; };
-		282CA71D1A42311C004FA34E /* PreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesWindow.m; path = ../PreferencesWindow.m; sourceTree = "<group>"; };
-		282CA71E1A42311C004FA34E /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindow.xib; path = ../PreferencesWindow.xib; sourceTree = "<group>"; };
-		282CA72A1A4340B1004FA34E /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Preferences.h; path = ../Preferences.h; sourceTree = "<group>"; };
-		282CA72B1A4340B1004FA34E /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Preferences.m; path = ../Preferences.m; sourceTree = "<group>"; };
 		2833E22D19D93C5A00D8686B /* MathMultiplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathMultiplication.h; sourceTree = "<group>"; };
 		2833E22E19D93C5A00D8686B /* MathMultiplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathMultiplication.m; sourceTree = "<group>"; };
 		2833E23019D9492900D8686B /* MathAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathAddition.h; sourceTree = "<group>"; };
@@ -173,6 +169,13 @@
 		2850E48619D9CD6A00F65EE7 /* MathNaturalLogarithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathNaturalLogarithm.m; sourceTree = "<group>"; };
 		2850E48819D9CD9700F65EE7 /* MathLogBaseTen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathLogBaseTen.h; sourceTree = "<group>"; };
 		2850E48919D9CD9700F65EE7 /* MathLogBaseTen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathLogBaseTen.m; sourceTree = "<group>"; };
+		285445B31A46210F0017B53C /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
+		285445B41A46210F0017B53C /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
+		285445B51A46210F0017B53C /* PreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
+		285445B61A46210F0017B53C /* PreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
+		285445B71A46210F0017B53C /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
+		285445BB1A4624D90017B53C /* RenderDimensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderDimensions.h; sourceTree = "<group>"; };
+		285445BC1A4624D90017B53C /* RenderDimensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderDimensions.m; sourceTree = "<group>"; };
 		2859BA371A02C5C20062329B /* MathLogBaseTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathLogBaseTwo.h; sourceTree = "<group>"; };
 		2859BA381A02C5C20062329B /* MathLogBaseTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathLogBaseTwo.m; sourceTree = "<group>"; };
 		2865ACDD1A1571D6007FED08 /* GraphingTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphingTab.h; sourceTree = "<group>"; };
@@ -335,11 +338,11 @@
 		282CA7291A426255004FA34E /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				282CA71C1A42311C004FA34E /* PreferencesWindow.h */,
-				282CA71D1A42311C004FA34E /* PreferencesWindow.m */,
-				282CA71E1A42311C004FA34E /* PreferencesWindow.xib */,
-				282CA72A1A4340B1004FA34E /* Preferences.h */,
-				282CA72B1A4340B1004FA34E /* Preferences.m */,
+				285445B31A46210F0017B53C /* Preferences.h */,
+				285445B41A46210F0017B53C /* Preferences.m */,
+				285445B51A46210F0017B53C /* PreferencesWindow.h */,
+				285445B61A46210F0017B53C /* PreferencesWindow.m */,
+				285445B71A46210F0017B53C /* PreferencesWindow.xib */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -439,6 +442,8 @@
 				28A6204B19E8AEC2002D7F5C /* GraphType.h */,
 				28415EEA1A0422E6008EBC4E /* GraphingView.h */,
 				28415EEB1A0422E6008EBC4E /* GraphingView.m */,
+				285445BB1A4624D90017B53C /* RenderDimensions.h */,
+				285445BC1A4624D90017B53C /* RenderDimensions.m */,
 			);
 			name = "2. Graphing Tab";
 			sourceTree = "<group>";
@@ -701,7 +706,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				282CA7201A42311C004FA34E /* PreferencesWindow.xib in Resources */,
+				285445BA1A46210F0017B53C /* PreferencesWindow.xib in Resources */,
 				28847C931A43B75200900A52 /* Preferences.txt in Resources */,
 				28F31EEE19D8BE1B008D25CD /* Images.xcassets in Resources */,
 				2893D02A19DF2F86002F04CF /* Memory.txt in Resources */,
@@ -730,12 +735,14 @@
 				28EBFFB819DB1C85008B662F /* MathFunction.m in Sources */,
 				2833E23519D949BC00D8686B /* MathSubtraction.m in Sources */,
 				282B84E41A156DA400793C6D /* MathBinomialDensity.m in Sources */,
-				282CA72C1A4340B1004FA34E /* Preferences.m in Sources */,
+				285445B91A46210F0017B53C /* PreferencesWindow.m in Sources */,
 				2850E48119D9CD2D00F65EE7 /* MathSecant.m in Sources */,
+				285445B81A46210F0017B53C /* Preferences.m in Sources */,
 				28EBFFC019DB1FED008B662F /* MathSine.m in Sources */,
 				2850E47B19D9CCDD00F65EE7 /* MathTangent.m in Sources */,
 				28F027E119DF0D70006EF536 /* CurrentAlgebraTextField.m in Sources */,
 				282B84D31A154EE000793C6D /* MathExponentialDistribution.m in Sources */,
+				285445BD1A4624D90017B53C /* RenderDimensions.m in Sources */,
 				2833E23219D9492900D8686B /* MathAddition.m in Sources */,
 				28C8B2B019D9E81A00D26D53 /* Brain.m in Sources */,
 				289CBFB919DB3F6B00DC7788 /* MathPersistentExpression.m in Sources */,
@@ -757,7 +764,6 @@
 				282B84C81A154A3B00793C6D /* MathPoissonDensity.m in Sources */,
 				2850E47819D9CCBA00F65EE7 /* MathCosine.m in Sources */,
 				2850E48419D9CD4C00F65EE7 /* MathCosecant.m in Sources */,
-				282CA71F1A42311C004FA34E /* PreferencesWindow.m in Sources */,
 				28B99A4619DDF6F800C15CFA /* MathCombination.m in Sources */,
 				287A5C4B1A0AA04900D6B333 /* MathBinomialRandom.m in Sources */,
 				282B84E71A156F5C00793C6D /* MathBinomialDistribution.m in Sources */,

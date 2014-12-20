@@ -28,7 +28,7 @@
 }
 
 -(IBAction)checkBoxState:(id)sender {
-    NSLog(@"");
+    //
 }
 
 -(void) add {

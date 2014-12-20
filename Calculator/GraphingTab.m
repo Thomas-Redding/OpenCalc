@@ -15,24 +15,26 @@
     self.brain = brain;
     self.preferences = preferences;
     
-    self.x = 0;
-    self.y = 0;
-    self.width = 5;
-    self.height = 5;
+    
+    self.renderDimensions = [[RenderDimensions alloc] init];
+    self.renderDimensions.x = 0;
+    self.renderDimensions.y = 0;
+    self.renderDimensions.width = 5;
+    self.renderDimensions.height = 5;
     self.steps = 40;
     
     GraphingFunction *templateA = [[GraphingFunction alloc] initWithBrain:self.brain];
     templateA.string = @"x";
     templateA.index = 0;
-    [templateA update:self.x-self.width/2 end:self.x+self.width/2 steps:100];
+    [templateA update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
     GraphingFunction *templateB = [[GraphingFunction alloc] initWithBrain:self.brain];
     templateB.string = @"x^2";
     templateB.index = 1;
-    [templateB update:self.x-self.width/2 end:self.x+self.width/2 steps:100];
+    [templateB update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
     GraphingFunction *templateC = [[GraphingFunction alloc] initWithBrain:self.brain];
     templateC.string = @"log(x)";
     templateC.index = 2;
-    [templateC update:self.x-self.width/2 end:self.x+self.width/2 steps:100];
+    [templateC update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
     self.formulas = [[NSMutableArray alloc] initWithObjects:templateA, templateB, templateC, nil];
     
     double width = [[self.contentView window] frame].size.width;
@@ -40,16 +42,15 @@
     
     self.graphingView = [[GraphingView alloc] init];
     self.graphingView.functionList = self.formulas;
-    self.graphingView.x = self.x;
-    self.graphingView.y = self.y;
-    self.graphingView.width = self.width;
-    self.graphingView.height = self.height;
+    self.graphingView.renderDimensions = self.renderDimensions;
     self.graphingView.preferences = self.preferences;
     [self.graphingView setFrame: NSMakeRect(100, 0, width-100, height-60)];
     [self.graphingView setAutoresizingMask: NSViewMaxXMargin | NSViewWidthSizable | NSViewHeightSizable];
+    [self.graphingView setParent:self];
     
     self.currentFunction = [[NSTextField alloc] initWithFrame:NSMakeRect(0, height-60, width, 20)];
     [self.currentFunction setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];
+    [self.currentFunction setAction:@selector(submit)];
     
     // left-side table of formulas
     NSTableColumn *columnVisible = [[NSTableColumn alloc] initWithIdentifier:@"isVisible"];
@@ -91,7 +92,17 @@
     self.selectedRows = [[NSIndexSet alloc] init];
     self.currentFormulaBeingEdited = -1;
     
+    self.shouldRedraw = true;
+    
     return self;
+}
+
+- (void) timerFired {
+    if(self.shouldRedraw) {
+        [self recomputeAllFunctions];
+        [self.graphingView drawRect:self.graphingView.frame];
+    }
+    self.shouldRedraw = false;
 }
 
 - (void) addFunc {
@@ -107,9 +118,6 @@
 }
 
 - (void) open {
-    
-    NSLog(@"%i", self.preferences.drawAxes);
-    
     [self.contentView addSubview:self.graphingView];
     [self.contentView addSubview:self.currentFunction];
     [self.contentView addSubview:self.scrollView];
@@ -124,6 +132,16 @@
     [self.scrollView setFrame:NSMakeRect(0, 100, 100, height-158)];
     [self.addButton setFrame:NSMakeRect(0, 80, 50, 20)];
     [self.removeButton setFrame:NSMakeRect(50, 80, 50, 20)];
+    
+    for(int i=0; i<self.formulas.count; i++) {
+        [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
+    }
+    
+    self.drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.05f
+                                                      target:self
+                                                    selector:@selector(timerFired)
+                                                    userInfo:nil
+                                                     repeats:YES];
 }
 
 - (void) close {
@@ -132,10 +150,18 @@
     [self.scrollView removeFromSuperview];
     [self.addButton removeFromSuperview];
     [self.removeButton removeFromSuperview];
+    
+    [self.drawTimer invalidate];
+    self.drawTimer = nil;
 }
 
 - (void) submit {
-    //
+    if(self.currentFormulaBeingEdited != -1) {
+        // update old cell being edited
+        [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] setString:self.currentFunction.stringValue];
+        [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
+    }
+    self.shouldRedraw = true;
 }
 
 - (void) childToParentMessage: (NSString*) str {
@@ -147,8 +173,6 @@
         // array of changed indices (see the function's coments for details)
         NSMutableArray *changes = [self changedIndex];
         
-        
-        
         for(int i=0; i<changes.count; i++) {
             if([changes objectAtIndex:i] > 0) {
                 // cell 'changes[i]-1' was selected
@@ -157,7 +181,7 @@
                 if(self.currentFormulaBeingEdited != -1) {
                     // update old cell being edited
                     [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] setString:self.currentFunction.stringValue];
-                    [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.x-self.width/2 end:self.x+self.width/2 steps:100];
+                    [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
                 }
                 
                 self.currentFormulaBeingEdited = index;
@@ -169,6 +193,27 @@
     }
     else if([str isEqual: @"checkbox selected"]) {
         // checkbox selected or deselected
+    }
+    else if([str isEqual: @"MouseDown"]) {
+        //
+    }
+    else if([str isEqual: @"MouseUp"]) {
+        //
+    }
+    else if([str isEqual: @"MouseDragged"]) {
+        self.shouldRedraw = true;
+    }
+    else if([str isEqual: @"MagnifyWithEvent"]) {
+        self.shouldRedraw = true;
+    }
+    else if([str isEqual: @"ScrollWheel"]) {
+        self.shouldRedraw = true;
+    }
+}
+
+- (void) recomputeAllFunctions {
+    for(int i=0; i<self.formulas.count; i++) {
+        [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:200];
     }
 }
 

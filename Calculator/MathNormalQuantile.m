@@ -66,7 +66,6 @@
         z = 1.1*pow(-1-log2(1-p), 0.51);
     }
     
-    NSLog(@"%f", z);
     double y = [self cumulativeNormal:z];
     double s = exp(z*z/-2)/2.506628275;     // √(2*pi)
     // use Newton's method
