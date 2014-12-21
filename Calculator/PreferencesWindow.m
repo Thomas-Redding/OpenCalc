@@ -67,12 +67,14 @@
     BOOL newValue = [self.drawAxisCheckbox state];
     self.preferences.drawAxes = newValue;
     [self.preferences save];
+    [self.mainWindow preferencesChanged];
 }
 
 - (void) scrollZoom {
     BOOL newValue = [self.doesScrollZoomCheckbox state];
     self.preferences.doesScrollZoom = newValue;
     [self.preferences save];
+    [self.mainWindow preferencesChanged];
 }
 
 @end

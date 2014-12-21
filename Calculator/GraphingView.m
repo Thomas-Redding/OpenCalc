@@ -23,6 +23,7 @@
     glClear(GL_COLOR_BUFFER_BIT);
     
     glEnable(GL_BLEND);
+    glEnable(GL_LINE_SMOOTH);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     if(self.preferences != nil) {

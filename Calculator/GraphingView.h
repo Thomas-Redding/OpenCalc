@@ -9,10 +9,10 @@
 #import <Cocoa/Cocoa.h>
 #import <OpenGL/OpenGL.h>
 #import <OpenGL/gl.h>
-#include "GraphingFunction.h"
-#include "Preferences.h"
-#include "Tab.h"
-#include "RenderDimensions.h"
+#import "GraphingFunction.h"
+#import "Preferences.h"
+#import "Tab.h"
+#import "RenderDimensions.h"
 
 @interface GraphingView : NSOpenGLView
 

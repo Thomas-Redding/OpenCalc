@@ -84,11 +84,15 @@
 - (IBAction)openPreferencesWindow:(id)sender {
     self.preferencesWindow = [[PreferencesWindow alloc] initWithWindowNibName:@"PreferencesWindow"];
     self.preferencesWindow.brain = self.brain;
+    self.preferencesWindow.mainWindow = self;
     [self.preferencesWindow showWindow:self.preferencesWindow];
     [self.preferencesWindow loadPreferences:self.preferences];
 }
 
+- (void) preferencesChanged {
+    if(self.currentTab != -1) {
+        [self.tabs[self.currentTab] preferencesChanged];
+    }
+}
+
 @end
-
-
-

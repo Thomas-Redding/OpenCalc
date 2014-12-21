@@ -63,6 +63,7 @@
 		28925FF219DDF40100D22F4B /* MathAbsoluteValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 28925FF119DDF40100D22F4B /* MathAbsoluteValue.m */; };
 		2893D02719DF28C5002F04CF /* READ ME.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2893D02619DF28C5002F04CF /* READ ME.txt */; };
 		2893D02A19DF2F86002F04CF /* Memory.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2893D02819DF2F86002F04CF /* Memory.txt */; };
+		289B57CB1A465ED800E35A5C /* AppBlueprinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 289B57CA1A465ED800E35A5C /* AppBlueprinter.m */; };
 		289CBFB919DB3F6B00DC7788 /* MathPersistentExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 289CBFB819DB3F6B00DC7788 /* MathPersistentExpression.m */; };
 		28B99A4619DDF6F800C15CFA /* MathCombination.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B99A4519DDF6F800C15CFA /* MathCombination.m */; };
 		28BB00561A3F8D1600A53CD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BB00551A3F8D1600A53CD4 /* Foundation.framework */; };
@@ -207,6 +208,8 @@
 		28925FF119DDF40100D22F4B /* MathAbsoluteValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathAbsoluteValue.m; sourceTree = "<group>"; };
 		2893D02619DF28C5002F04CF /* READ ME.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "READ ME.txt"; sourceTree = "<group>"; };
 		2893D02819DF2F86002F04CF /* Memory.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Memory.txt; sourceTree = "<group>"; };
+		289B57C91A465ED800E35A5C /* AppBlueprinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppBlueprinter.h; sourceTree = "<group>"; };
+		289B57CA1A465ED800E35A5C /* AppBlueprinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppBlueprinter.m; sourceTree = "<group>"; };
 		289CBFB719DB3F6B00DC7788 /* MathPersistentExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathPersistentExpression.h; sourceTree = "<group>"; };
 		289CBFB819DB3F6B00DC7788 /* MathPersistentExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathPersistentExpression.m; sourceTree = "<group>"; };
 		28A6204B19E8AEC2002D7F5C /* GraphType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphType.h; sourceTree = "<group>"; };
@@ -540,6 +543,8 @@
 		28F31EE519D8BE1B008D25CD /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				289B57C91A465ED800E35A5C /* AppBlueprinter.h */,
+				289B57CA1A465ED800E35A5C /* AppBlueprinter.m */,
 				28F31EEA19D8BE1B008D25CD /* AppDelegate.h */,
 				28F31EEB19D8BE1B008D25CD /* AppDelegate.m */,
 				282CA7291A426255004FA34E /* Preferences */,
@@ -781,6 +786,7 @@
 				283B94C319E07C7200CA7287 /* MathNull.m in Sources */,
 				282B84EA1A15701400793C6D /* MathBinomialQuantile.m in Sources */,
 				2850E48A19D9CD9700F65EE7 /* MathLogBaseTen.m in Sources */,
+				289B57CB1A465ED800E35A5C /* AppBlueprinter.m in Sources */,
 				287A5C511A0AA1EB00D6B333 /* MathNormalRandom.m in Sources */,
 				288FEC5619D9DD5C006DB583 /* MathExponent.m in Sources */,
 				2890D98E1A4132BF0095855D /* GraphingFunction.m in Sources */,

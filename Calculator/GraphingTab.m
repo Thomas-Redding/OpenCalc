@@ -94,6 +94,8 @@
     
     self.shouldRedraw = true;
     
+    self.mousePositionTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 100, 40)];
+    
     return self;
 }
 
@@ -102,7 +104,21 @@
         [self recomputeAllFunctions];
         [self.graphingView drawRect:self.graphingView.frame];
     }
+    
+    // determine (x,y) position of mouse - where (0,0) is the lower, left-hand corner of graphingView and(1,1) is the upper, right-hand corner
+    double x = ([NSEvent mouseLocation].x - [self.contentView window].frame.origin.x - self.graphingView.frame.origin.x)/self.graphingView.frame.size.width;
+    double y = ([NSEvent mouseLocation].y - [self.contentView window].frame.origin.y - self.graphingView.frame.origin.y)/self.graphingView.frame.size.height;
+    x = (x-0.5)*self.renderDimensions.width+self.renderDimensions.x;
+    y = (y-0.5)*self.renderDimensions.height+self.renderDimensions.y;
+    
+    [self.mousePositionTextField setStringValue:[self pairToString:x y:y]];
+    
     self.shouldRedraw = false;
+}
+
+- (NSString*) pairToString: (double) x y: (double) y {
+    NSString *str = [[NSString alloc] initWithFormat:@"(%.3f, %.3f)", x, y];
+    return str;
 }
 
 - (void) addFunc {
@@ -123,6 +139,7 @@
     [self.contentView addSubview:self.scrollView];
     [self.contentView addSubview:self.addButton];
     [self.contentView addSubview:self.removeButton];
+    [self.contentView addSubview:self.mousePositionTextField];
     
     double width = [self.contentView window].frame.size.width;
     double height = [self.contentView window].frame.size.height;
@@ -132,6 +149,7 @@
     [self.scrollView setFrame:NSMakeRect(0, 100, 100, height-158)];
     [self.addButton setFrame:NSMakeRect(0, 80, 50, 20)];
     [self.removeButton setFrame:NSMakeRect(50, 80, 50, 20)];
+    [self.mousePositionTextField setFrame:NSMakeRect(0, 0, 100, 40)];
     
     for(int i=0; i<self.formulas.count; i++) {
         [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
@@ -150,6 +168,7 @@
     [self.scrollView removeFromSuperview];
     [self.addButton removeFromSuperview];
     [self.removeButton removeFromSuperview];
+    [self.mousePositionTextField removeFromSuperview];
     
     [self.drawTimer invalidate];
     self.drawTimer = nil;
@@ -213,7 +232,7 @@
 
 - (void) recomputeAllFunctions {
     for(int i=0; i<self.formulas.count; i++) {
-        [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:200];
+        [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
     }
 }
 
@@ -257,11 +276,21 @@
 }
 
 - (void) mouseDown:(NSEvent *)theEvent sender: (int) sender {
-    //
+    if(theEvent.modifierFlags & NSCommandKeyMask) {
+        // command down
+    }
+    else {
+        // command not down
+    }
+    
 }
 
 - (void) mouseUp:(NSEvent *)theEvent {
     //
+}
+
+- (void) preferencesChanged {
+    self.shouldRedraw = true;
 }
 
 @end

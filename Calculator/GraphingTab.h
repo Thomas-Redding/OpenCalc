@@ -18,6 +18,7 @@
 
 @property GraphingView *graphingView;
 @property NSTextField *currentFunction;
+@property NSTextField *mousePositionTextField;
 @property GraphingTableController *tableController;
 @property NSTableView *tableView;
 @property NSScrollView *scrollView;

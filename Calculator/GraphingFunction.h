@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#include "Brain.h"
+#import "Brain.h"
 
 @interface GraphingFunction : NSObject
 

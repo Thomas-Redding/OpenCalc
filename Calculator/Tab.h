@@ -24,5 +24,6 @@
 - (void) childToParentMessage: (NSString*) str;
 - (void) mouseDown:(NSEvent *)theEvent sender: (int) sender;
 - (void) mouseUp:(NSEvent *)theEvent;
+- (void) preferencesChanged;
 
 @end

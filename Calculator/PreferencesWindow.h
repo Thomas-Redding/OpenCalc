@@ -7,13 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#include "Brain.h"
-#include "Preferences.h"
+#import "Brain.h"
+#import "Preferences.h"
+#import "AppBlueprinter.h"
 
 @interface PreferencesWindow : NSWindowController
 
 @property Brain *brain;
 @property Preferences *preferences;
+@property AppBlueprinter *mainWindow;
 
 @property NSButton *clearHarddriveButton;
 @property NSButton *drawAxisCheckbox;

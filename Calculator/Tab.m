@@ -70,4 +70,8 @@
     //
 }
 
+- (void) preferencesChanged {
+    //
+}
+
 @end
