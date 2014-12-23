@@ -181,34 +181,39 @@
         [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
     }
     self.shouldRedraw = true;
+    [self.tableView reloadData];
+}
+
+- (void) cellSelected {
+    // someone selected or deselected a cell on the table
+    // self.selectedRows <- old list of selected cells
+    // self.tableView.selectedRowIndexes <- new list of selected cells
+    
+    // array of changed indices (see the function's coments for details)
+    NSMutableArray *changes = [self changedIndex];
+    
+    for(int i=0; i<changes.count; i++) {
+        if([changes objectAtIndex:i] > 0) {
+            // cell 'changes[i]-1' was selected
+            int index = [[changes objectAtIndex:i] intValue]-1;
+            
+            if(self.currentFormulaBeingEdited != -1) {
+                // update old cell being edited
+                [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] setString:self.currentFunction.stringValue];
+                [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
+            }
+            
+            self.currentFormulaBeingEdited = index;
+            [self.currentFunction setStringValue:[[self.formulas objectAtIndex:index] string]];
+            break;
+        }
+    }
+    [self.tableView reloadData];
 }
 
 - (void) childToParentMessage: (NSString*) str {
     if([str isEqual: @"cell selected"]) {
-        // someone selected or deselected a cell on the table
-        // self.selectedRows <- old list of selected cells
-        // self.tableView.selectedRowIndexes <- new list of selected cells
-        
-        // array of changed indices (see the function's coments for details)
-        NSMutableArray *changes = [self changedIndex];
-        
-        for(int i=0; i<changes.count; i++) {
-            if([changes objectAtIndex:i] > 0) {
-                // cell 'changes[i]-1' was selected
-                int index = [[changes objectAtIndex:i] intValue]-1;
-                
-                if(self.currentFormulaBeingEdited != -1) {
-                    // update old cell being edited
-                    [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] setString:self.currentFunction.stringValue];
-                    [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
-                }
-                
-                self.currentFormulaBeingEdited = index;
-                [self.currentFunction setStringValue:[[self.formulas objectAtIndex:index] string]];
-                break;
-            }
-        }
-        [self.tableView reloadData];
+        [self cellSelected];
     }
     else if([str isEqual: @"checkbox selected"]) {
         // checkbox selected or deselected
