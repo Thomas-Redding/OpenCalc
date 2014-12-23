@@ -17,6 +17,7 @@
 		281E454B1A49FFD300F546C0 /* GraphingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E454A1A49FFD300F546C0 /* GraphingTableView.m */; };
 		281E45561A4A020B00F546C0 /* GraphingEvaluateWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E45541A4A020B00F546C0 /* GraphingEvaluateWindow.m */; };
 		281E45571A4A020B00F546C0 /* GraphingEvaluateWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281E45551A4A020B00F546C0 /* GraphingEvaluateWindow.xib */; };
+		281E455F1A4A258900F546C0 /* MathVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E455E1A4A258900F546C0 /* MathVector.m */; };
 		281FAFB819DB38A1003EE230 /* MathUserFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 281FAFB719DB38A1003EE230 /* MathUserFunction.m */; };
 		282B84C81A154A3B00793C6D /* MathPoissonDensity.m in Sources */ = {isa = PBXBuildFile; fileRef = 282B84C71A154A3B00793C6D /* MathPoissonDensity.m */; };
 		282B84CB1A154AB100793C6D /* MathPoissonQuantile.m in Sources */ = {isa = PBXBuildFile; fileRef = 282B84CA1A154AB100793C6D /* MathPoissonQuantile.m */; };
@@ -121,6 +122,8 @@
 		281E45531A4A020B00F546C0 /* GraphingEvaluateWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphingEvaluateWindow.h; sourceTree = "<group>"; };
 		281E45541A4A020B00F546C0 /* GraphingEvaluateWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphingEvaluateWindow.m; sourceTree = "<group>"; };
 		281E45551A4A020B00F546C0 /* GraphingEvaluateWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphingEvaluateWindow.xib; sourceTree = "<group>"; };
+		281E455D1A4A258900F546C0 /* MathVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathVector.h; sourceTree = "<group>"; };
+		281E455E1A4A258900F546C0 /* MathVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathVector.m; sourceTree = "<group>"; };
 		281FAFB619DB38A1003EE230 /* MathUserFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathUserFunction.h; sourceTree = "<group>"; };
 		281FAFB719DB38A1003EE230 /* MathUserFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathUserFunction.m; sourceTree = "<group>"; };
 		282B84C61A154A3B00793C6D /* MathPoissonDensity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathPoissonDensity.h; sourceTree = "<group>"; };
@@ -616,6 +619,8 @@
 				28F31F3119D9253E008D25CD /* MathBoolean.m */,
 				28C8B2AD19D9E81A00D26D53 /* MathNumber.h */,
 				28C8B2AE19D9E81A00D26D53 /* MathNumber.m */,
+				281E455D1A4A258900F546C0 /* MathVector.h */,
+				281E455E1A4A258900F546C0 /* MathVector.m */,
 				28C8B2AF19D9E81A00D26D53 /* MathType.h */,
 			);
 			name = MathObject;
@@ -855,6 +860,7 @@
 				2812046719E325C4005948C0 /* MathNotEqualTo.m in Sources */,
 				28C848A519D9E605000282F5 /* MathFactorial.m in Sources */,
 				28C8B2B419D9E87600D26D53 /* MathEquality.m in Sources */,
+				281E455F1A4A258900F546C0 /* MathVector.m in Sources */,
 				287A5C451A0A9D4A00D6B333 /* MathPoissonRandom.m in Sources */,
 				281E45561A4A020B00F546C0 /* GraphingEvaluateWindow.m in Sources */,
 				28415EEC1A0422E6008EBC4E /* GraphingView.m in Sources */,
