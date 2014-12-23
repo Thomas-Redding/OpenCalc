@@ -228,6 +228,18 @@
     else if([str isEqual: @"ScrollWheel"]) {
         self.shouldRedraw = true;
     }
+    else if ([str isEqual: @"evaluate"]) {
+        NSLog(@"evaluate");
+    }
+    else if ([str isEqual: @"findRoot"]) {
+        NSLog(@"findRoot");
+    }
+    else if ([str isEqual: @"integrate"]) {
+        NSLog(@"integrate");
+    }
+    else if ([str isEqual: @"findIntersect"]) {
+        NSLog(@"findIntersect");
+    }
 }
 
 - (void) recomputeAllFunctions {
