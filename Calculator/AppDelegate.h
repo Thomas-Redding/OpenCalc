@@ -15,8 +15,9 @@
 #import "AlgebraTab.h"
 #import "GraphingTab.h"
 #import "PreferencesWindow.h"
+#import "AppBlueprinter.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : AppBlueprinter <NSApplicationDelegate>
 
 @property (weak) IBOutlet NSView *mainView;
 

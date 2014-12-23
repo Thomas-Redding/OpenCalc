@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#include "Tab.h"
+#import "Tab.h"
 
 @interface CurrentAlgebraTextField : NSTextField
 

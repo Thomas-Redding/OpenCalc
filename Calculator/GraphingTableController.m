@@ -28,7 +28,7 @@
 }
 
 -(IBAction)checkBoxState:(id)sender {
-    NSLog(@"");
+    //
 }
 
 -(void) add {
@@ -69,6 +69,5 @@
     [tableView reloadData];
     [self.parent childToParentMessage:@"checkbox selected"];
 }
-
 
 @end

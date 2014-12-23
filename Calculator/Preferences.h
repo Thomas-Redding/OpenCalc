@@ -11,6 +11,7 @@
 @interface Preferences : NSObject
 
 @property BOOL drawAxes;
+@property BOOL doesScrollZoom;
 
 - (Preferences*) init;
 - (void) evaluate: (NSString*) str;

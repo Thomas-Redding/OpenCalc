@@ -47,7 +47,6 @@
  EXAMPLE: [self.parent childToParentMessage:@"moveUp"];
 */
 - (void) childToParentMessage: (NSString*) str {
-    //
 }
 
 /*
@@ -67,6 +66,10 @@
  [self.parent mouseUp:theEvent sender:self.index];
 */
 - (void) mouseUp:(NSEvent *)theEvent {
+    //
+}
+
+- (void) preferencesChanged {
     //
 }
 

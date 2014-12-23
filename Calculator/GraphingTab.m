@@ -15,24 +15,26 @@
     self.brain = brain;
     self.preferences = preferences;
     
-    self.x = 0;
-    self.y = 0;
-    self.width = 5;
-    self.height = 5;
+    
+    self.renderDimensions = [[RenderDimensions alloc] init];
+    self.renderDimensions.x = 0;
+    self.renderDimensions.y = 0;
+    self.renderDimensions.width = 5;
+    self.renderDimensions.height = 5;
     self.steps = 40;
     
     GraphingFunction *templateA = [[GraphingFunction alloc] initWithBrain:self.brain];
     templateA.string = @"x";
     templateA.index = 0;
-    [templateA update:self.x-self.width/2 end:self.x+self.width/2 steps:100];
+    [templateA update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
     GraphingFunction *templateB = [[GraphingFunction alloc] initWithBrain:self.brain];
     templateB.string = @"x^2";
     templateB.index = 1;
-    [templateB update:self.x-self.width/2 end:self.x+self.width/2 steps:100];
+    [templateB update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
     GraphingFunction *templateC = [[GraphingFunction alloc] initWithBrain:self.brain];
     templateC.string = @"log(x)";
     templateC.index = 2;
-    [templateC update:self.x-self.width/2 end:self.x+self.width/2 steps:100];
+    [templateC update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
     self.formulas = [[NSMutableArray alloc] initWithObjects:templateA, templateB, templateC, nil];
     
     double width = [[self.contentView window] frame].size.width;
@@ -40,22 +42,22 @@
     
     self.graphingView = [[GraphingView alloc] init];
     self.graphingView.functionList = self.formulas;
-    self.graphingView.x = self.x;
-    self.graphingView.y = self.y;
-    self.graphingView.width = self.width;
-    self.graphingView.height = self.height;
+    self.graphingView.renderDimensions = self.renderDimensions;
     self.graphingView.preferences = self.preferences;
     [self.graphingView setFrame: NSMakeRect(100, 0, width-100, height-60)];
     [self.graphingView setAutoresizingMask: NSViewMaxXMargin | NSViewWidthSizable | NSViewHeightSizable];
+    [self.graphingView setParent:self];
     
     self.currentFunction = [[NSTextField alloc] initWithFrame:NSMakeRect(0, height-60, width, 20)];
     [self.currentFunction setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];
+    [self.currentFunction setAction:@selector(submit)];
     
     // left-side table of formulas
     NSTableColumn *columnVisible = [[NSTableColumn alloc] initWithIdentifier:@"isVisible"];
     NSTableColumn *columnFormula = [[NSTableColumn alloc] initWithIdentifier:@"formula"];
-    self.tableView = [[NSTableView alloc] initWithFrame:NSMakeRect(0, 0, 0, 0)];
+    self.tableView = [[GraphingTableView alloc] initWithFrame:NSMakeRect(0, 0, 0, 0)];
     self.tableView.headerView = nil;
+    self.tableView.parent = self;
     
     [[columnVisible headerCell] setStringValue:[NSString stringWithFormat:@"isvisible"]];
     [columnVisible setWidth:20];
@@ -91,7 +93,40 @@
     self.selectedRows = [[NSIndexSet alloc] init];
     self.currentFormulaBeingEdited = -1;
     
+    self.shouldRedraw = true;
+    
+    self.mousePositionTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 100, 40)];
+    
     return self;
+}
+
+- (void) timerFired {
+    if(self.shouldRedraw) {
+        [self recomputeAllFunctions];
+        [self.graphingView drawRect:self.graphingView.frame];
+    }
+
+    double x = [self xPositionOfMouse];
+    double y = [self yPositionOfMouse];
+    
+    [self.mousePositionTextField setStringValue:[self pairToString:x y:y]];
+    
+    self.shouldRedraw = false;
+}
+
+- (double) xPositionOfMouse {
+    double x = ([NSEvent mouseLocation].x - [self.contentView window].frame.origin.x - self.graphingView.frame.origin.x)/self.graphingView.frame.size.width;
+    return (x-0.5)*self.renderDimensions.width+self.renderDimensions.x;
+}
+
+- (double) yPositionOfMouse {
+    double y = ([NSEvent mouseLocation].y - [self.contentView window].frame.origin.y - self.graphingView.frame.origin.y)/self.graphingView.frame.size.height;
+    return (y-0.5)*self.renderDimensions.height+self.renderDimensions.y;
+}
+
+- (NSString*) pairToString: (double) x y: (double) y {
+    NSString *str = [[NSString alloc] initWithFormat:@"(%.3f, %.3f)", x, y];
+    return str;
 }
 
 - (void) addFunc {
@@ -107,14 +142,12 @@
 }
 
 - (void) open {
-    
-    NSLog(@"%i", self.preferences.drawAxes);
-    
     [self.contentView addSubview:self.graphingView];
     [self.contentView addSubview:self.currentFunction];
     [self.contentView addSubview:self.scrollView];
     [self.contentView addSubview:self.addButton];
     [self.contentView addSubview:self.removeButton];
+    [self.contentView addSubview:self.mousePositionTextField];
     
     double width = [self.contentView window].frame.size.width;
     double height = [self.contentView window].frame.size.height;
@@ -124,6 +157,17 @@
     [self.scrollView setFrame:NSMakeRect(0, 100, 100, height-158)];
     [self.addButton setFrame:NSMakeRect(0, 80, 50, 20)];
     [self.removeButton setFrame:NSMakeRect(50, 80, 50, 20)];
+    [self.mousePositionTextField setFrame:NSMakeRect(0, 0, 100, 40)];
+    
+    for(int i=0; i<self.formulas.count; i++) {
+        [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
+    }
+    
+    self.drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.05f
+                                                      target:self
+                                                    selector:@selector(timerFired)
+                                                    userInfo:nil
+                                                     repeats:YES];
 }
 
 - (void) close {
@@ -132,43 +176,91 @@
     [self.scrollView removeFromSuperview];
     [self.addButton removeFromSuperview];
     [self.removeButton removeFromSuperview];
+    [self.mousePositionTextField removeFromSuperview];
+    
+    [self.drawTimer invalidate];
+    self.drawTimer = nil;
 }
 
 - (void) submit {
-    //
+    if(self.currentFormulaBeingEdited != -1) {
+        // update old cell being edited
+        [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] setString:self.currentFunction.stringValue];
+        [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
+    }
+    self.shouldRedraw = true;
+    [self.tableView reloadData];
+}
+
+- (void) cellSelected {
+    // someone selected or deselected a cell on the table
+    // self.selectedRows <- old list of selected cells
+    // self.tableView.selectedRowIndexes <- new list of selected cells
+    
+    // array of changed indices (see the function's coments for details)
+    NSMutableArray *changes = [self changedIndex];
+    
+    for(int i=0; i<changes.count; i++) {
+        if([changes objectAtIndex:i] > 0) {
+            // cell 'changes[i]-1' was selected
+            int index = [[changes objectAtIndex:i] intValue]-1;
+            
+            if(self.currentFormulaBeingEdited != -1) {
+                // update old cell being edited
+                [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] setString:self.currentFunction.stringValue];
+                [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
+            }
+            
+            self.currentFormulaBeingEdited = index;
+            [self.currentFunction setStringValue:[[self.formulas objectAtIndex:index] string]];
+            break;
+        }
+    }
+    [self.tableView reloadData];
 }
 
 - (void) childToParentMessage: (NSString*) str {
     if([str isEqual: @"cell selected"]) {
-        // someone selected or deselected a cell on the table
-        // self.selectedRows <- old list of selected cells
-        // self.tableView.selectedRowIndexes <- new list of selected cells
-        
-        // array of changed indices (see the function's coments for details)
-        NSMutableArray *changes = [self changedIndex];
-        
-        
-        
-        for(int i=0; i<changes.count; i++) {
-            if([changes objectAtIndex:i] > 0) {
-                // cell 'changes[i]-1' was selected
-                int index = [[changes objectAtIndex:i] intValue]-1;
-                
-                if(self.currentFormulaBeingEdited != -1) {
-                    // update old cell being edited
-                    [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] setString:self.currentFunction.stringValue];
-                    [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.x-self.width/2 end:self.x+self.width/2 steps:100];
-                }
-                
-                self.currentFormulaBeingEdited = index;
-                [self.currentFunction setStringValue:[[self.formulas objectAtIndex:index] string]];
-                break;
-            }
-        }
-        [self.tableView reloadData];
+        [self cellSelected];
     }
     else if([str isEqual: @"checkbox selected"]) {
         // checkbox selected or deselected
+    }
+    else if([str isEqual: @"MouseDown"]) {
+        //
+    }
+    else if([str isEqual: @"MouseUp"]) {
+        //
+    }
+    else if([str isEqual: @"MouseDragged"]) {
+        self.shouldRedraw = true;
+    }
+    else if([str isEqual: @"MagnifyWithEvent"]) {
+        self.shouldRedraw = true;
+    }
+    else if([str isEqual: @"ScrollWheel"]) {
+        self.shouldRedraw = true;
+    }
+    else if ([str isEqual: @"evaluate"]) {
+        [self openEvaluateWindow:@"evaluate"];
+    }
+    else if ([str isEqual: @"findRoot"]) {
+        [self openEvaluateWindow:@"findRoot"];
+    }
+    else if ([str isEqual: @"integrate"]) {
+        [self openEvaluateWindow:@"integrate"];
+    }
+    else if ([str isEqual: @"findIntersect"]) {
+        [self openEvaluateWindow:@"findIntersect"];
+    }
+    else if([str isEqual: @"deleteEvaluateWindow"]) {
+        self.evaluateWindow = nil;
+    }
+}
+
+- (void) recomputeAllFunctions {
+    for(int i=0; i<self.formulas.count; i++) {
+        [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
     }
 }
 
@@ -212,11 +304,52 @@
 }
 
 - (void) mouseDown:(NSEvent *)theEvent sender: (int) sender {
-    //
+    double x = [self xPositionOfMouse];
+    double y = [self yPositionOfMouse];
+    int index = [self.graphingView functionClicked:x y:y];
+    if(index != -1) {
+        NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:index];
+        if(theEvent.modifierFlags & NSCommandKeyMask) {
+            // command down
+            [self.tableView selectRowIndexes:indexSet byExtendingSelection:true];
+        }
+        else {
+            // command not down
+            [self.tableView selectRowIndexes:indexSet byExtendingSelection:false];
+        }
+    }
 }
 
 - (void) mouseUp:(NSEvent *)theEvent {
     //
+}
+
+- (void) preferencesChanged {
+    self.shouldRedraw = true;
+}
+
+- (void) openEvaluateWindow: (NSString*) str {
+    NSLog(@"%@", str);
+    
+    self.evaluateWindow = [[GraphingEvaluateWindow alloc] initWithWindowNibName:@"GraphingEvaluateWindow"];
+    self.evaluateWindow.brain = self.brain;
+    self.evaluateWindow.parent = self;
+    self.evaluateWindow.windowType = str;
+    
+    if(self.tableView.selectedRowIndexes.count == 1) {
+        self.evaluateWindow.funcA = [self.formulas objectAtIndex:self.tableView.selectedRowIndexes.firstIndex];
+        self.evaluateWindow.funcB = nil;
+    }
+    else if(self.tableView.selectedRowIndexes.count == 2) {
+        self.evaluateWindow.funcA = [self.formulas objectAtIndex:self.tableView.selectedRowIndexes.firstIndex];
+        self.evaluateWindow.funcB = [self.formulas objectAtIndex:self.tableView.selectedRowIndexes.lastIndex];
+    }
+    else {
+        self.evaluateWindow.funcA = nil;
+        self.evaluateWindow.funcB = nil;
+    }
+    
+    [self.evaluateWindow showWindow:self.evaluateWindow];
 }
 
 @end

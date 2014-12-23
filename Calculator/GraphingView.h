@@ -9,18 +9,21 @@
 #import <Cocoa/Cocoa.h>
 #import <OpenGL/OpenGL.h>
 #import <OpenGL/gl.h>
-#include "GraphingFunction.h"
-#include "Preferences.h"
+#import "GraphingFunction.h"
+#import "Preferences.h"
+#import "Tab.h"
+#import "RenderDimensions.h"
 
 @interface GraphingView : NSOpenGLView
 
 @property NSMutableArray *functionList;
 @property Preferences *preferences;
+@property Tab* parent;
 
-@property double x;
-@property double y;
-@property double width;
-@property double height;
-// @property Preferences *preferences;
+@property double mouseX;
+@property double mouseY;
+@property RenderDimensions *renderDimensions;
+
+- (int) functionClicked: (double) x y: (double) y;
 
 @end
