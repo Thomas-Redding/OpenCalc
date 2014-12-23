@@ -12,6 +12,7 @@
 #import "GraphingFunction.h"
 #import "RenderDimensions.h"
 #import "GraphingTableView.h"
+#import "GraphingEvaluateWindow.h"
 
 @interface GraphingTab : Tab
 
@@ -26,6 +27,7 @@
 @property NSMutableArray *formulas;
 @property NSIndexSet *selectedRows;
 @property int currentFormulaBeingEdited;
+@property GraphingEvaluateWindow *evaluateWindow;
 
 @property NSButton *addButton;
 @property NSButton *removeButton;

@@ -19,6 +19,10 @@
     return self;
 }
 
+- (NSString*) getName {
+    return [[NSString alloc] initWithFormat:@"f%@", [self intToCharacter:self.index]];
+}
+
 - (void) update: (double) start end: (double) end steps: (int) steps {
     
     NSString *ssss = self.string;
@@ -26,7 +30,7 @@
     if(ssss.length == 0) {
         // empty string
         
-        NSString *funcName = [[NSString alloc] initWithFormat:@"f%@", [self intToCharacter:self.index]];
+        NSString *funcName = [self getName];
         NSString *str = [[NSString alloc] initWithFormat:@"%@(x)=", funcName];
         [self.brain runAlgebra:str];
         self.points = [[NSMutableArray alloc] init];

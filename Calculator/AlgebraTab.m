@@ -111,7 +111,6 @@
             self.algebraCurrent.stringValue = @"";
         }
     }
-    
 }
 
 - (void) resized: (double) width height: (double) height {

@@ -47,7 +47,6 @@
  EXAMPLE: [self.parent childToParentMessage:@"moveUp"];
 */
 - (void) childToParentMessage: (NSString*) str {
-    //
 }
 
 /*

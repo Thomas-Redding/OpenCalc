@@ -242,16 +242,19 @@
         self.shouldRedraw = true;
     }
     else if ([str isEqual: @"evaluate"]) {
-        NSLog(@"evaluate");
+        [self openEvaluateWindow:@"evaluate"];
     }
     else if ([str isEqual: @"findRoot"]) {
-        NSLog(@"findRoot");
+        [self openEvaluateWindow:@"findRoot"];
     }
     else if ([str isEqual: @"integrate"]) {
-        NSLog(@"integrate");
+        [self openEvaluateWindow:@"integrate"];
     }
     else if ([str isEqual: @"findIntersect"]) {
-        NSLog(@"findIntersect");
+        [self openEvaluateWindow:@"findIntersect"];
+    }
+    else if([str isEqual: @"deleteEvaluateWindow"]) {
+        self.evaluateWindow = nil;
     }
 }
 
@@ -323,6 +326,30 @@
 
 - (void) preferencesChanged {
     self.shouldRedraw = true;
+}
+
+- (void) openEvaluateWindow: (NSString*) str {
+    NSLog(@"%@", str);
+    
+    self.evaluateWindow = [[GraphingEvaluateWindow alloc] initWithWindowNibName:@"GraphingEvaluateWindow"];
+    self.evaluateWindow.brain = self.brain;
+    self.evaluateWindow.parent = self;
+    self.evaluateWindow.windowType = str;
+    
+    if(self.tableView.selectedRowIndexes.count == 1) {
+        self.evaluateWindow.funcA = [self.formulas objectAtIndex:self.tableView.selectedRowIndexes.firstIndex];
+        self.evaluateWindow.funcB = nil;
+    }
+    else if(self.tableView.selectedRowIndexes.count == 2) {
+        self.evaluateWindow.funcA = [self.formulas objectAtIndex:self.tableView.selectedRowIndexes.firstIndex];
+        self.evaluateWindow.funcB = [self.formulas objectAtIndex:self.tableView.selectedRowIndexes.lastIndex];
+    }
+    else {
+        self.evaluateWindow.funcA = nil;
+        self.evaluateWindow.funcB = nil;
+    }
+    
+    [self.evaluateWindow showWindow:self.evaluateWindow];
 }
 
 @end

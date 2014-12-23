@@ -23,5 +23,6 @@
 
 - (GraphingFunction*) initWithBrain: (Brain*) b;
 - (void) update: (double) start end: (double) end steps: (int) steps;
+- (NSString*) getName;
 
 @end
