@@ -30,6 +30,10 @@
 	<string>Copyright © 2014 Thomas Redding. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>HelpBook</string>
+	<key>CFBundleHelpBookName</key>
+	<string>HelpBook</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

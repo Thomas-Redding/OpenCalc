@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		280637A31A491CE50014E538 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 280637A21A491CE50014E538 /* README.md */; };
 		28110F0C19D9DA6200E7484F /* MathInverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 28110F0B19D9DA6200E7484F /* MathInverse.m */; };
 		2812045B19E31B3B005948C0 /* MathLessThan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2812045A19E31B3B005948C0 /* MathLessThan.m */; };
 		2812045E19E31C6E005948C0 /* MathGreaterThan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2812045D19E31C6E005948C0 /* MathGreaterThan.m */; };
@@ -61,7 +62,6 @@
 		2890D98E1A4132BF0095855D /* GraphingFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2890D98D1A4132BF0095855D /* GraphingFunction.m */; };
 		28925FEF19DDF33300D22F4B /* MathSquareRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 28925FEE19DDF33300D22F4B /* MathSquareRoot.m */; };
 		28925FF219DDF40100D22F4B /* MathAbsoluteValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 28925FF119DDF40100D22F4B /* MathAbsoluteValue.m */; };
-		2893D02719DF28C5002F04CF /* READ ME.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2893D02619DF28C5002F04CF /* READ ME.txt */; };
 		2893D02A19DF2F86002F04CF /* Memory.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2893D02819DF2F86002F04CF /* Memory.txt */; };
 		289B57CB1A465ED800E35A5C /* AppBlueprinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 289B57CA1A465ED800E35A5C /* AppBlueprinter.m */; };
 		289CBFB919DB3F6B00DC7788 /* MathPersistentExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 289CBFB819DB3F6B00DC7788 /* MathPersistentExpression.m */; };
@@ -100,6 +100,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		280637A21A491CE50014E538 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		28110F0A19D9DA6200E7484F /* MathInverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathInverse.h; sourceTree = "<group>"; };
 		28110F0B19D9DA6200E7484F /* MathInverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathInverse.m; sourceTree = "<group>"; };
 		2812045919E31B3B005948C0 /* MathLessThan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathLessThan.h; sourceTree = "<group>"; };
@@ -206,7 +207,6 @@
 		28925FEE19DDF33300D22F4B /* MathSquareRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathSquareRoot.m; sourceTree = "<group>"; };
 		28925FF019DDF40100D22F4B /* MathAbsoluteValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathAbsoluteValue.h; sourceTree = "<group>"; };
 		28925FF119DDF40100D22F4B /* MathAbsoluteValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathAbsoluteValue.m; sourceTree = "<group>"; };
-		2893D02619DF28C5002F04CF /* READ ME.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "READ ME.txt"; sourceTree = "<group>"; };
 		2893D02819DF2F86002F04CF /* Memory.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Memory.txt; sourceTree = "<group>"; };
 		289B57C91A465ED800E35A5C /* AppBlueprinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppBlueprinter.h; sourceTree = "<group>"; };
 		289B57CA1A465ED800E35A5C /* AppBlueprinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppBlueprinter.m; sourceTree = "<group>"; };
@@ -561,8 +561,8 @@
 			isa = PBXGroup;
 			children = (
 				28F31EE719D8BE1B008D25CD /* Info.plist */,
+				280637A21A491CE50014E538 /* README.md */,
 				28F31EE819D8BE1B008D25CD /* main.m */,
-				2893D02619DF28C5002F04CF /* READ ME.txt */,
 				28847C921A43B75200900A52 /* Preferences.txt */,
 				2893D02819DF2F86002F04CF /* Memory.txt */,
 			);
@@ -694,6 +694,40 @@
 			knownRegions = (
 				en,
 				Base,
+				English,
+				ar,
+				ca,
+				cs,
+				da,
+				de,
+				el,
+				es,
+				es_MX,
+				fi,
+				fr,
+				he,
+				hr,
+				hu,
+				id,
+				it,
+				ja,
+				ko,
+				ms,
+				nl,
+				no,
+				pl,
+				pt,
+				pt_PT,
+				ro,
+				ru,
+				sk,
+				sv,
+				th,
+				tr,
+				uk,
+				vi,
+				zh_CN,
+				zh_TW,
 			);
 			mainGroup = 28F31EDA19D8BE1B008D25CD;
 			productRefGroup = 28F31EE419D8BE1B008D25CD /* Products */;
@@ -716,7 +750,6 @@
 				28F31EEE19D8BE1B008D25CD /* Images.xcassets in Resources */,
 				2893D02A19DF2F86002F04CF /* Memory.txt in Resources */,
 				28F31EF119D8BE1C008D25CD /* MainMenu.xib in Resources */,
-				2893D02719DF28C5002F04CF /* READ ME.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,6 +821,7 @@
 				2850E48A19D9CD9700F65EE7 /* MathLogBaseTen.m in Sources */,
 				289B57CB1A465ED800E35A5C /* AppBlueprinter.m in Sources */,
 				287A5C511A0AA1EB00D6B333 /* MathNormalRandom.m in Sources */,
+				280637A31A491CE50014E538 /* README.md in Sources */,
 				288FEC5619D9DD5C006DB583 /* MathExponent.m in Sources */,
 				2890D98E1A4132BF0095855D /* GraphingFunction.m in Sources */,
 				282B84D61A154F2800793C6D /* MathExponentialQuantile.m in Sources */,
