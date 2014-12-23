@@ -245,11 +245,15 @@
                 op = [[MathNotEqualTo alloc] init];
             }
             
+            
+            
             MathExpression *inputExpression = [[MathExpression alloc] init];
             MathObject* inputObjectA = [inputExpression evaluate:inputStringA publicVariable:publicVariable publicFunction:publicFunction errors:errors];
             MathObject* inputObjectB = [inputExpression evaluate:inputStringB publicVariable:publicVariable publicFunction:publicFunction errors:errors];
             NSArray* arr = [[NSArray alloc] initWithObjects: inputObjectA, inputObjectB, nil];
             MathObject* answer = [op func: arr];
+            
+            
             
             return answer;
         }
