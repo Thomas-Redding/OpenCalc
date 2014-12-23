@@ -70,5 +70,4 @@
     [self.parent childToParentMessage:@"checkbox selected"];
 }
 
-
 @end

@@ -14,6 +14,7 @@
 		2812046119E32296005948C0 /* MathLessThanOrEqualTo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2812046019E32296005948C0 /* MathLessThanOrEqualTo.m */; };
 		2812046419E323EA005948C0 /* MathGreaterThanOrEqualTo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2812046319E323EA005948C0 /* MathGreaterThanOrEqualTo.m */; };
 		2812046719E325C4005948C0 /* MathNotEqualTo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2812046619E325C4005948C0 /* MathNotEqualTo.m */; };
+		281E454B1A49FFD300F546C0 /* GraphingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E454A1A49FFD300F546C0 /* GraphingTableView.m */; };
 		281FAFB819DB38A1003EE230 /* MathUserFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 281FAFB719DB38A1003EE230 /* MathUserFunction.m */; };
 		282B84C81A154A3B00793C6D /* MathPoissonDensity.m in Sources */ = {isa = PBXBuildFile; fileRef = 282B84C71A154A3B00793C6D /* MathPoissonDensity.m */; };
 		282B84CB1A154AB100793C6D /* MathPoissonQuantile.m in Sources */ = {isa = PBXBuildFile; fileRef = 282B84CA1A154AB100793C6D /* MathPoissonQuantile.m */; };
@@ -113,6 +114,8 @@
 		2812046319E323EA005948C0 /* MathGreaterThanOrEqualTo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathGreaterThanOrEqualTo.m; sourceTree = "<group>"; };
 		2812046519E325C4005948C0 /* MathNotEqualTo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathNotEqualTo.h; sourceTree = "<group>"; };
 		2812046619E325C4005948C0 /* MathNotEqualTo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathNotEqualTo.m; sourceTree = "<group>"; };
+		281E45491A49FFD300F546C0 /* GraphingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphingTableView.h; sourceTree = "<group>"; };
+		281E454A1A49FFD300F546C0 /* GraphingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphingTableView.m; sourceTree = "<group>"; };
 		281FAFB619DB38A1003EE230 /* MathUserFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathUserFunction.h; sourceTree = "<group>"; };
 		281FAFB719DB38A1003EE230 /* MathUserFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathUserFunction.m; sourceTree = "<group>"; };
 		282B84C61A154A3B00793C6D /* MathPoissonDensity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathPoissonDensity.h; sourceTree = "<group>"; };
@@ -278,6 +281,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		281E454C1A4A00F500F546C0 /* Pop-up Window */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Pop-up Window";
+			sourceTree = "<group>";
+		};
 		282B84C51A1549A900793C6D /* Poisson */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,11 +452,14 @@
 				2890D98D1A4132BF0095855D /* GraphingFunction.m */,
 				2890D9861A41197E0095855D /* GraphingTableController.h */,
 				2890D9871A41197E0095855D /* GraphingTableController.m */,
+				281E45491A49FFD300F546C0 /* GraphingTableView.h */,
+				281E454A1A49FFD300F546C0 /* GraphingTableView.m */,
 				28A6204B19E8AEC2002D7F5C /* GraphType.h */,
 				28415EEA1A0422E6008EBC4E /* GraphingView.h */,
 				28415EEB1A0422E6008EBC4E /* GraphingView.m */,
 				285445BB1A4624D90017B53C /* RenderDimensions.h */,
 				285445BC1A4624D90017B53C /* RenderDimensions.m */,
+				281E454C1A4A00F500F546C0 /* Pop-up Window */,
 			);
 			name = "2. Graphing Tab";
 			sourceTree = "<group>";
@@ -768,6 +781,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2833E23B19D94A7800D8686B /* MathPower.m in Sources */,
+				281E454B1A49FFD300F546C0 /* GraphingTableView.m in Sources */,
 				2812045E19E31C6E005948C0 /* MathGreaterThan.m in Sources */,
 				282B84DD1A1552A900793C6D /* MathNormalDistribution.m in Sources */,
 				28EBFFB819DB1C85008B662F /* MathFunction.m in Sources */,

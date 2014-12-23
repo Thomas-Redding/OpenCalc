@@ -24,4 +24,6 @@
 @property double mouseY;
 @property RenderDimensions *renderDimensions;
 
+- (int) functionClicked: (double) x y: (double) y;
+
 @end

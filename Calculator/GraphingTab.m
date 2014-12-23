@@ -55,8 +55,9 @@
     // left-side table of formulas
     NSTableColumn *columnVisible = [[NSTableColumn alloc] initWithIdentifier:@"isVisible"];
     NSTableColumn *columnFormula = [[NSTableColumn alloc] initWithIdentifier:@"formula"];
-    self.tableView = [[NSTableView alloc] initWithFrame:NSMakeRect(0, 0, 0, 0)];
+    self.tableView = [[GraphingTableView alloc] initWithFrame:NSMakeRect(0, 0, 0, 0)];
     self.tableView.headerView = nil;
+    self.tableView.parent = self;
     
     [[columnVisible headerCell] setStringValue:[NSString stringWithFormat:@"isvisible"]];
     [columnVisible setWidth:20];
@@ -104,16 +105,23 @@
         [self recomputeAllFunctions];
         [self.graphingView drawRect:self.graphingView.frame];
     }
-    
-    // determine (x,y) position of mouse - where (0,0) is the lower, left-hand corner of graphingView and(1,1) is the upper, right-hand corner
-    double x = ([NSEvent mouseLocation].x - [self.contentView window].frame.origin.x - self.graphingView.frame.origin.x)/self.graphingView.frame.size.width;
-    double y = ([NSEvent mouseLocation].y - [self.contentView window].frame.origin.y - self.graphingView.frame.origin.y)/self.graphingView.frame.size.height;
-    x = (x-0.5)*self.renderDimensions.width+self.renderDimensions.x;
-    y = (y-0.5)*self.renderDimensions.height+self.renderDimensions.y;
+
+    double x = [self xPositionOfMouse];
+    double y = [self yPositionOfMouse];
     
     [self.mousePositionTextField setStringValue:[self pairToString:x y:y]];
     
     self.shouldRedraw = false;
+}
+
+- (double) xPositionOfMouse {
+    double x = ([NSEvent mouseLocation].x - [self.contentView window].frame.origin.x - self.graphingView.frame.origin.x)/self.graphingView.frame.size.width;
+    return (x-0.5)*self.renderDimensions.width+self.renderDimensions.x;
+}
+
+- (double) yPositionOfMouse {
+    double y = ([NSEvent mouseLocation].y - [self.contentView window].frame.origin.y - self.graphingView.frame.origin.y)/self.graphingView.frame.size.height;
+    return (y-0.5)*self.renderDimensions.height+self.renderDimensions.y;
 }
 
 - (NSString*) pairToString: (double) x y: (double) y {
@@ -293,13 +301,20 @@
 }
 
 - (void) mouseDown:(NSEvent *)theEvent sender: (int) sender {
-    if(theEvent.modifierFlags & NSCommandKeyMask) {
-        // command down
+    double x = [self xPositionOfMouse];
+    double y = [self yPositionOfMouse];
+    int index = [self.graphingView functionClicked:x y:y];
+    if(index != -1) {
+        NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:index];
+        if(theEvent.modifierFlags & NSCommandKeyMask) {
+            // command down
+            [self.tableView selectRowIndexes:indexSet byExtendingSelection:true];
+        }
+        else {
+            // command not down
+            [self.tableView selectRowIndexes:indexSet byExtendingSelection:false];
+        }
     }
-    else {
-        // command not down
-    }
-    
 }
 
 - (void) mouseUp:(NSEvent *)theEvent {

@@ -23,9 +23,6 @@
     
     NSString *ssss = self.string;
     
-    
-    
-    
     if(ssss.length == 0) {
         // empty string
         

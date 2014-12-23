@@ -11,6 +11,7 @@
 #import "GraphingTableController.h"
 #import "GraphingFunction.h"
 #import "RenderDimensions.h"
+#import "GraphingTableView.h"
 
 @interface GraphingTab : Tab
 
@@ -20,7 +21,7 @@
 @property NSTextField *currentFunction;
 @property NSTextField *mousePositionTextField;
 @property GraphingTableController *tableController;
-@property NSTableView *tableView;
+@property GraphingTableView *tableView;
 @property NSScrollView *scrollView;
 @property NSMutableArray *formulas;
 @property NSIndexSet *selectedRows;

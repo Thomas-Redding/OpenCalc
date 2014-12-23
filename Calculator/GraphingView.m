@@ -169,6 +169,33 @@
     [NSMenu popUpContextMenu:theMenu withEvent:theEvent forView:self];
 }
 
+- (int) functionClicked: (double) x y: (double) y {
+    GraphingFunction *func;
+    double min = INFINITY;
+    double index = -1;
+    double dist;
+    double proportion = ((x-self.renderDimensions.x)/self.renderDimensions.width+0.5)/3;
+    if(proportion < 0 || proportion >= 1) {
+        return -1;
+    }
+    int j;
+    for(int i=0; i<self.functionList.count; i++) {
+        func = [self.functionList objectAtIndex:i];
+        j = proportion*func.points.count;
+        dist = fabs([[func.points objectAtIndex:3*j+1] doubleValue]-y);
+        if(dist < min) {
+            min = dist;
+            index = i;
+        }
+    }
+    if(min/self.renderDimensions.height < 0.03) {
+        return index;
+    }
+    else {
+        return -1;
+    }
+}
+
 - (void) evaluate {
     [self.parent childToParentMessage:@"evaluate"];
 }
