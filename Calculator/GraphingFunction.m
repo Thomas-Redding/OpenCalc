@@ -38,6 +38,7 @@
     else {
         NSString *funcName = [[NSString alloc] initWithFormat:@"f%@", [self intToCharacter:self.index]];
         NSString *str;
+        NSString *strB;
         
         if([self.string characterAtIndex:0] == '<') {
             self.type = '<';
@@ -58,6 +59,70 @@
         else if([self.string characterAtIndex:0] == 8800) {
             self.type = 8800;
             str = [[NSString alloc] initWithFormat:@"%@(x)=%@", funcName , [self.string substringFromIndex:1]];
+        }
+        else if([self.string characterAtIndex:0] == '[') {
+            // clear whitespace, tabs, etc.
+            NSArray* words = [self.string componentsSeparatedByCharactersInSet :[NSCharacterSet whitespaceCharacterSet]];
+            self.string = [words componentsJoinedByString:@""];
+            
+            if([self.string characterAtIndex:self.string.length-1] != ']') {
+                // func doesn't end with ']', so it's not valid
+                return;
+            }
+            
+            self.type = '[';
+            int paraLevel = 0;
+            int comma = -1;
+            for(int i=0; i<self.string.length; i++) {
+                if([self.string characterAtIndex:i] == '[' || [self.string characterAtIndex:i] == '(') {
+                    paraLevel++;
+                }
+                else if([self.string characterAtIndex:i] == ']' || [self.string characterAtIndex:i] == ')') {
+                    paraLevel--;
+                }
+                else if(paraLevel == 1) {
+                    if([self.string characterAtIndex:i] == ',') {
+                        if(comma == -1) {
+                            comma = i;
+                        }
+                        else {
+                            // multiple commas
+                            return;
+                        }
+                    }
+                }
+            }
+            
+            if(comma == -1 || paraLevel != 0) {
+                // no commas
+                return;
+            }
+            
+            str = [[NSString alloc] initWithFormat:@"%@x(x)=%@", funcName , [self.string substringWithRange:NSMakeRange(1, comma-1)]];
+            
+            strB = [[NSString alloc] initWithFormat:@"%@y(x)=%@", funcName, [self.string substringWithRange:NSMakeRange(comma+1, self.string.length-comma-2)]];
+            
+            NSString *funcNameX = [[NSString alloc] initWithFormat:@"%@x", funcName];
+            NSString *funcNameY = [[NSString alloc] initWithFormat:@"%@y", funcName];
+            
+            [self.brain runAlgebra:str];
+            [self.brain runAlgebra:strB];
+            
+            // continue special stuff
+            self.points = [[NSMutableArray alloc] init];
+            double min = 0;
+            double max = 1;
+            double x, y, t = 0;
+            for(int i=0; i<=steps; i++) {
+                t = (max-min)*i/steps;
+                x = [self.brain graphRun:funcNameX x:t];
+                y = [self.brain graphRun:funcNameY x:t];
+                [self.points addObject:[NSNumber numberWithDouble:x]];
+                [self.points addObject:[NSNumber numberWithDouble:y]];
+                [self.points addObject:[NSNumber numberWithBool:true]];
+            }
+            // parametric graphing is special and was taken care of immediately above this point
+            return;
         }
         else {
             self.type = '=';

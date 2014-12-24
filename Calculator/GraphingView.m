@@ -94,7 +94,7 @@
             glEnd();
         }
         
-        if(func.type == '=' || func.type == 8804 || func.type == 8805) {
+        if(func.type == '=' || func.type == 8804 || func.type == 8805 || func.type == '[') {
             // =, ≤, ≥
             glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
             glBegin(GL_LINES);
