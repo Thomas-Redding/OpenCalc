@@ -13,4 +13,7 @@
 @property NSMutableArray *arr;
 @property NSMutableArray *degreesOfFreedom;     // cumulative measure of degrees of freedom [number, number, boolean, boolean] -> [2, 4, 5, 6]
 
+- (MathObject*) initWithArr: (NSArray*) arr;
+- (void) addObject: (MathObject*) obj;
+
 @end

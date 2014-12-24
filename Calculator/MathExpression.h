@@ -62,6 +62,7 @@
 #import "MathPoissonDistribution.h"
 #import "MathPoissonQuantile.h"
 #import "MathPoissonRandom.h"
+#import "MathVector.h"
 
 @interface MathExpression : NSObject
 

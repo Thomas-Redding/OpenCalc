@@ -26,8 +26,6 @@
         [self.privateVariables[i] setVariableValue:input[i]];
     }
     
-    
-    
     return [self.topOfExpressionTree func:self.privateVariables];
 }
 

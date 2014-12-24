@@ -32,14 +32,20 @@
 - (void)setDouble: (int) index newValue: (double) newValue {
 }
 
-// this is for vectors
 - (MathObject*)getObjectAt: (int) index {
     return nil;
 }
 
-// this is for matrices
 - (MathObject*)getObjectAt: (int) row column: (int) column {
     return nil;
+}
+
+- (int) getDegreesOfFreedom {
+    return 0;
+}
+
+- (unsigned long) getLength {
+    return 0;
 }
 
 @end

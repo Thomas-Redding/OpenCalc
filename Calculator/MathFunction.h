@@ -9,6 +9,7 @@
 #import "MathObject.h"
 #import "MathNumber.h"
 #import "MathBoolean.h"
+#import "MathVector.h"
 
 @interface MathFunction : NSObject
 

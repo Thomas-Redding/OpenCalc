@@ -450,6 +450,7 @@
 - (MathObject*) evaluate: (NSString*) input {
     MathExpression *myExpression = [MathExpression alloc];
     NSString* sanitizedInput = [self sanitize: input];
+    
     if(sanitizedInput == NULL) {
         return NULL;
     }
@@ -509,12 +510,14 @@
         // we do not treat  x( as x*(
         // if we see x(, we assume its a function
     }
+    
     for(int i=0; i<[rtn length]-1; i++) {
         if([rtn characterAtIndex:i] == '-' && [self characterType:[rtn characterAtIndex:i+1]] == 1) {
             // -x --> -1*x
             [rtn insertString:@"1*" atIndex:i+1];
         }
     }
+    
     return rtn;
 }
 
@@ -529,7 +532,7 @@
     if ([letters characterIsMember : x]) {
         return 1;
     }
-    if(x == '(' || x == ')') {
+    if(x == '(' || x == ')' || x == ']' || x == '[') {
         return 2;
     }
     if(x == '+' || x == '-' || x == '^' || x == '*' || x == '/' || x == '%' || x == '<' || x == '>' || x == 8804 || x == 8805 || x == 8800) {
