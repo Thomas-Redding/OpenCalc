@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		280637A31A491CE50014E538 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 280637A21A491CE50014E538 /* README.md */; };
 		28110F0C19D9DA6200E7484F /* MathInverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 28110F0B19D9DA6200E7484F /* MathInverse.m */; };
 		2812045B19E31B3B005948C0 /* MathLessThan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2812045A19E31B3B005948C0 /* MathLessThan.m */; };
 		2812045E19E31C6E005948C0 /* MathGreaterThan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2812045D19E31C6E005948C0 /* MathGreaterThan.m */; };
@@ -41,6 +40,7 @@
 		2838AAED19E0C9F70031C3DF /* MathModulo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2838AAEC19E0C9F70031C3DF /* MathModulo.m */; };
 		2839C6A119DCC38600D7407A /* MathFloor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2839C6A019DCC38600D7407A /* MathFloor.m */; };
 		283B94C319E07C7200CA7287 /* MathNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 283B94C219E07C7200CA7287 /* MathNull.m */; };
+		283F21B41A4A6F4B00683DFF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 283F21B31A4A6F4B00683DFF /* README.md */; };
 		28415EEC1A0422E6008EBC4E /* GraphingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28415EEB1A0422E6008EBC4E /* GraphingView.m */; };
 		2850E47819D9CCBA00F65EE7 /* MathCosine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850E47719D9CCBA00F65EE7 /* MathCosine.m */; };
 		2850E47B19D9CCDD00F65EE7 /* MathTangent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850E47A19D9CCDD00F65EE7 /* MathTangent.m */; };
@@ -106,7 +106,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		280637A21A491CE50014E538 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		28110F0A19D9DA6200E7484F /* MathInverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathInverse.h; sourceTree = "<group>"; };
 		28110F0B19D9DA6200E7484F /* MathInverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathInverse.m; sourceTree = "<group>"; };
 		2812045919E31B3B005948C0 /* MathLessThan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathLessThan.h; sourceTree = "<group>"; };
@@ -172,6 +171,7 @@
 		2839C6A019DCC38600D7407A /* MathFloor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathFloor.m; sourceTree = "<group>"; };
 		283B94C119E07C7200CA7287 /* MathNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathNull.h; sourceTree = "<group>"; };
 		283B94C219E07C7200CA7287 /* MathNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathNull.m; sourceTree = "<group>"; };
+		283F21B31A4A6F4B00683DFF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		28415EEA1A0422E6008EBC4E /* GraphingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphingView.h; sourceTree = "<group>"; };
 		28415EEB1A0422E6008EBC4E /* GraphingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphingView.m; sourceTree = "<group>"; };
 		2850E47619D9CCBA00F65EE7 /* MathCosine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathCosine.h; sourceTree = "<group>"; };
@@ -595,7 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				28F31EE719D8BE1B008D25CD /* Info.plist */,
-				280637A21A491CE50014E538 /* README.md */,
+				283F21B31A4A6F4B00683DFF /* README.md */,
 				28F31EE819D8BE1B008D25CD /* main.m */,
 				28847C921A43B75200900A52 /* Preferences.txt */,
 				2893D02819DF2F86002F04CF /* Memory.txt */,
@@ -860,7 +860,6 @@
 				2850E48A19D9CD9700F65EE7 /* MathLogBaseTen.m in Sources */,
 				289B57CB1A465ED800E35A5C /* AppBlueprinter.m in Sources */,
 				287A5C511A0AA1EB00D6B333 /* MathNormalRandom.m in Sources */,
-				280637A31A491CE50014E538 /* README.md in Sources */,
 				288FEC5619D9DD5C006DB583 /* MathExponent.m in Sources */,
 				2890D98E1A4132BF0095855D /* GraphingFunction.m in Sources */,
 				282B84D61A154F2800793C6D /* MathExponentialQuantile.m in Sources */,
@@ -875,6 +874,7 @@
 				287A5C451A0A9D4A00D6B333 /* MathPoissonRandom.m in Sources */,
 				281E45561A4A020B00F546C0 /* GraphingEvaluateWindow.m in Sources */,
 				28415EEC1A0422E6008EBC4E /* GraphingView.m in Sources */,
+				283F21B41A4A6F4B00683DFF /* README.md in Sources */,
 				2812046119E32296005948C0 /* MathLessThanOrEqualTo.m in Sources */,
 				281FAFB819DB38A1003EE230 /* MathUserFunction.m in Sources */,
 				28110F0C19D9DA6200E7484F /* MathInverse.m in Sources */,
