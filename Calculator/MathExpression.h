@@ -30,6 +30,7 @@
 #import "MathCosine.h"
 #import "MathTangent.h"
 #import "MathCotangent.h"
+#import "MathCotangentB.h"
 #import "MathSecant.h"
 #import "MathCosecant.h"
 #import "MathNaturalLogarithm.h"

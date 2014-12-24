@@ -19,6 +19,7 @@
 		281E45571A4A020B00F546C0 /* GraphingEvaluateWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281E45551A4A020B00F546C0 /* GraphingEvaluateWindow.xib */; };
 		281E455F1A4A258900F546C0 /* MathVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E455E1A4A258900F546C0 /* MathVector.m */; };
 		281E45621A4A62CF00F546C0 /* MathConstructVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E45611A4A62CF00F546C0 /* MathConstructVector.m */; };
+		281E45651A4A69D800F546C0 /* MathCotangentB.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E45641A4A69D800F546C0 /* MathCotangentB.m */; };
 		281FAFB819DB38A1003EE230 /* MathUserFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 281FAFB719DB38A1003EE230 /* MathUserFunction.m */; };
 		282B84C81A154A3B00793C6D /* MathPoissonDensity.m in Sources */ = {isa = PBXBuildFile; fileRef = 282B84C71A154A3B00793C6D /* MathPoissonDensity.m */; };
 		282B84CB1A154AB100793C6D /* MathPoissonQuantile.m in Sources */ = {isa = PBXBuildFile; fileRef = 282B84CA1A154AB100793C6D /* MathPoissonQuantile.m */; };
@@ -127,6 +128,8 @@
 		281E455E1A4A258900F546C0 /* MathVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathVector.m; sourceTree = "<group>"; };
 		281E45601A4A62CF00F546C0 /* MathConstructVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathConstructVector.h; sourceTree = "<group>"; };
 		281E45611A4A62CF00F546C0 /* MathConstructVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathConstructVector.m; sourceTree = "<group>"; };
+		281E45631A4A69D800F546C0 /* MathCotangentB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathCotangentB.h; sourceTree = "<group>"; };
+		281E45641A4A69D800F546C0 /* MathCotangentB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathCotangentB.m; sourceTree = "<group>"; };
 		281FAFB619DB38A1003EE230 /* MathUserFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathUserFunction.h; sourceTree = "<group>"; };
 		281FAFB719DB38A1003EE230 /* MathUserFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathUserFunction.m; sourceTree = "<group>"; };
 		282B84C61A154A3B00793C6D /* MathPoissonDensity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathPoissonDensity.h; sourceTree = "<group>"; };
@@ -385,6 +388,8 @@
 				2850E47A19D9CCDD00F65EE7 /* MathTangent.m */,
 				2850E47C19D9CCFC00F65EE7 /* MathCotangent.h */,
 				2850E47D19D9CCFC00F65EE7 /* MathCotangent.m */,
+				281E45631A4A69D800F546C0 /* MathCotangentB.h */,
+				281E45641A4A69D800F546C0 /* MathCotangentB.m */,
 				2850E47F19D9CD2D00F65EE7 /* MathSecant.h */,
 				2850E48019D9CD2D00F65EE7 /* MathSecant.m */,
 				2850E48219D9CD4C00F65EE7 /* MathCosecant.h */,
@@ -809,6 +814,7 @@
 				285445B91A46210F0017B53C /* PreferencesWindow.m in Sources */,
 				2850E48119D9CD2D00F65EE7 /* MathSecant.m in Sources */,
 				285445B81A46210F0017B53C /* Preferences.m in Sources */,
+				281E45651A4A69D800F546C0 /* MathCotangentB.m in Sources */,
 				28EBFFC019DB1FED008B662F /* MathSine.m in Sources */,
 				2850E47B19D9CCDD00F65EE7 /* MathTangent.m in Sources */,
 				28F027E119DF0D70006EF536 /* CurrentAlgebraTextField.m in Sources */,

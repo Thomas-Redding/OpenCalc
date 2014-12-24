@@ -94,10 +94,12 @@
     self.publicFunction = [[NSMutableArray alloc] init];
     
     [self.publicFunction addObject: [[MathConstructVector alloc] init]];
+    
     [self.publicFunction addObject: [[MathSine alloc] init]];
     [self.publicFunction addObject: [[MathCosine alloc] init]];
     [self.publicFunction addObject: [[MathTangent alloc] init]];
     [self.publicFunction addObject: [[MathCotangent alloc] init]];
+    [self.publicFunction addObject: [[MathCotangentB alloc] init]];
     [self.publicFunction addObject: [[MathSecant alloc] init]];
     [self.publicFunction addObject: [[MathCosecant alloc] init]];
     [self.publicFunction addObject: [[MathNaturalLogarithm alloc] init]];
