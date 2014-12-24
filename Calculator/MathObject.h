@@ -23,6 +23,6 @@
 
 - (MathObject*)getObjectAt: (int) index;                        // this is for vectors
 - (MathObject*)getObjectAt: (int) row column: (int) column;     // this is for matrices
-- (unsigned long) getLength;                                              // this is for vectors
+- (unsigned long) getLength;                                    // this is for vectors
 
 @end

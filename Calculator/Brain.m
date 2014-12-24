@@ -486,7 +486,7 @@
         else if(charType == 0) {
             if(i < [rtn length]-1) {
                 charType = [self characterType:[rtn characterAtIndex:i+1]];
-                if([rtn characterAtIndex:i+1] == '(' || charType == 1) {
+                if([rtn characterAtIndex:i+1] == '(' || [rtn characterAtIndex:i+1] == '[' || charType == 1) {
                     // implicit multiplication
                     /*
                      ...5(... -> ...5*(...

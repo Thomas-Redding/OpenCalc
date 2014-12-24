@@ -28,6 +28,15 @@
         [answer setDouble:1 newValue: (b*c-a*d)/denominator];
         return answer;
     }
+    else if([input[0] objectType] == MATHVECTOR && [input[1] objectType] == MATHNUMBER) {
+        MathVector *vect = input[0];
+        MathNumber *k = input[1];
+        MathVector *answer = [[MathVector alloc] init];
+        for(int i=0; i<[vect getLength]; i++) {
+            [answer addObject:[self func:[[NSArray alloc] initWithObjects:[vect getObjectAt:i], k, nil]]];
+        }
+        return answer;
+    }
     else {
         return NULL;
     }
