@@ -98,9 +98,9 @@
                 return;
             }
             
-            str = [[NSString alloc] initWithFormat:@"%@x(x)=%@", funcName , [self.string substringWithRange:NSMakeRange(1, comma-1)]];
+            str = [[NSString alloc] initWithFormat:@"%@x(t)=%@", funcName , [self.string substringWithRange:NSMakeRange(1, comma-1)]];
             
-            strB = [[NSString alloc] initWithFormat:@"%@y(x)=%@", funcName, [self.string substringWithRange:NSMakeRange(comma+1, self.string.length-comma-2)]];
+            strB = [[NSString alloc] initWithFormat:@"%@y(t)=%@", funcName, [self.string substringWithRange:NSMakeRange(comma+1, self.string.length-comma-2)]];
             
             NSString *funcNameX = [[NSString alloc] initWithFormat:@"%@x", funcName];
             NSString *funcNameY = [[NSString alloc] initWithFormat:@"%@y", funcName];
