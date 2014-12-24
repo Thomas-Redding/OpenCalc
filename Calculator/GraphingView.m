@@ -121,8 +121,8 @@
 }
 
 - (void)magnifyWithEvent:(NSEvent *)theEvent {
-    self.renderDimensions.width *= (1+theEvent.magnification);
-    self.renderDimensions.height *= (1+theEvent.magnification);
+    self.renderDimensions.width /= (1+theEvent.magnification);
+    self.renderDimensions.height /= (1+theEvent.magnification);
     [self.parent childToParentMessage:@"MagnifyWithEvent"];
 }
 

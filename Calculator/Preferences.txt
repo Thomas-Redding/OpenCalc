@@ -1,1 +1,1 @@
-drawAxes:true;
+drawAxes:true;doesScrollZoom:true;
