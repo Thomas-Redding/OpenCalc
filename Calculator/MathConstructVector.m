@@ -10,6 +10,11 @@
 
 @implementation MathConstructVector
 
+- (MathConstructVector*) init {
+    self.name = @"Vect";
+    return self;
+}
+
 - (MathObject*)func: (NSArray*) input {
     if(input.count == 0) {
         return NULL;

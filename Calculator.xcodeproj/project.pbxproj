@@ -449,6 +449,8 @@
 		28B99A4719DDF72900C15CFA /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				281E45601A4A62CF00F546C0 /* MathConstructVector.h */,
+				281E45611A4A62CF00F546C0 /* MathConstructVector.m */,
 				28B99A4419DDF6F800C15CFA /* MathCombination.h */,
 				28B99A4519DDF6F800C15CFA /* MathCombination.m */,
 				283B94C119E07C7200CA7287 /* MathNull.h */,
@@ -538,8 +540,6 @@
 		28EBFFBA19DB1D97008B662F /* Unary Operators */ = {
 			isa = PBXGroup;
 			children = (
-				281E45601A4A62CF00F546C0 /* MathConstructVector.h */,
-				281E45611A4A62CF00F546C0 /* MathConstructVector.m */,
 				28C848A319D9E605000282F5 /* MathFactorial.h */,
 				28C848A419D9E605000282F5 /* MathFactorial.m */,
 				28110F0A19D9DA6200E7484F /* MathInverse.h */,

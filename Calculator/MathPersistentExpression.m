@@ -218,7 +218,12 @@
                         return false;
                     }
                 }
-                self.op = [[MathConstructVector alloc] init];
+                for(i=0; i<[self.publicFunctions count]; i++) {
+                    if([[self.publicFunctions[i] name] isEqual: @"Vect"]) {
+                        self.op = self.publicFunctions[i];
+                    }
+                }
+                
                 return true;
             }
             else {
