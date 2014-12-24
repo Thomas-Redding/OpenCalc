@@ -377,10 +377,10 @@
     int i;
     
     for(i=0; i<[input length]; i++) {
-        if([input characterAtIndex:i] == '(') {
+        if([input characterAtIndex:i] == '(' || [input characterAtIndex:i] == ']') {
             parenthesesLevel++;
         }
-        else if([input characterAtIndex:i] == ')') {
+        else if([input characterAtIndex:i] == ')' || [input characterAtIndex:i] == ']') {
             parenthesesLevel--;
         }
         else if(parenthesesLevel == 0 && [input characterAtIndex:i] == ',') {

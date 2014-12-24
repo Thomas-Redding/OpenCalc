@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MathFunction.h"
 #import "MathVariable.h"
+#import "MathConstructVector.h"
 
 #import "MathMultiplication.h"
 #import "MathAddition.h"
@@ -62,7 +63,6 @@
 #import "MathPoissonDistribution.h"
 #import "MathPoissonQuantile.h"
 #import "MathPoissonRandom.h"
-#import "MathVector.h"
 
 @interface MathExpression : NSObject
 
