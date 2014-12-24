@@ -186,8 +186,8 @@
                         return NULL;
                     }
                 }
-                
                 [arr addObject:[input substringWithRange:NSMakeRange(lastComma+1, input.length-lastComma-2)]];
+                
                 
                 if(bracketLevel != 0) {
                     [errors addObject:@"ERROR (Bracket Not Closed)"];
@@ -202,7 +202,6 @@
                     
                     [vectArr addObject:obj];
                 }
-                
                 return [[MathVector alloc] initWithArr: vectArr];
             }
             else {
@@ -210,7 +209,7 @@
                 // find function's name
                 int firstParantheses = -1;
                 for(int i=0; i<[input length]; i++) {
-                    if([input characterAtIndex:i] == '(') {
+                    if([input characterAtIndex:i] == '(' || [input characterAtIndex:i] == '[') {
                         firstParantheses = i;
                         break;
                     }
@@ -221,10 +220,9 @@
                     return NULL;
                 }
                 
+                // function
                 NSString *functionName = [[NSString alloc] initWithString:[input substringToIndex:firstParantheses]];
                 NSString *functionParameters = [[NSString alloc] initWithString:[input substringWithRange:NSMakeRange(firstParantheses+1, [input length]-firstParantheses-2)]];
-                
-                
                 
                 // check publicFunction
                 for(int i=0; i<[publicFunction count]; i++) {
@@ -242,8 +240,6 @@
                         return answer;
                     }
                 }
-                
-                
                 
                 [errors addObject: @"ERROR (Function Is Not Defined)"];
                 return NULL;
@@ -377,7 +373,7 @@
     int i;
     
     for(i=0; i<[input length]; i++) {
-        if([input characterAtIndex:i] == '(' || [input characterAtIndex:i] == ']') {
+        if([input characterAtIndex:i] == '(' || [input characterAtIndex:i] == '[') {
             parenthesesLevel++;
         }
         else if([input characterAtIndex:i] == ')' || [input characterAtIndex:i] == ']') {

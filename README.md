@@ -30,6 +30,8 @@ OPERATORS
 
 HARD-CODED FUNCTIONS
 * Vect(x1,x2,x3,...) - constructs a vector
+* element(vect, i) - returns element #i from vect
+* element(vect, i, j, ...) - returns a vector of the ith, jth, etc. elements in vect
 * sin(x)      sine
 * cos(x)      cosine
 * tan(x)      tangent

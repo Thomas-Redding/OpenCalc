@@ -10,6 +10,7 @@
 #import "MathFunction.h"
 #import "MathVariable.h"
 #import "MathConstructVector.h"
+#import "MathElement.h"
 
 #import "MathMultiplication.h"
 #import "MathAddition.h"

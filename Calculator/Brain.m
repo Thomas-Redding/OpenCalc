@@ -94,6 +94,7 @@
     self.publicFunction = [[NSMutableArray alloc] init];
     
     [self.publicFunction addObject: [[MathConstructVector alloc] init]];
+    [self.publicFunction addObject: [[MathElement alloc] init]];
     
     [self.publicFunction addObject: [[MathSine alloc] init]];
     [self.publicFunction addObject: [[MathCosine alloc] init]];

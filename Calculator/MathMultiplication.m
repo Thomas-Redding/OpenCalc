@@ -33,6 +33,15 @@
         }
         return answer;
     }
+    else if([input[0] objectType] == MATHVECTOR && [input[1] objectType] == MATHNUMBER) {
+        MathNumber *k = input[1];
+        MathVector *vect = input[0];
+        MathVector *answer = [[MathVector alloc] init];
+        for(int i=0; i<[vect getLength]; i++) {
+            [answer addObject:[self func:[[NSArray alloc] initWithObjects:k, [vect getObjectAt:i], nil]]];
+        }
+        return answer;
+    }
     else {
         return NULL;
     }
