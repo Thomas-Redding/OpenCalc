@@ -60,36 +60,52 @@
         
         if(func.type == 8804 || func.type == '<') {
             // ≤, <
-            glBegin(GL_POLYGON);
+            int i=0;
+            double startX = 2*([[func.points objectAtIndex:i] doubleValue]-self.renderDimensions.x)/self.renderDimensions.width;
+            double startY = 2*([[func.points objectAtIndex:i+1] doubleValue]-self.renderDimensions.y)/self.renderDimensions.height;
+            double endX;
+            double endY;
+            glBegin(GL_QUADS);
             {
                 glColor4f(0, 0, 0, 0.4);
-                double x, y;
-                glVertex2f(-1.0, -100);
-                for(int i=0; i<func.points.count; i+=3) {
-                    x = 2*([[func.points objectAtIndex:i] doubleValue]-self.renderDimensions.x)/self.renderDimensions.width;
-                    y = 2*([[func.points objectAtIndex:i+1] doubleValue]-self.renderDimensions.y)/self.renderDimensions.height;
-                    glVertex2f(x, y);
+                for(i=3; i<func.points.count; i+=3) {
+                    endX = 2*([[func.points objectAtIndex:i] doubleValue]-self.renderDimensions.x)/self.renderDimensions.width;
+                    endY = 2*([[func.points objectAtIndex:i+1] doubleValue]-self.renderDimensions.y)/self.renderDimensions.height;
+                    if([[func.points objectAtIndex:i+2] boolValue] && [[func.points objectAtIndex:i-1] boolValue]) {
+                        glVertex2f(startX, -10);
+                        glVertex2f(startX, startY);
+                        glVertex2f(endX, endY);
+                        glVertex2f(endX, -10);
+                    }
+                    startX = endX;
+                    startY = endY;
                 }
-                glVertex2f(1.0, -100);
-                glVertex2f(-1.0, -100);
             }
             glEnd();
         }
         
         if(func.type == 8805 || func.type == '>') {
             // ≥, >
-            glBegin(GL_POLYGON);
+            int i=0;
+            double startX = 2*([[func.points objectAtIndex:i] doubleValue]-self.renderDimensions.x)/self.renderDimensions.width;
+            double startY = 2*([[func.points objectAtIndex:i+1] doubleValue]-self.renderDimensions.y)/self.renderDimensions.height;
+            double endX;
+            double endY;
+            glBegin(GL_QUADS);
             {
                 glColor4f(0, 0, 0, 0.4);
-                double x, y;
-                glVertex2f(-1.0, 100);
-                for(int i=0; i<func.points.count; i+=3) {
-                    x = 2*([[func.points objectAtIndex:i] doubleValue]-self.renderDimensions.x)/self.renderDimensions.width;
-                    y = 2*([[func.points objectAtIndex:i+1] doubleValue]-self.renderDimensions.y)/self.renderDimensions.height;
-                    glVertex2f(x, y);
+                for(i=3; i<func.points.count; i+=3) {
+                    endX = 2*([[func.points objectAtIndex:i] doubleValue]-self.renderDimensions.x)/self.renderDimensions.width;
+                    endY = 2*([[func.points objectAtIndex:i+1] doubleValue]-self.renderDimensions.y)/self.renderDimensions.height;
+                    if([[func.points objectAtIndex:i+2] boolValue] && [[func.points objectAtIndex:i-1] boolValue]) {
+                        glVertex2f(startX, 10);
+                        glVertex2f(startX, startY);
+                        glVertex2f(endX, endY);
+                        glVertex2f(endX, 10);
+                    }
+                    startX = endX;
+                    startY = endY;
                 }
-                glVertex2f(1.0, 100);
-                glVertex2f(-1.0, 100);
             }
             glEnd();
         }
@@ -105,8 +121,11 @@
                 for(int i=3; i<func.points.count; i+=3) {
                     endX = 2*([[func.points objectAtIndex:i] doubleValue]-self.renderDimensions.x)/self.renderDimensions.width;
                     endY = 2*([[func.points objectAtIndex:i+1] doubleValue]-self.renderDimensions.y)/self.renderDimensions.height;
-                    glVertex2f(startX, startY);
-                    glVertex2f(endX, endY);
+                    // if([func.points objectAtIndex:i+2] && [func.points objectAtIndex:i-1]) {
+                    if(1==1) {
+                        glVertex2f(startX, startY);
+                        glVertex2f(endX, endY);
+                    }
                     startX = endX;
                     startY = endY;
                 }

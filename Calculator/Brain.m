@@ -620,7 +620,12 @@
                 return INFINITY;
             }
             else {
-                return [answer getDouble];
+                if([answer getDouble:1] == 0) {
+                    return [answer getDouble];
+                }
+                else {
+                    return INFINITY;
+                }
             }
         }
     }

@@ -119,26 +119,67 @@
                 y = [self.brain graphRun:funcNameY x:t];
                 [self.points addObject:[NSNumber numberWithDouble:x]];
                 [self.points addObject:[NSNumber numberWithDouble:y]];
-                [self.points addObject:[NSNumber numberWithBool:true]];
+                if(x == INFINITY || y == INFINITY) {
+                    [self.points addObject:[NSNumber numberWithBool:false]];
+                }
+                else {
+                    [self.points addObject:[NSNumber numberWithBool:true]];
+                }
             }
             // parametric graphing is special and was taken care of immediately above this point
             return;
         }
         else {
             self.type = '=';
+            if([self.string characterAtIndex:0] == '=') {
+                self.string = [self.string substringFromIndex:1];
+            }
             str = [[NSString alloc] initWithFormat:@"%@(x)=%@", funcName , self.string];
         }
         
         [self.brain runAlgebra:str];
         
         self.points = [[NSMutableArray alloc] init];
-        double x = start;
+        double x;
+        double y;
         for(int i=0; i<=steps; i++) {
-            x += (end-start)/steps;
+            x = (end-start)*i/steps+start;
+            y = [self.brain graphRun:funcName x:x];
             [self.points addObject:[NSNumber numberWithDouble:x]];
-            [self.points addObject:[NSNumber numberWithDouble:[self.brain graphRun:funcName x:x]]];
-            [self.points addObject:[NSNumber numberWithBool:true]];
+            [self.points addObject:[NSNumber numberWithDouble:y]];
+            if(y == INFINITY) {
+                if(i == 0 || i == steps) {
+                    // the end points are always true
+                    [self.points addObject:[NSNumber numberWithBool:true]];
+                }
+                else {
+                    [self.points addObject:[NSNumber numberWithBool:false]];
+                }
+            }
+            else {
+                [self.points addObject:[NSNumber numberWithBool:true]];
+            }
         }
+        
+        // if both the neighboring points of a "false" point have the same sign (both positive or both negative), then we should label this point "true"
+        for(int i=3; i<self.points.count; i+=3) {
+            if([[self.points objectAtIndex:i+2] boolValue]) {
+                // point is true, nothing to do
+            }
+            else {
+                // point is false, determine if it should be true
+                if([[self.points objectAtIndex:i-2] doubleValue] != INFINITY && [[self.points objectAtIndex:i+4] doubleValue] != INFINITY) {
+                    if([[self.points objectAtIndex:i-2] doubleValue] > 0 && [[self.points objectAtIndex:i+4] doubleValue] > 0) {
+                        [self.points setObject:[NSNumber numberWithBool:true] atIndexedSubscript:i+2];
+                    }
+                    else if([[self.points objectAtIndex:i-2] doubleValue] < 0 && [[self.points objectAtIndex:i+4] doubleValue] < 0) {
+                        [self.points setObject:[NSNumber numberWithBool:true] atIndexedSubscript:i+2];
+                        [self.points setObject:[NSNumber numberWithDouble:-INFINITY] atIndexedSubscript:i+1];
+                    }
+                }
+            }
+        }
+        
     }
 }
 

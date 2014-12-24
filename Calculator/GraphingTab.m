@@ -26,15 +26,15 @@
     GraphingFunction *templateA = [[GraphingFunction alloc] initWithBrain:self.brain];
     templateA.string = @"x";
     templateA.index = 0;
-    [templateA update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
+    [templateA update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
     GraphingFunction *templateB = [[GraphingFunction alloc] initWithBrain:self.brain];
     templateB.string = @"x^2";
     templateB.index = 1;
-    [templateB update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
+    [templateB update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
     GraphingFunction *templateC = [[GraphingFunction alloc] initWithBrain:self.brain];
     templateC.string = @"log(x)";
     templateC.index = 2;
-    [templateC update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
+    [templateC update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
     self.formulas = [[NSMutableArray alloc] initWithObjects:templateA, templateB, templateC, nil];
     
     double width = [[self.contentView window] frame].size.width;
@@ -160,7 +160,7 @@
     [self.mousePositionTextField setFrame:NSMakeRect(0, 0, 100, 40)];
     
     for(int i=0; i<self.formulas.count; i++) {
-        [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
+        [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
     }
     
     self.drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.05f
@@ -186,7 +186,7 @@
     if(self.currentFormulaBeingEdited != -1) {
         // update old cell being edited
         [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] setString:self.currentFunction.stringValue];
-        [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
+        [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
     }
     self.shouldRedraw = true;
     [self.tableView reloadData];
@@ -208,7 +208,7 @@
             if(self.currentFormulaBeingEdited != -1) {
                 // update old cell being edited
                 [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] setString:self.currentFunction.stringValue];
-                [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
+                [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
             }
             
             self.currentFormulaBeingEdited = index;
