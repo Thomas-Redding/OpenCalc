@@ -92,10 +92,14 @@
     [self.publicVariable addObject:newVar];
     
     self.publicFunction = [[NSMutableArray alloc] init];
+    
+    [self.publicFunction addObject: [[MathConstructVector alloc] init]];
+    
     [self.publicFunction addObject: [[MathSine alloc] init]];
     [self.publicFunction addObject: [[MathCosine alloc] init]];
     [self.publicFunction addObject: [[MathTangent alloc] init]];
     [self.publicFunction addObject: [[MathCotangent alloc] init]];
+    [self.publicFunction addObject: [[MathCotangentB alloc] init]];
     [self.publicFunction addObject: [[MathSecant alloc] init]];
     [self.publicFunction addObject: [[MathCosecant alloc] init]];
     [self.publicFunction addObject: [[MathNaturalLogarithm alloc] init]];
@@ -450,6 +454,7 @@
 - (MathObject*) evaluate: (NSString*) input {
     MathExpression *myExpression = [MathExpression alloc];
     NSString* sanitizedInput = [self sanitize: input];
+    
     if(sanitizedInput == NULL) {
         return NULL;
     }
@@ -485,7 +490,7 @@
         else if(charType == 0) {
             if(i < [rtn length]-1) {
                 charType = [self characterType:[rtn characterAtIndex:i+1]];
-                if([rtn characterAtIndex:i+1] == '(' || charType == 1) {
+                if([rtn characterAtIndex:i+1] == '(' || [rtn characterAtIndex:i+1] == '[' || charType == 1) {
                     // implicit multiplication
                     /*
                      ...5(... -> ...5*(...
@@ -509,12 +514,14 @@
         // we do not treat  x( as x*(
         // if we see x(, we assume its a function
     }
+    
     for(int i=0; i<[rtn length]-1; i++) {
         if([rtn characterAtIndex:i] == '-' && [self characterType:[rtn characterAtIndex:i+1]] == 1) {
             // -x --> -1*x
             [rtn insertString:@"1*" atIndex:i+1];
         }
     }
+    
     return rtn;
 }
 
@@ -529,7 +536,7 @@
     if ([letters characterIsMember : x]) {
         return 1;
     }
-    if(x == '(' || x == ')') {
+    if(x == '(' || x == ')' || x == ']' || x == '[') {
         return 2;
     }
     if(x == '+' || x == '-' || x == '^' || x == '*' || x == '/' || x == '%' || x == '<' || x == '>' || x == 8804 || x == 8805 || x == 8800) {

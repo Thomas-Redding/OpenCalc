@@ -22,14 +22,15 @@
     int divisionIndex = -1;
     double orderOfOperations = 0;
     for(i=0; i<[input length]; i++) {
-        if([input characterAtIndex:i] == '(') {
+        if([input characterAtIndex:i] == '(' || [input characterAtIndex:i] == '[') {
             parenthesesLevel++;
             parantheseCount++;
         }
-        else if([input characterAtIndex:i] == ')') {
+        else if([input characterAtIndex:i] == ')' || [input characterAtIndex:i] == ']') {
             parenthesesLevel--;
         }
         if(parenthesesLevel == 0) {
+            // we're outside all parantheses
             int charType = [self characterType:[input characterAtIndex: i]];
             if(charType == 3) {
                 if(i != 0 && i != [input length]) {
@@ -158,6 +159,51 @@
                     MathExpression *simplified = [[MathExpression alloc] init];
                     return [simplified evaluate:inputAString publicVariable: publicVariable publicFunction:publicFunction errors:errors];
                 }
+            }
+            else if([input characterAtIndex:0] == '[') {
+                // [..., ..., ...]
+                // vector
+                
+                NSMutableArray *arr = [[NSMutableArray alloc] init];
+                int bracketLevel = 0;
+                int lastComma = 0;
+                for(int i=0; i<input.length; i++) {
+                    if([input characterAtIndex:i] == '[') {
+                        bracketLevel++;
+                    }
+                    else if([input characterAtIndex:i] == ']') {
+                        bracketLevel--;
+                    }
+                    else if(bracketLevel == 1) {
+                        if([input characterAtIndex:i] == ',') {
+                            [arr addObject:[input substringWithRange:NSMakeRange(lastComma+1, i-lastComma-1)]];
+                            lastComma = i;
+                        }
+                    }
+                    
+                    if(bracketLevel < 0) {
+                        [errors addObject:@"ERROR (Bracket Not Opened)"];
+                        return NULL;
+                    }
+                }
+                
+                [arr addObject:[input substringWithRange:NSMakeRange(lastComma+1, input.length-lastComma-2)]];
+                
+                if(bracketLevel != 0) {
+                    [errors addObject:@"ERROR (Bracket Not Closed)"];
+                    return NULL;
+                }
+                
+                NSMutableArray *vectArr = [[NSMutableArray alloc] init];
+                MathExpression *simplified = [[MathExpression alloc] init];
+                for(int i=0; i<arr.count; i++) {
+                    MathObject *obj;
+                    obj = [simplified evaluate:[arr objectAtIndex:i] publicVariable: publicVariable publicFunction:publicFunction errors:errors];
+                    
+                    [vectArr addObject:obj];
+                }
+                
+                return [[MathVector alloc] initWithArr: vectArr];
             }
             else {
                 // f(...)
@@ -306,7 +352,7 @@
     if ([letters characterIsMember : x]) {
         return 1;
     }
-    if(x == '(' || x == ')') {
+    if(x == '(' || x == ')' || x == '[' || x ==']') {
         return 2;
     }
     if(x == '+' || x == '-' || x == '^' || x == '*' || x == '/' || x == '%' || x == '<' || x == '>' || x == 8804 || x == 8805 || x == 8800) {
@@ -331,10 +377,10 @@
     int i;
     
     for(i=0; i<[input length]; i++) {
-        if([input characterAtIndex:i] == '(') {
+        if([input characterAtIndex:i] == '(' || [input characterAtIndex:i] == ']') {
             parenthesesLevel++;
         }
-        else if([input characterAtIndex:i] == ')') {
+        else if([input characterAtIndex:i] == ')' || [input characterAtIndex:i] == ']') {
             parenthesesLevel--;
         }
         else if(parenthesesLevel == 0 && [input characterAtIndex:i] == ',') {

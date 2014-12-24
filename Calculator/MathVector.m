@@ -11,7 +11,7 @@
 @implementation MathVector
 
 - (MathObject*)init {
-    self.objectType = MATHNUMBER;
+    self.objectType = MATHVECTOR;
     
     self.arr = [[NSMutableArray alloc] init];
     self.degreesOfFreedom = [[NSMutableArray alloc] init];
@@ -19,9 +19,28 @@
     return self;
 }
 
+- (MathObject*) initWithArr: (NSArray*) arr {
+    self.objectType = MATHVECTOR;
+    self.arr = [[NSMutableArray alloc] initWithArray:arr];
+    self.degreesOfFreedom = [[NSMutableArray alloc] init];
+    int count = 0;
+    for(int i=0; i<self.arr.count; i++) {
+        count += [[self.arr objectAtIndex:i] getDegreesOfFreedom];
+        [self.degreesOfFreedom addObject:[NSNumber numberWithInt:count]];
+    }
+    return self;
+}
+
+- (int) getDegreesOfFreedom {
+    return [[self.degreesOfFreedom objectAtIndex:self.degreesOfFreedom.count-1] intValue];
+}
+
 - (NSString*)toString {
     NSMutableString *str = [[NSMutableString alloc] initWithString:@"["];
     for(int i=0; i<self.arr.count; i++) {
+        if(i != 0) {
+            [str appendString:@","];
+        }
         [str appendString:[[self.arr objectAtIndex:i] toString]];
     }
     [str appendString:@"]"];
@@ -82,6 +101,15 @@
     else {
         return [self.arr objectAtIndex:index];
     }
+}
+
+- (unsigned long) getLength {
+    return self.arr.count;
+}
+
+- (void) addObject: (MathObject*) obj {
+    [self.arr addObject: obj];
+    [self.degreesOfFreedom addObject:[NSNumber numberWithInt:[obj getDegreesOfFreedom]]];
 }
 
 @end

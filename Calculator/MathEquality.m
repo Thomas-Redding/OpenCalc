@@ -15,6 +15,7 @@
         return NULL;
     }
     MathBoolean *answer = [[MathBoolean alloc] init];
+    [answer setDouble:0];
     if([input[0] objectType] != [input[1] objectType]) {
         // different types --> not equal
         return answer;
@@ -39,6 +40,25 @@
         }
         else {
             // booleans are not equal
+            return answer;
+        }
+    }
+    else if([input[0] objectType] == MATHVECTOR) {
+        if([input[0] getLength] == [input[0] getLength]) {
+            MathVector *vectA = input[0];
+            MathVector *vectB = input[1];
+            for(int i=0; i<[vectA getLength]; i++) {
+                if([[self func:[[NSArray alloc] initWithObjects:[vectA getObjectAt:i], [vectB getObjectAt:i], nil]] getDouble] == 0) {
+                    // vectors are not equal
+                    return answer;
+                }
+            }
+            // vectors are equal
+            [answer setDouble:1];
+            return answer;
+        }
+        else {
+            // vectors are not equal
             return answer;
         }
     }

@@ -24,6 +24,15 @@
         [answer setDouble:1 newValue: a*d+b*c];
         return answer;
     }
+    else if([input[0] objectType] == MATHNUMBER && [input[1] objectType] == MATHVECTOR) {
+        MathNumber *k = input[0];
+        MathVector *vect = input[1];
+        MathVector *answer = [[MathVector alloc] init];
+        for(int i=0; i<[vect getLength]; i++) {
+            [answer addObject:[self func:[[NSArray alloc] initWithObjects:k, [vect getObjectAt:i], nil]]];
+        }
+        return answer;
+    }
     else {
         return NULL;
     }

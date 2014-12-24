@@ -69,7 +69,6 @@
         return true;
     }
     
-    
     int i;
     int parantheseCount = 0;
     int parenthesesLevel = 0;
@@ -77,11 +76,11 @@
     double orderOfOperations = 0;
     for(i=0; i<[input length]; i++) {
         
-        if([input characterAtIndex:i] == '(') {
+        if([input characterAtIndex:i] == '(' || [input characterAtIndex:i] == '[') {
             parenthesesLevel++;
             parantheseCount++;
         }
-        else if([input characterAtIndex:i] == ')') {
+        else if([input characterAtIndex:i] == ')' || [input characterAtIndex:i] == ']') {
             parenthesesLevel--;
         }
         
@@ -209,6 +208,24 @@
                     return [self define:[input substringWithRange:NSMakeRange(1, [input length]-2)]];
                 }
             }
+            if([input characterAtIndex:0] == '[') {
+                // [...]
+                NSString *functionParameters = [[NSString alloc] initWithString:[input substringWithRange:NSMakeRange(1, input.length-2)]];
+                NSArray *parameterList = [self splitParameters:functionParameters];
+                for(int j=0; j<parameterList.count; j++) {
+                    [self.parameters addObject:[[MathPersistentExpression alloc] initWithPointerToPublicVariablesAndFunctions:self.publicVariables publicFunctions:self.publicFunctions errors:self.errors]];
+                    if(![self.parameters[j] define:parameterList[j]]) {
+                        return false;
+                    }
+                }
+                for(i=0; i<[self.publicFunctions count]; i++) {
+                    if([[self.publicFunctions[i] name] isEqual: @"Vect"]) {
+                        self.op = self.publicFunctions[i];
+                    }
+                }
+                
+                return true;
+            }
             else {
                 // f(...)
                 // find function's name
@@ -334,7 +351,7 @@
     if ([letters characterIsMember : x]) {
         return 1;
     }
-    if(x == '(' || x == ')') {
+    if(x == '(' || x == ')' || x == '[' || x == ']') {
         return 2;
     }
     if(x == '+' || x == '-' || x == '^' || x == '*' || x == '/' || x == '%' || x == '<' || x == '>' || x == 8804 || x == 8805 || x == 8800) {
@@ -356,10 +373,10 @@
     int i;
     
     for(i=0; i<[input length]; i++) {
-        if([input characterAtIndex:i] == '(') {
+        if([input characterAtIndex:i] == '(' || [input characterAtIndex:i] == '[') {
             parenthesesLevel++;
         }
-        else if([input characterAtIndex:i] == ')') {
+        else if([input characterAtIndex:i] == ')' || [input characterAtIndex:i] == ']') {
             parenthesesLevel--;
         }
         else if(parenthesesLevel == 0 && [input characterAtIndex:i] == ',') {

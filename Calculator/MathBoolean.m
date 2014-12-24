@@ -63,4 +63,8 @@
     }
 }
 
+- (int) getDegreesOfFreedom {
+    return 1;
+}
+
 @end

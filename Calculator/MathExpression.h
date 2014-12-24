@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MathFunction.h"
 #import "MathVariable.h"
+#import "MathConstructVector.h"
 
 #import "MathMultiplication.h"
 #import "MathAddition.h"
@@ -29,6 +30,7 @@
 #import "MathCosine.h"
 #import "MathTangent.h"
 #import "MathCotangent.h"
+#import "MathCotangentB.h"
 #import "MathSecant.h"
 #import "MathCosecant.h"
 #import "MathNaturalLogarithm.h"

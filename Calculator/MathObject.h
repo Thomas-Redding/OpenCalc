@@ -11,7 +11,7 @@
 
 @interface MathObject : NSObject
 
-@property MathType *objectType;
+@property MathType objectType;
 
 - (MathObject*)init;
 - (NSString*)toString;
@@ -19,5 +19,10 @@
 - (double)getDouble: (int) index;
 - (void)setDouble: (double) newValue;
 - (void)setDouble: (int) index newValue: (double) newValue;
+- (int) getDegreesOfFreedom;
+
+- (MathObject*)getObjectAt: (int) index;                        // this is for vectors
+- (MathObject*)getObjectAt: (int) row column: (int) column;     // this is for matrices
+- (unsigned long) getLength;                                    // this is for vectors
 
 @end

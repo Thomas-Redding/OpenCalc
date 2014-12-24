@@ -1,17 +1,17 @@
 //
-//  MathCotangent.m
+//  MathCotangentB.m
 //  Calculator
 //
-//  Created by Thomas Redding on 9/29/14.
+//  Created by Thomas Redding on 12/23/14.
 //  Copyright (c) 2014 Thomas Redding. All rights reserved.
 //
 
-#import "MathCotangent.h"
+#import "MathCotangentB.h"
 
-@implementation MathCotangent
+@implementation MathCotangentB
 
-- (MathCotangent*) init {
-    self.name = @"ctn";
+- (MathCotangentB*) init {
+    self.name = @"cot";
     return self;
 }
 
@@ -39,7 +39,7 @@
             [answer setDouble:0 newValue: -1*sin(2*a)/denominator];
             [answer setDouble:1 newValue: sinh(2*b)/denominator];
             return answer;
-
+            
         }
     }
     return NULL;

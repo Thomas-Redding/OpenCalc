@@ -20,6 +20,14 @@
         [answer setDouble:1 newValue:[input[0] getDouble:1]];
         return answer;
     }
+    else if([input[0] objectType] == MATHVECTOR) {
+        MathVector *vect = input[0];
+        MathVector *answer = [[MathVector alloc] init];
+        for(int i=0; i<[vect getLength]; i++) {
+            [answer addObject:[self func:[[NSArray alloc] initWithObjects:[vect getObjectAt:i], nil]]];
+        }
+        return answer;
+    }
     else if([input[0] objectType] == MATHBOOLEAN) {
         MathBoolean *answer = [[MathBoolean alloc] init];
         if([input[0] getDouble] == 1) {
