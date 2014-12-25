@@ -62,6 +62,47 @@
         }
         return answer;
     }
+    else if([input[0] objectType] == MATHMATRIX && [input[1] objectType] == MATHMATRIX) {
+        MathMatrix *matA = input[0];
+        MathMatrix *matB = input[1];
+        if(matA.width != matB.arr.count/matB.width) {
+            // if width of matA ≠ height of matB, then multiplication cannot be completed
+            return NULL;
+        }
+        MathMatrix *answer = [[MathMatrix alloc] init];
+        answer.width = matB.width;
+        unsigned long height = matA.arr.count/matA.width; // height of answer = height of matA
+        
+        // make sure both matrices contain only numbers
+        for(int i=0; i<matA.arr.count; i++) {
+            if([matA getObjectAt:i].objectType != MATHNUMBER) {
+                return NULL;
+            }
+        }
+        for(int i=0; i<matB.arr.count; i++) {
+            if([matB getObjectAt:i].objectType != MATHNUMBER) {
+                return NULL;
+            }
+        }
+        
+        MathObject *element;
+        MathObject *component;
+        MathAddition *add = [[MathAddition alloc] init];
+        for(int i=0; i<answer.width; i++) {
+            for(int j=0; j<height; j++) {
+                element = [[MathObject alloc] init];
+                [element setDouble:0];
+                [element setDouble:1 newValue:0];
+                for(int k=0; k<matA.width; k++) {
+                    component = [self func:[[NSArray alloc] initWithObjects:[matA getObjectAt:i column:k], [matB getObjectAt:k column:j], nil]];
+                    element = [add func:[[NSArray alloc] initWithObjects:element, component, nil]];
+                }
+                [answer addObject:element];
+            }
+        }
+        
+        return answer;
+    }
     else {
         return NULL;
     }

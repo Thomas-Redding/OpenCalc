@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MathFunction.h"
+#import "MathAddition.h"
 
 @interface MathMultiplication : MathFunction
 

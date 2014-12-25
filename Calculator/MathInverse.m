@@ -28,6 +28,14 @@
         }
         return answer;
     }
+    else if([input[0] objectType] == MATHMATRIX) {
+        MathMatrix *mat = input[0];
+        MathMatrix *answer = [[MathMatrix alloc] init];
+        for(int i=0; i<[mat getLength]; i++) {
+            [answer addObject:[self func:[[NSArray alloc] initWithObjects:[mat getObjectAt:i], nil]]];
+        }
+        return answer;
+    }
     else if([input[0] objectType] == MATHBOOLEAN) {
         MathBoolean *answer = [[MathBoolean alloc] init];
         if([input[0] getDouble] == 1) {
