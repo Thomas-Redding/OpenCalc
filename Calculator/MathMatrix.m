@@ -41,7 +41,7 @@
     for(int i=0; i<self.arr.count; i++) {
         [str appendString:[[self.arr objectAtIndex:i] toString]];
         if(i%self.width == self.width-1) {
-            [str appendString:@"\n"];
+            [str appendString:@"\r"];
         }
         else {
             [str appendString:@", "];

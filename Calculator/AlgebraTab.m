@@ -73,8 +73,11 @@
     NSMutableString *newHistory = [[NSMutableString alloc] initWithString: self.algebraHistory.string];
     [newHistory appendString:@"\n"];
     [newHistory appendString:str];
-    [newHistory appendString:@"\n"];
     NSString* output = [self.brain runAlgebra: str];
+    if(![output isEqual: @""]) {
+        [newHistory appendString:@"\n"];
+    }
+    
     if(output == NULL) {
         if([self.brain.errors count] > 0) {
             [newHistory appendString: self.brain.errors[[self.brain.errors count]-1]];
@@ -86,11 +89,16 @@
     else {
         [newHistory appendString:output];
     }
-    self.algebraHistory.string = newHistory;
-    self.currentHistoryLine = [[self.algebraHistory.string componentsSeparatedByString:@"\n"] count];
     
-    // scroll to bottom of history
-    [self.algeabraHistoryScrollView.contentView scrollToPoint:NSMakePoint(0.0,NSMaxY([[self.algeabraHistoryScrollView documentView] frame])-NSHeight([[self.algeabraHistoryScrollView contentView] bounds]))];
+    // Smart Scrolling
+    BOOL scroll = (NSMaxY(self.algebraHistory.visibleRect) == NSMaxY(self.algebraHistory.bounds));
+    
+    self.algebraHistory.string = newHistory;
+    
+    if (scroll) {
+        // Scroll to end of the textview contents
+        [self.algebraHistory scrollRangeToVisible: NSMakeRange(self.algebraHistory.string.length, 0)];
+    }
 }
 
 - (void) childToParentMessage:(NSString *)str {
