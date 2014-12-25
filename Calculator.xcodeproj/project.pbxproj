@@ -44,6 +44,7 @@
 		283F21B71A4B5CB600683DFF /* MathElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 283F21B61A4B5CB600683DFF /* MathElement.m */; };
 		283F21BA1A4BC73E00683DFF /* MathMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 283F21B91A4BC73E00683DFF /* MathMatrix.m */; };
 		283F21BD1A4BC83E00683DFF /* MathConstructMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 283F21BC1A4BC83E00683DFF /* MathConstructMatrix.m */; };
+		283F21C01A4BD9F000683DFF /* MathDeterminant.m in Sources */ = {isa = PBXBuildFile; fileRef = 283F21BF1A4BD9F000683DFF /* MathDeterminant.m */; };
 		28415EEC1A0422E6008EBC4E /* GraphingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28415EEB1A0422E6008EBC4E /* GraphingView.m */; };
 		2850E47819D9CCBA00F65EE7 /* MathCosine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850E47719D9CCBA00F65EE7 /* MathCosine.m */; };
 		2850E47B19D9CCDD00F65EE7 /* MathTangent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850E47A19D9CCDD00F65EE7 /* MathTangent.m */; };
@@ -181,6 +182,8 @@
 		283F21B91A4BC73E00683DFF /* MathMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathMatrix.m; sourceTree = "<group>"; };
 		283F21BB1A4BC83E00683DFF /* MathConstructMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathConstructMatrix.h; sourceTree = "<group>"; };
 		283F21BC1A4BC83E00683DFF /* MathConstructMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathConstructMatrix.m; sourceTree = "<group>"; };
+		283F21BE1A4BD9F000683DFF /* MathDeterminant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathDeterminant.h; sourceTree = "<group>"; };
+		283F21BF1A4BD9F000683DFF /* MathDeterminant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathDeterminant.m; sourceTree = "<group>"; };
 		28415EEA1A0422E6008EBC4E /* GraphingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphingView.h; sourceTree = "<group>"; };
 		28415EEB1A0422E6008EBC4E /* GraphingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphingView.m; sourceTree = "<group>"; };
 		2850E47619D9CCBA00F65EE7 /* MathCosine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathCosine.h; sourceTree = "<group>"; };
@@ -421,6 +424,17 @@
 			name = "Exponents & Logs";
 			sourceTree = "<group>";
 		};
+		283F21C11A4BDC6A00683DFF /* Matrix Operations */ = {
+			isa = PBXGroup;
+			children = (
+				283F21BB1A4BC83E00683DFF /* MathConstructMatrix.h */,
+				283F21BC1A4BC83E00683DFF /* MathConstructMatrix.m */,
+				283F21BE1A4BD9F000683DFF /* MathDeterminant.h */,
+				283F21BF1A4BD9F000683DFF /* MathDeterminant.m */,
+			);
+			name = "Matrix Operations";
+			sourceTree = "<group>";
+		};
 		2850E47219D9C4B500F65EE7 /* Predefined Unary Functions */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,8 +479,6 @@
 			children = (
 				281E45601A4A62CF00F546C0 /* MathConstructVector.h */,
 				281E45611A4A62CF00F546C0 /* MathConstructVector.m */,
-				283F21BB1A4BC83E00683DFF /* MathConstructMatrix.h */,
-				283F21BC1A4BC83E00683DFF /* MathConstructMatrix.m */,
 				283F21B51A4B5CB600683DFF /* MathElement.h */,
 				283F21B61A4B5CB600683DFF /* MathElement.m */,
 				28B99A4419DDF6F800C15CFA /* MathCombination.h */,
@@ -546,6 +558,7 @@
 				281FAFB719DB38A1003EE230 /* MathUserFunction.m */,
 				289CBFB719DB3F6B00DC7788 /* MathPersistentExpression.h */,
 				289CBFB819DB3F6B00DC7788 /* MathPersistentExpression.m */,
+				283F21C11A4BDC6A00683DFF /* Matrix Operations */,
 				287A5C421A0A9D2300D6B333 /* Random */,
 				28EBFFBA19DB1D97008B662F /* Unary Operators */,
 				28F31F4319D931B1008D25CD /* Binary Operators */,
@@ -868,6 +881,7 @@
 				282B84E01A1555CF00793C6D /* MathNormalQuantile.m in Sources */,
 				28F31F3219D9253E008D25CD /* MathBoolean.m in Sources */,
 				28F027DE19DF0A4A006EF536 /* MathRandom.m in Sources */,
+				283F21C01A4BD9F000683DFF /* MathDeterminant.m in Sources */,
 				2833E23819D949DD00D8686B /* MathDivision.m in Sources */,
 				28F31F3B19D9308A008D25CD /* MathExpression.m in Sources */,
 				2865ACE61A1571D6007FED08 /* MathErrorFunction.m in Sources */,

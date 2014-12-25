@@ -48,4 +48,9 @@
     return 0;
 }
 
+- (id) copy {
+    MathObject* obj = [[MathObject alloc] init];
+    return obj;
+}
+
 @end

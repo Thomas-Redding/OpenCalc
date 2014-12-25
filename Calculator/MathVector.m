@@ -112,4 +112,11 @@
     [self.degreesOfFreedom addObject:[NSNumber numberWithInt:[obj getDegreesOfFreedom]]];
 }
 
+// TODO
+- (id) copy {
+    MathVector* obj = [[MathVector alloc] init];
+    return obj;
+}
+
+
 @end

@@ -96,4 +96,11 @@
     return 2;
 }
 
+- (id) copy {
+    MathNumber* obj = [[MathNumber alloc] init];
+    obj.real = self.real;
+    obj.imaginary = self.imaginary;
+    return obj;
+}
+
 @end

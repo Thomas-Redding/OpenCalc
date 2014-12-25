@@ -50,4 +50,11 @@
     return str;
 }
 
+// TODO
+- (id) copy {
+    MathMatrix* obj = [[MathMatrix alloc] init];
+    return obj;
+}
+
+
 @end

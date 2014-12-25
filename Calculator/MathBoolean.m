@@ -67,4 +67,10 @@
     return 1;
 }
 
+- (id) copy {
+    MathBoolean* obj = [[MathBoolean alloc] init];
+    obj.value = self.value;
+    return obj;
+}
+
 @end
