@@ -95,6 +95,7 @@
     
     [self.publicFunction addObject: [[MathConstructVector alloc] init]];
     [self.publicFunction addObject: [[MathElement alloc] init]];
+    [self.publicFunction addObject: [[MathConstructMatrix alloc] init]];
     
     [self.publicFunction addObject: [[MathSine alloc] init]];
     [self.publicFunction addObject: [[MathCosine alloc] init]];

@@ -37,6 +37,16 @@
         }
         return answer;
     }
+    else if([input[0] objectType] == MATHMATRIX && [input[1] objectType] == MATHNUMBER) {
+        MathMatrix *mat = input[0];
+        MathNumber *k = input[1];
+        MathMatrix *answer = [[MathMatrix alloc] init];
+        answer.width = mat.width;
+        for(int i=0; i<[mat getLength]; i++) {
+            [answer addObject:[self func:[[NSArray alloc] initWithObjects:[mat getObjectAt:i], k, nil]]];
+        }
+        return answer;
+    }
     else {
         return NULL;
     }

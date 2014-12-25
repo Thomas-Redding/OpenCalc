@@ -42,6 +42,8 @@
 		283B94C319E07C7200CA7287 /* MathNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 283B94C219E07C7200CA7287 /* MathNull.m */; };
 		283F21B41A4A6F4B00683DFF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 283F21B31A4A6F4B00683DFF /* README.md */; };
 		283F21B71A4B5CB600683DFF /* MathElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 283F21B61A4B5CB600683DFF /* MathElement.m */; };
+		283F21BA1A4BC73E00683DFF /* MathMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 283F21B91A4BC73E00683DFF /* MathMatrix.m */; };
+		283F21BD1A4BC83E00683DFF /* MathConstructMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 283F21BC1A4BC83E00683DFF /* MathConstructMatrix.m */; };
 		28415EEC1A0422E6008EBC4E /* GraphingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28415EEB1A0422E6008EBC4E /* GraphingView.m */; };
 		2850E47819D9CCBA00F65EE7 /* MathCosine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850E47719D9CCBA00F65EE7 /* MathCosine.m */; };
 		2850E47B19D9CCDD00F65EE7 /* MathTangent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850E47A19D9CCDD00F65EE7 /* MathTangent.m */; };
@@ -175,6 +177,10 @@
 		283F21B31A4A6F4B00683DFF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		283F21B51A4B5CB600683DFF /* MathElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathElement.h; sourceTree = "<group>"; };
 		283F21B61A4B5CB600683DFF /* MathElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathElement.m; sourceTree = "<group>"; };
+		283F21B81A4BC73E00683DFF /* MathMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathMatrix.h; sourceTree = "<group>"; };
+		283F21B91A4BC73E00683DFF /* MathMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathMatrix.m; sourceTree = "<group>"; };
+		283F21BB1A4BC83E00683DFF /* MathConstructMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathConstructMatrix.h; sourceTree = "<group>"; };
+		283F21BC1A4BC83E00683DFF /* MathConstructMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathConstructMatrix.m; sourceTree = "<group>"; };
 		28415EEA1A0422E6008EBC4E /* GraphingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphingView.h; sourceTree = "<group>"; };
 		28415EEB1A0422E6008EBC4E /* GraphingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphingView.m; sourceTree = "<group>"; };
 		2850E47619D9CCBA00F65EE7 /* MathCosine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathCosine.h; sourceTree = "<group>"; };
@@ -459,6 +465,8 @@
 			children = (
 				281E45601A4A62CF00F546C0 /* MathConstructVector.h */,
 				281E45611A4A62CF00F546C0 /* MathConstructVector.m */,
+				283F21BB1A4BC83E00683DFF /* MathConstructMatrix.h */,
+				283F21BC1A4BC83E00683DFF /* MathConstructMatrix.m */,
 				283F21B51A4B5CB600683DFF /* MathElement.h */,
 				283F21B61A4B5CB600683DFF /* MathElement.m */,
 				28B99A4419DDF6F800C15CFA /* MathCombination.h */,
@@ -636,6 +644,8 @@
 				28C8B2AE19D9E81A00D26D53 /* MathNumber.m */,
 				281E455D1A4A258900F546C0 /* MathVector.h */,
 				281E455E1A4A258900F546C0 /* MathVector.m */,
+				283F21B81A4BC73E00683DFF /* MathMatrix.h */,
+				283F21B91A4BC73E00683DFF /* MathMatrix.m */,
 				28C8B2AF19D9E81A00D26D53 /* MathType.h */,
 			);
 			name = MathObject;
@@ -867,6 +877,7 @@
 				289B57CB1A465ED800E35A5C /* AppBlueprinter.m in Sources */,
 				287A5C511A0AA1EB00D6B333 /* MathNormalRandom.m in Sources */,
 				288FEC5619D9DD5C006DB583 /* MathExponent.m in Sources */,
+				283F21BA1A4BC73E00683DFF /* MathMatrix.m in Sources */,
 				2890D98E1A4132BF0095855D /* GraphingFunction.m in Sources */,
 				282B84D61A154F2800793C6D /* MathExponentialQuantile.m in Sources */,
 				2850E47E19D9CCFC00F65EE7 /* MathCotangent.m in Sources */,
@@ -878,6 +889,7 @@
 				28C8B2B419D9E87600D26D53 /* MathEquality.m in Sources */,
 				281E455F1A4A258900F546C0 /* MathVector.m in Sources */,
 				287A5C451A0A9D4A00D6B333 /* MathPoissonRandom.m in Sources */,
+				283F21BD1A4BC83E00683DFF /* MathConstructMatrix.m in Sources */,
 				281E45561A4A020B00F546C0 /* GraphingEvaluateWindow.m in Sources */,
 				28415EEC1A0422E6008EBC4E /* GraphingView.m in Sources */,
 				283F21B41A4A6F4B00683DFF /* README.md in Sources */,

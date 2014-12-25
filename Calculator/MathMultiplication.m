@@ -42,6 +42,26 @@
         }
         return answer;
     }
+    else if([input[0] objectType] == MATHNUMBER && [input[1] objectType] == MATHMATRIX) {
+        MathNumber *k = input[0];
+        MathMatrix *mat = input[1];
+        MathMatrix *answer = [[MathMatrix alloc] init];
+        answer.width = mat.width;
+        for(int i=0; i<[mat getLength]; i++) {
+            [answer addObject:[self func:[[NSArray alloc] initWithObjects:k, [mat getObjectAt:i], nil]]];
+        }
+        return answer;
+    }
+    else if([input[0] objectType] == MATHMATRIX && [input[1] objectType] == MATHNUMBER) {
+        MathNumber *k = input[1];
+        MathMatrix *mat = input[0];
+        MathMatrix *answer = [[MathMatrix alloc] init];
+        answer.width = mat.width;
+        for(int i=0; i<[mat getLength]; i++) {
+            [answer addObject:[self func:[[NSArray alloc] initWithObjects:k, [mat getObjectAt:i], nil]]];
+        }
+        return answer;
+    }
     else {
         return NULL;
     }

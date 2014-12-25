@@ -11,6 +11,7 @@
 #import "MathVariable.h"
 #import "MathConstructVector.h"
 #import "MathElement.h"
+#import "MathConstructMatrix.h"
 
 #import "MathMultiplication.h"
 #import "MathAddition.h"

@@ -12,7 +12,8 @@
 typedef enum {
     MATHNUMBER,
     MATHBOOLEAN,
-    MATHVECTOR
+    MATHVECTOR,
+    MATHMATRIX
 } MathType;
 
 #endif

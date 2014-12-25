@@ -45,6 +45,28 @@
             return NULL;
         }
     }
+    else if([input[0] objectType] == MATHMATRIX && [input[1] objectType] == MATHMATRIX) {
+        MathMatrix *matA = input[0];
+        MathMatrix *matB = input[1];
+        if ([matA getLength] == [matB getLength] && matA.width == matB.width) {
+            MathMatrix *answer = [[MathMatrix alloc] init];
+            answer.width = matA.width;
+            MathObject *obj;
+            for(int i=0; i<[matA getLength]; i++) {
+                obj = [self func:[[NSArray alloc] initWithObjects:[matA getObjectAt:i], [matB getObjectAt:i], nil]];
+                if(obj == NULL) {
+                    return NULL;
+                }
+                else {
+                    [answer addObject:obj];
+                }
+            }
+            return answer;
+        }
+        else {
+            return NULL;
+        }
+    }
     else {
         return NULL;
     }
