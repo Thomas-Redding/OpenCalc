@@ -5,6 +5,8 @@ An Intuitive and Powerful Open Source Calculator for OS X
 
 ========
 
+See TestBranch for up-to-date information
+
 This is a free open source calculator app. As of December 23, 2014, this app is still in the early stages, but it supports the vast majority of algebra needed for precalculus including graphing. Below is a tenative schedule:
 
 * Dec 24 - 25 - implement matrices
