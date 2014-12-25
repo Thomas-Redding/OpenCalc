@@ -33,6 +33,8 @@ HARD-CODED FUNCTIONS
 * element(vect, i) - returns element #i from vect (which can be a vector or a matrix)
 * element(vect, i, j, ...) - returns a vector of the ith, jth, etc. elements in vect (which can be a vector or a matrix)
 * Mat(width, height, x1, x2, ...) - constructs a matrix
+* det(mat)    determinant (of a matrix)
+* inv(mat)    inverse (of a matrix)
 * sin(x)      sine
 * cos(x)      cosine
 * tan(x)      tangent

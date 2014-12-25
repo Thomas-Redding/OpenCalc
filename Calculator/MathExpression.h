@@ -13,6 +13,7 @@
 #import "MathElement.h"
 #import "MathConstructMatrix.h"
 #import "MathDeterminant.h"
+#import "MathMatrixInverse.h"
 
 #import "MathMultiplication.h"
 #import "MathAddition.h"

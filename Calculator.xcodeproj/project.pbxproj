@@ -45,6 +45,7 @@
 		283F21BA1A4BC73E00683DFF /* MathMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 283F21B91A4BC73E00683DFF /* MathMatrix.m */; };
 		283F21BD1A4BC83E00683DFF /* MathConstructMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 283F21BC1A4BC83E00683DFF /* MathConstructMatrix.m */; };
 		283F21C01A4BD9F000683DFF /* MathDeterminant.m in Sources */ = {isa = PBXBuildFile; fileRef = 283F21BF1A4BD9F000683DFF /* MathDeterminant.m */; };
+		283F21C41A4C7FEA00683DFF /* MathMatrixInverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 283F21C31A4C7FEA00683DFF /* MathMatrixInverse.m */; };
 		28415EEC1A0422E6008EBC4E /* GraphingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28415EEB1A0422E6008EBC4E /* GraphingView.m */; };
 		2850E47819D9CCBA00F65EE7 /* MathCosine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850E47719D9CCBA00F65EE7 /* MathCosine.m */; };
 		2850E47B19D9CCDD00F65EE7 /* MathTangent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850E47A19D9CCDD00F65EE7 /* MathTangent.m */; };
@@ -184,6 +185,8 @@
 		283F21BC1A4BC83E00683DFF /* MathConstructMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathConstructMatrix.m; sourceTree = "<group>"; };
 		283F21BE1A4BD9F000683DFF /* MathDeterminant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathDeterminant.h; sourceTree = "<group>"; };
 		283F21BF1A4BD9F000683DFF /* MathDeterminant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathDeterminant.m; sourceTree = "<group>"; };
+		283F21C21A4C7FEA00683DFF /* MathMatrixInverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathMatrixInverse.h; sourceTree = "<group>"; };
+		283F21C31A4C7FEA00683DFF /* MathMatrixInverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathMatrixInverse.m; sourceTree = "<group>"; };
 		28415EEA1A0422E6008EBC4E /* GraphingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphingView.h; sourceTree = "<group>"; };
 		28415EEB1A0422E6008EBC4E /* GraphingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphingView.m; sourceTree = "<group>"; };
 		2850E47619D9CCBA00F65EE7 /* MathCosine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathCosine.h; sourceTree = "<group>"; };
@@ -431,6 +434,8 @@
 				283F21BC1A4BC83E00683DFF /* MathConstructMatrix.m */,
 				283F21BE1A4BD9F000683DFF /* MathDeterminant.h */,
 				283F21BF1A4BD9F000683DFF /* MathDeterminant.m */,
+				283F21C21A4C7FEA00683DFF /* MathMatrixInverse.h */,
+				283F21C31A4C7FEA00683DFF /* MathMatrixInverse.m */,
 			);
 			name = "Matrix Operations";
 			sourceTree = "<group>";
@@ -905,6 +910,7 @@
 				287A5C451A0A9D4A00D6B333 /* MathPoissonRandom.m in Sources */,
 				283F21BD1A4BC83E00683DFF /* MathConstructMatrix.m in Sources */,
 				281E45561A4A020B00F546C0 /* GraphingEvaluateWindow.m in Sources */,
+				283F21C41A4C7FEA00683DFF /* MathMatrixInverse.m in Sources */,
 				28415EEC1A0422E6008EBC4E /* GraphingView.m in Sources */,
 				283F21B41A4A6F4B00683DFF /* README.md in Sources */,
 				2812046119E32296005948C0 /* MathLessThanOrEqualTo.m in Sources */,
