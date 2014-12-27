@@ -156,7 +156,7 @@
             // 4. root
             [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(20, windSize.height-160, 40, 20)]];
             [self.window.contentView addSubview:[self.elements objectAtIndex:4]];
-            [[self.elements objectAtIndex:4] setStringValue:@"y"];
+            [[self.elements objectAtIndex:4] setStringValue:@"root"];
             [[self.elements objectAtIndex:4] setEditable:false];
             [[self.elements objectAtIndex:4] setSelectable:false];
             [[self.elements objectAtIndex:4] setBezeled:false];
@@ -219,8 +219,10 @@
 }
 
 - (void) submit {
+    
     if(self.elements.count != 0) {
         // valid
+        
         if([self.windowType isEqual: @"evaluate"]) {
             /*
              GUI
@@ -234,26 +236,23 @@
              7. (slope output)
             */
             
-            NSString *x = [self.brain runAlgebra:[[self.elements objectAtIndex:2] stringValue]];
-            NSString *y = [self.brain runAlgebra:[[NSString alloc] initWithFormat:@"%@(%@)", [self.funcA getName], x]];
-            if(y != nil) {
-                [[self.elements objectAtIndex:5] setStringValue:y];
-            }
-            else {
+            NSMutableString *string = [[NSMutableString alloc] initWithString:@"variableThatMustNotBeNamedObviouslyQuailsForever="];
+            [string appendString:[[self.elements objectAtIndex:2] stringValue]];
+            
+            NSString *rtn = [self.brain runAlgebra:string];
+            
+            if(rtn == NULL) {
                 [[self.elements objectAtIndex:5] setStringValue:@"undefined"];
+                return;
             }
             
-            NSString *h = @"0.001";
-            NSString *y1 = [self.brain runAlgebra:[[NSString alloc] initWithFormat:@"%@(%@-%@)", [self.funcA getName], x, h]];
-            NSString *y2 = [self.brain runAlgebra:[[NSString alloc] initWithFormat:@"%@(%@+%@)", [self.funcA getName], x, h]];
-            if(y1 != nil && y2 != nil) {
-                NSString *limit = [[NSString alloc] initWithFormat:@"(%@-%@)/(%@)/2", y2, y1, h];
-                NSString *slope = [self.brain runAlgebra:limit];
-                [[self.elements objectAtIndex:7] setStringValue:slope];
-            }
-            else {
-                [[self.elements objectAtIndex:7] setStringValue:@"undefined"];
-            }
+            MathObject* x = [self.brain getVariableValue:@"variableThatMustNotBeNamedObviouslyQuailsForever"];
+            double y = [self.brain graphRun:[self.funcA getName] x:[x getDouble]];
+            
+            [[self.elements objectAtIndex:5] setStringValue:[[NSString alloc] initWithFormat:@"%f", y]];
+            
+            double slope = [self.brain findSlope:[self.funcA getName] x:[x getDouble]];
+            [[self.elements objectAtIndex:7] setStringValue:[[NSString alloc] initWithFormat:@"%f", slope]];
         }
         else if([self.windowType isEqual: @"findRoot"]) {
             /*
@@ -266,28 +265,26 @@
              5. (root output)
             */
             
-            NSString *x = [self.brain runAlgebra:[[self.elements objectAtIndex:2] stringValue]];
-            NSString *y, *h, *y1, *y2, *limit, *slope;
-            for(int i=0; i<20; i++) {
-                    y = [self.brain runAlgebra:[[NSString alloc] initWithFormat:@"%@(%@)", [self.funcA getName], x]];
-                    h = @"0.001";
-                    y1 = [self.brain runAlgebra:[[NSString alloc] initWithFormat:@"%@(%@-%@)", [self.funcA getName], x, h]];
-                    y2 = [self.brain runAlgebra:[[NSString alloc] initWithFormat:@"%@(%@+%@)", [self.funcA getName], x, h]];
-                if(y1 != nil && y2 != nil && y != nil) {
-                    limit = [[NSString alloc] initWithFormat:@"(%@-%@)/(%@)/2", y2, y1, h];
-                    slope = [self.brain runAlgebra:limit];
-                    x = [self.brain runAlgebra:[[NSString alloc] initWithFormat:@"%@-(%@)/(%@)", x, y, slope]];
-                    if(x == nil) {
-                        x = @"undefined";
-                        break;
-                    }
-                }
-                else {
-                    x = @"undefined";
-                    break;
-                }
+            NSMutableString *string = [[NSMutableString alloc] initWithString:@"variableThatMustNotBeNamedObviouslyQuailsForever="];
+            [string appendString:[[self.elements objectAtIndex:2] stringValue]];
+            
+            
+            NSString *rtn = [self.brain runAlgebra:string];
+            if(rtn == NULL) {
+                [[self.elements objectAtIndex:5] setStringValue:@"undefined"];
+                return;
             }
-            [[self.elements objectAtIndex:5] setStringValue:x];
+            
+            MathObject* x = [self.brain getVariableValue:@"variableThatMustNotBeNamedObviouslyQuailsForever"];
+            
+            double answer = [self.brain findRoot:[self.funcA getName] x:[x getDouble]];
+            
+            if(answer == INFINITY) {
+                [[self.elements objectAtIndex:5] setStringValue:@"undefined"];
+            }
+            else {
+                [[self.elements objectAtIndex:5] setStringValue:[[NSString alloc] initWithFormat:@"%f", answer]];
+            }
         }
     }
 }

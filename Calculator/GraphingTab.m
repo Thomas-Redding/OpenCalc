@@ -96,6 +96,10 @@
     self.shouldRedraw = true;
     
     self.mousePositionTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 100, 40)];
+    [self.mousePositionTextField setEditable:false];
+    [self.mousePositionTextField setSelectable:false];
+    [self.mousePositionTextField setBezeled:false];
+    [self.mousePositionTextField setDrawsBackground:false];
     
     return self;
 }
@@ -125,7 +129,7 @@
 }
 
 - (NSString*) pairToString: (double) x y: (double) y {
-    NSString *str = [[NSString alloc] initWithFormat:@"(%.3f, %.3f)", x, y];
+    NSString *str = [[NSString alloc] initWithFormat:@"x: %.3f\ny: %.3f", x, y];
     return str;
 }
 

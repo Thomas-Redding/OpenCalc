@@ -31,6 +31,7 @@
     [theTextView setVerticallyResizable:YES];
     [theTextView setHorizontallyResizable:YES];
     [theTextView setAutoresizingMask:NSViewWidthSizable];
+    [theTextView setEditable:false];
     
     [[theTextView textContainer]
      setContainerSize:NSMakeSize(contentSize.width, FLT_MAX)];

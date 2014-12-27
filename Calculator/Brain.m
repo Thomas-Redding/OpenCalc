@@ -30,6 +30,14 @@
     [self.publicVariable addObject:newVar];
     
     newVar = [[MathVariable alloc] init];
+    newVar.name = @"π";
+    newValue = [[MathNumber alloc] init];
+    [newValue setDouble:3.14159265358979323846];
+    newVar.isEditable = false;
+    newVar.variableValue = newValue;
+    [self.publicVariable addObject:newVar];
+    
+    newVar = [[MathVariable alloc] init];
     newVar.name = @"phi";
     newValue = [[MathNumber alloc] init];
     [newValue setDouble:1.6180339887498948482];
@@ -44,8 +52,6 @@
     newVar.isEditable = false;
     newVar.variableValue = newValue;
     [self.publicVariable addObject:newVar];
-    
-    
     
     newVar = [[MathVariable alloc] init];
     newVar.name = @"true";
@@ -669,6 +675,47 @@
         }
     }
     [self saveVariablesAndFunctions];
+}
+
+- (double) findRoot: (NSString*) func x: (double) x {
+    double y = 0.0, h = 0.0, slope = 0.0;
+    double startY = [self graphRun:func x:x];
+    if(startY == 0) {
+        return x;
+    }
+    for(int i=0; i<100; i++) {
+        y = [self graphRun:func x:x];
+        h = 0.001;
+        slope = [self findSlope:func x:x]; // ([self graphRun:func x:x+h]-y)/h;
+        if(slope == 0 || y == 0) {
+            break;
+        }
+        x -= y/slope;
+    }
+    
+    if(y/startY < 0.001) {
+        return x;
+    }
+    else {
+        return INFINITY;
+    }
+}
+
+- (double) findSlope: (NSString*) func x: (double) x {
+    double h = 0.0001;
+    double y1 = [self graphRun:func x:x-h];
+    double y2 = [self graphRun:func x:x+h];
+    return (y2-y1)/2/h;
+}
+
+- (MathObject*) getVariableValue: (NSString*) variableName {
+    for(int i=0; i<self.publicVariable.count; i++) {
+        if([[self.publicVariable[i] name] isEqual: variableName]) {
+            MathObject *answer = [[self.publicVariable[i] variableValue] copy];
+            return answer;
+        }
+    }
+    return NULL;
 }
 
 @end

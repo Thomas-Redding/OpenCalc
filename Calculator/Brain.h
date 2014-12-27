@@ -66,5 +66,7 @@
 - (void) saveVariablesAndFunctions;
 - (bool) setVariablesSaveValue: (NSString*) name newValue: (bool) newValue;
 - (NSString*) sanitize: (NSString*) input;
-
+- (double) findRoot: (NSString*) func x: (double) x;
+- (MathObject*) getVariableValue: (NSString*) variableName;
+- (double) findSlope: (NSString*) func x: (double) x;
 @end

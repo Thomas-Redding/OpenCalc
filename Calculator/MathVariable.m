@@ -15,5 +15,13 @@
     return str;
 }
 
+- (MathVariable*) copy {
+    MathVariable* obj = [[MathVariable alloc] init];
+    obj.name = [self.name copy];
+    obj.variableValue = [self.variableValue copy];
+    obj.isEditable = self.isEditable;
+    obj.shouldSaveToHarddrive = self.shouldSaveToHarddrive;
+    return obj;
+}
 
 @end
