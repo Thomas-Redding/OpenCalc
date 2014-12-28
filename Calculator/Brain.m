@@ -718,4 +718,59 @@
     return NULL;
 }
 
+- (double) integrate: (NSString*) func x1: (double) x1 x2: (double) x2 {
+    double x;
+    int steps = 1000;     // must be at least 1
+    double area = 0;
+    int method = 3;
+    if(method == 0) {
+        // midpoint
+        for(int i=0; i<steps; i++) {
+            x = (x2-x1)*(i+0.5)/steps + x1;
+            area += [self graphRun:func x:x];
+        }
+        area /= steps;
+    }
+    else if(method == 1) {
+        // trapezoid rule
+        area += [self graphRun:func x:x1];
+        area += [self graphRun:func x:x2];
+        area /= 2;
+        for(int i=1; i<steps; i++) {
+            x = (x2-x1)*i/steps + x1;
+            area += [self graphRun:func x:x];
+        }
+        area /= steps;
+    }
+    else if(method == 2) {
+        // Monte Carlo
+        for(int i=0; i<steps; i++) {
+            x = ((double)arc4random() / ARC4RANDOM_MAX);
+            x = (x2-x1)*x+x1;
+            area += [self graphRun:func x:x];
+        }
+        area /= steps;
+    }
+    else {
+        // Simpson's Rule
+        if(steps%2 == 1) {
+            steps++;
+        }
+        area += [self graphRun:func x:x1];
+        area += [self graphRun:func x:x2];
+        for(int i=1; i<steps; i++) {
+            x = (x2-x1)*i/steps + x1;
+            if(i%2 == 1) {
+                area += 4*[self graphRun:func x:x];
+            }
+            else {
+                area += 2*[self graphRun:func x:x];
+            }
+        }
+        area /= 3*steps;
+    }
+    area *= x2-x1;
+    return area;
+}
+
 @end
