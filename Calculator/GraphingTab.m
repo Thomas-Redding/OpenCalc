@@ -345,6 +345,11 @@
         self.evaluateWindow.funcB = nil;
     }
     else if(self.tableView.selectedRowIndexes.count == 2) {
+        
+        unsigned long a = self.tableView.selectedRowIndexes.firstIndex;
+        unsigned long b = self.tableView.selectedRowIndexes.lastIndex;
+        
+        
         self.evaluateWindow.funcA = [self.formulas objectAtIndex:self.tableView.selectedRowIndexes.firstIndex];
         self.evaluateWindow.funcB = [self.formulas objectAtIndex:self.tableView.selectedRowIndexes.lastIndex];
     }

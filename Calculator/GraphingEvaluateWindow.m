@@ -42,7 +42,7 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:0]];
             [[self.elements objectAtIndex:0] setStringValue:self.funcA.string];
             [[self.elements objectAtIndex:0] setEditable:false];
-            [[self.elements objectAtIndex:0] setSelectable:false];
+            [[self.elements objectAtIndex:0] setSelectable:true];
             [[self.elements objectAtIndex:0] setBezeled:false];
             [[self.elements objectAtIndex:0] setDrawsBackground:false];
             
@@ -51,7 +51,7 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:1]];
             [[self.elements objectAtIndex:1] setStringValue:@"x"];
             [[self.elements objectAtIndex:1] setEditable:false];
-            [[self.elements objectAtIndex:1] setSelectable:false];
+            [[self.elements objectAtIndex:1] setSelectable:true];
             [[self.elements objectAtIndex:1] setBezeled:false];
             [[self.elements objectAtIndex:1] setDrawsBackground:false];
             
@@ -73,7 +73,7 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:4]];
             [[self.elements objectAtIndex:4] setStringValue:@"y"];
             [[self.elements objectAtIndex:4] setEditable:false];
-            [[self.elements objectAtIndex:4] setSelectable:false];
+            [[self.elements objectAtIndex:4] setSelectable:true];
             [[self.elements objectAtIndex:4] setBezeled:false];
             [[self.elements objectAtIndex:4] setDrawsBackground:false];
             
@@ -82,7 +82,7 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:5]];
             [[self.elements objectAtIndex:5] setStringValue:@"1"];
             [[self.elements objectAtIndex:5] setEditable:false];
-            [[self.elements objectAtIndex:5] setSelectable:false];
+            [[self.elements objectAtIndex:5] setSelectable:true];
             [[self.elements objectAtIndex:5] setBezeled:false];
             [[self.elements objectAtIndex:5] setDrawsBackground:false];
             
@@ -91,7 +91,7 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:6]];
             [[self.elements objectAtIndex:6] setStringValue:@"slope"];
             [[self.elements objectAtIndex:6] setEditable:false];
-            [[self.elements objectAtIndex:6] setSelectable:false];
+            [[self.elements objectAtIndex:6] setSelectable:true];
             [[self.elements objectAtIndex:6] setBezeled:false];
             [[self.elements objectAtIndex:6] setDrawsBackground:false];
             
@@ -100,10 +100,9 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:7]];
             [[self.elements objectAtIndex:7] setStringValue:@"2"];
             [[self.elements objectAtIndex:7] setEditable:false];
-            [[self.elements objectAtIndex:7] setSelectable:false];
+            [[self.elements objectAtIndex:7] setSelectable:true];
             [[self.elements objectAtIndex:7] setBezeled:false];
             [[self.elements objectAtIndex:7] setDrawsBackground:false];
-
         }
         else {
             NSLog(@"error in GraphingEvaluateWindow (evaluate)");
@@ -127,7 +126,7 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:0]];
             [[self.elements objectAtIndex:0] setStringValue:self.funcA.string];
             [[self.elements objectAtIndex:0] setEditable:false];
-            [[self.elements objectAtIndex:0] setSelectable:false];
+            [[self.elements objectAtIndex:0] setSelectable:true];
             [[self.elements objectAtIndex:0] setBezeled:false];
             [[self.elements objectAtIndex:0] setDrawsBackground:false];
             
@@ -136,7 +135,7 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:1]];
             [[self.elements objectAtIndex:1] setStringValue:@"x"];
             [[self.elements objectAtIndex:1] setEditable:false];
-            [[self.elements objectAtIndex:1] setSelectable:false];
+            [[self.elements objectAtIndex:1] setSelectable:true];
             [[self.elements objectAtIndex:1] setBezeled:false];
             [[self.elements objectAtIndex:1] setDrawsBackground:false];
             
@@ -158,7 +157,7 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:4]];
             [[self.elements objectAtIndex:4] setStringValue:@"root"];
             [[self.elements objectAtIndex:4] setEditable:false];
-            [[self.elements objectAtIndex:4] setSelectable:false];
+            [[self.elements objectAtIndex:4] setSelectable:true];
             [[self.elements objectAtIndex:4] setBezeled:false];
             [[self.elements objectAtIndex:4] setDrawsBackground:false];
             
@@ -167,7 +166,7 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:5]];
             [[self.elements objectAtIndex:5] setStringValue:@"1"];
             [[self.elements objectAtIndex:5] setEditable:false];
-            [[self.elements objectAtIndex:5] setSelectable:false];
+            [[self.elements objectAtIndex:5] setSelectable:true];
             [[self.elements objectAtIndex:5] setBezeled:false];
             [[self.elements objectAtIndex:5] setDrawsBackground:false];
         }
@@ -195,7 +194,7 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:0]];
             [[self.elements objectAtIndex:0] setStringValue:self.funcA.string];
             [[self.elements objectAtIndex:0] setEditable:false];
-            [[self.elements objectAtIndex:0] setSelectable:false];
+            [[self.elements objectAtIndex:0] setSelectable:true];
             [[self.elements objectAtIndex:0] setBezeled:false];
             [[self.elements objectAtIndex:0] setDrawsBackground:false];
             
@@ -204,7 +203,7 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:1]];
             [[self.elements objectAtIndex:1] setStringValue:@"x1"];
             [[self.elements objectAtIndex:1] setEditable:false];
-            [[self.elements objectAtIndex:1] setSelectable:false];
+            [[self.elements objectAtIndex:1] setSelectable:true];
             [[self.elements objectAtIndex:1] setBezeled:false];
             [[self.elements objectAtIndex:1] setDrawsBackground:false];
             
@@ -220,7 +219,7 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:3]];
             [[self.elements objectAtIndex:3] setStringValue:@"x2"];
             [[self.elements objectAtIndex:3] setEditable:false];
-            [[self.elements objectAtIndex:3] setSelectable:false];
+            [[self.elements objectAtIndex:3] setSelectable:true];
             [[self.elements objectAtIndex:3] setBezeled:false];
             [[self.elements objectAtIndex:3] setDrawsBackground:false];
             
@@ -242,7 +241,7 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:6]];
             [[self.elements objectAtIndex:6] setStringValue:@"area"];
             [[self.elements objectAtIndex:6] setEditable:false];
-            [[self.elements objectAtIndex:6] setSelectable:false];
+            [[self.elements objectAtIndex:6] setSelectable:true];
             [[self.elements objectAtIndex:6] setBezeled:false];
             [[self.elements objectAtIndex:6] setDrawsBackground:false];
             
@@ -251,7 +250,7 @@
             [self.window.contentView addSubview:[self.elements objectAtIndex:7]];
             [[self.elements objectAtIndex:7] setStringValue:@""];
             [[self.elements objectAtIndex:7] setEditable:false];
-            [[self.elements objectAtIndex:7] setSelectable:false];
+            [[self.elements objectAtIndex:7] setSelectable:true];
             [[self.elements objectAtIndex:7] setBezeled:false];
             [[self.elements objectAtIndex:7] setDrawsBackground:false];
         }
@@ -266,11 +265,89 @@
              GUI
              0. Function 1
              1. Function 2
-             2. x (inputed by user)
-             3. [calculate button]
-             4. x (intersect)
-             5. y (intersect)
+             2. x
+             3. (inputed by user)
+             4. [calculate button]
+             5. x
+             6. (intersect)
+             7. y
+             8. (intersect)
              */
+            // 0. Function 1
+            [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(20, windSize.height-40, windSize.width-40, 20)]];
+            [self.window.contentView addSubview:[self.elements objectAtIndex:0]];
+            [[self.elements objectAtIndex:0] setStringValue:self.funcA.string];
+            [[self.elements objectAtIndex:0] setEditable:false];
+            [[self.elements objectAtIndex:0] setSelectable:true];
+            [[self.elements objectAtIndex:0] setBezeled:false];
+            [[self.elements objectAtIndex:0] setDrawsBackground:false];
+            
+            // 1. Function 2
+            [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(20, windSize.height-80, windSize.width-40, 20)]];
+            [self.window.contentView addSubview:[self.elements objectAtIndex:1]];
+            [[self.elements objectAtIndex:1] setStringValue:self.funcB.string];
+            [[self.elements objectAtIndex:1] setEditable:false];
+            [[self.elements objectAtIndex:1] setSelectable:true];
+            [[self.elements objectAtIndex:1] setBezeled:false];
+            [[self.elements objectAtIndex:1] setDrawsBackground:false];
+            
+            // 2. x
+            [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(20, windSize.height-120, 40, 20)]];
+            [self.window.contentView addSubview:[self.elements objectAtIndex:2]];
+            [[self.elements objectAtIndex:2] setStringValue:@"x"];
+            [[self.elements objectAtIndex:2] setEditable:false];
+            [[self.elements objectAtIndex:2] setSelectable:true];
+            [[self.elements objectAtIndex:2] setBezeled:false];
+            [[self.elements objectAtIndex:2] setDrawsBackground:false];
+            
+            // 3. (inputed by user)
+            [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(60, windSize.height-120, windSize.width-80, 20)]];
+            [self.window.contentView addSubview:[self.elements objectAtIndex:3]];
+            [[self.elements objectAtIndex:3] setStringValue:@"0"];
+            [[self.elements objectAtIndex:3] setEditable:true];
+            [[self.elements objectAtIndex:3] setSelectable:true];
+            
+            // 4. [calculate button]
+            [self.elements addObject:[[NSButton alloc] initWithFrame:NSMakeRect(20, windSize.height-160, windSize.width-40, 20)]];
+            [self.window.contentView addSubview:[self.elements objectAtIndex:4]];
+            [[self.elements objectAtIndex:4] setTitle:@"Calculate"];
+            [[self.elements objectAtIndex:4] setAction:@selector(submit)];
+            
+            // 5. x
+            [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(20, windSize.height-200, 40, 20)]];
+            [self.window.contentView addSubview:[self.elements objectAtIndex:5]];
+            [[self.elements objectAtIndex:5] setStringValue:@"x"];
+            [[self.elements objectAtIndex:5] setEditable:false];
+            [[self.elements objectAtIndex:5] setSelectable:true];
+            [[self.elements objectAtIndex:5] setBezeled:false];
+            [[self.elements objectAtIndex:5] setDrawsBackground:false];
+            
+            // 6. (intersect)
+            [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(60, windSize.height-200, windSize.width-80, 20)]];
+            [self.window.contentView addSubview:[self.elements objectAtIndex:6]];
+            [[self.elements objectAtIndex:6] setStringValue:@""];
+            [[self.elements objectAtIndex:6] setEditable:false];
+            [[self.elements objectAtIndex:6] setSelectable:true];
+            [[self.elements objectAtIndex:6] setBezeled:false];
+            [[self.elements objectAtIndex:6] setDrawsBackground:false];
+            
+            // 7. y
+            [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(20, windSize.height-240, 40, 20)]];
+            [self.window.contentView addSubview:[self.elements objectAtIndex:7]];
+            [[self.elements objectAtIndex:7] setStringValue:@"y"];
+            [[self.elements objectAtIndex:7] setEditable:false];
+            [[self.elements objectAtIndex:7] setSelectable:true];
+            [[self.elements objectAtIndex:7] setBezeled:false];
+            [[self.elements objectAtIndex:7] setDrawsBackground:false];
+            
+            // 8. (intersect)
+            [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(60, windSize.height-240, windSize.width-80, 20)]];
+            [self.window.contentView addSubview:[self.elements objectAtIndex:8]];
+            [[self.elements objectAtIndex:8] setStringValue:@""];
+            [[self.elements objectAtIndex:8] setEditable:false];
+            [[self.elements objectAtIndex:8] setSelectable:true];
+            [[self.elements objectAtIndex:8] setBezeled:false];
+            [[self.elements objectAtIndex:8] setDrawsBackground:false];
         }
         else {
             NSLog(@"error in GraphingEvaluateWindow (findIntersect)");
@@ -350,7 +427,7 @@
                 [[self.elements objectAtIndex:5] setStringValue:[[NSString alloc] initWithFormat:@"%f", answer]];
             }
         }
-        else {
+        else if([self.windowType isEqual: @"integrate"]) {
             /*
              GUI
              0. Function
@@ -382,7 +459,6 @@
             }
             MathObject* x2 = [self.brain getVariableValue:@"variableThatMustNotBeNamedObviouslyQuailsForever"];
             
-            
             double answer = [self.brain integrate:[self.funcA getName] x1:[x1 getDouble] x2:[x2 getDouble]];
             
             if(answer == INFINITY) {
@@ -392,6 +468,43 @@
                 [[self.elements objectAtIndex:7] setStringValue:[[NSString alloc] initWithFormat:@"%f", answer]];
             }
             
+        }
+        else if([self.windowType isEqual: @"findIntersect"]){
+            /*
+             GUI
+             0. Function 1
+             1. Function 2
+             2. x
+             3. (inputed by user)
+             4. [calculate button]
+             5. x
+             6. (intersect)
+             7. y
+             8. (intersect)
+             */
+            
+            NSMutableString *string = [[NSMutableString alloc] initWithString:@"variableThatMustNotBeNamedObviouslyQuailsForever="];
+            [string appendString:[[self.elements objectAtIndex:3] stringValue]];
+            
+            NSString *rtn = [self.brain runAlgebra:string];
+            
+            if(rtn == NULL) {
+                [[self.elements objectAtIndex:7] setStringValue:@"undefined"];
+                return;
+            }
+            MathObject* x = [self.brain getVariableValue:@"variableThatMustNotBeNamedObviouslyQuailsForever"];
+            
+            double answer = [self.brain findIntersect:[self.funcA getName] funcB:[self.funcB getName] x:[x getDouble]];
+            
+            if(answer == INFINITY) {
+                [[self.elements objectAtIndex:6] setStringValue:@"undefined"];
+                [[self.elements objectAtIndex:8] setStringValue:@"undefined"];
+            }
+            else {
+                [[self.elements objectAtIndex:6] setStringValue:[[NSString alloc] initWithFormat:@"%f", answer]];
+                answer = [self.brain graphRun:[self.funcA getName] x:answer];
+                [[self.elements objectAtIndex:8] setStringValue:[[NSString alloc] initWithFormat:@"%f", answer]];
+            }
         }
     }
 }

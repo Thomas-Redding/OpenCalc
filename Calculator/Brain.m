@@ -773,4 +773,29 @@
     return area;
 }
 
+- (double) findIntersect:(NSString *)funcA funcB: (NSString*) funcB x:(double)x {
+    double y = 0.0, h = 0.0, slope = 0.0;
+    double startY = [self graphRun:funcA x:x]-[self graphRun:funcB x:x];
+    if(startY == 0) {
+        return x;
+    }
+    for(int i=0; i<100; i++) {
+        y = [self graphRun:funcA x:x]-[self graphRun:funcB x:x];
+        h = 0.001;
+        slope = [self findSlope:funcA x:x]-[self findSlope:funcB x:x]; // ([self graphRun:func x:x+h]-y)/h;
+        if(slope == 0 || y == 0) {
+            break;
+        }
+        x -= y/slope;
+    }
+    
+    if(y/startY < 0.001) {
+        return x;
+    }
+    else {
+        return INFINITY;
+    }
+}
+
+
 @end
