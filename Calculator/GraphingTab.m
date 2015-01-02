@@ -51,6 +51,7 @@
     self.currentFunction = [[NSTextField alloc] initWithFrame:NSMakeRect(0, height-60, width, 20)];
     [self.currentFunction setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];
     [self.currentFunction setAction:@selector(submit)];
+    [self.currentFunction setFocusRingType:NSFocusRingTypeNone];
     
     // left-side table of formulas
     NSTableColumn *columnVisible = [[NSTableColumn alloc] initWithIdentifier:@"isVisible"];
@@ -73,12 +74,14 @@
     self.scrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect(0, 100, 100, 100)];
     [self.scrollView setDocumentView:self.tableView];
     [self.scrollView setAutoresizingMask: NSViewHeightSizable];
+    [self.scrollView setBorderType:NSBezelBorder];
     
     self.tableController = [[GraphingTableController alloc] init];
     self.tableController.list = self.formulas;
     [self.tableView setDataSource: self.tableController];
     [self.tableView setDelegate:self.tableController];
     [self.tableController setParent:self];
+    [self.tableView setFocusRingType:NSFocusRingTypeNone];
     
     self.addButton = [[NSButton alloc] initWithFrame:NSMakeRect(0, 60, 50, 20)];
     [self.addButton setTitle:@"+"];
@@ -156,11 +159,11 @@
     double width = [self.contentView window].frame.size.width;
     double height = [self.contentView window].frame.size.height;
     
-    [self.graphingView setFrame:NSMakeRect(100, 0, width-100, height-58)];
-    [self.currentFunction setFrame:NSMakeRect(0, height-58, width, 20)];
-    [self.scrollView setFrame:NSMakeRect(0, 100, 100, height-158)];
-    [self.addButton setFrame:NSMakeRect(0, 80, 50, 20)];
-    [self.removeButton setFrame:NSMakeRect(50, 80, 50, 20)];
+    [self.graphingView setFrame:NSMakeRect(100, 0, width-100, height-64)];
+    [self.currentFunction setFrame:NSMakeRect(0, height-64, width, 20)];
+    [self.scrollView setFrame:NSMakeRect(0, 90, 100, height-153)];
+    [self.addButton setFrame:NSMakeRect(0, 69, 50, 20)];
+    [self.removeButton setFrame:NSMakeRect(50, 69, 50, 20)];
     [self.mousePositionTextField setFrame:NSMakeRect(0, 0, 100, 40)];
     
     for(int i=0; i<self.formulas.count; i++) {

@@ -23,8 +23,15 @@
         return [NSNumber numberWithBool:[[self.list objectAtIndex:row] isVisible]];
     }
     else {
+        NSTableCellView *cellView = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
+        [cellView.textField setEditable:NO];
+        [cellView.textField setSelectable:NO];
         return [[self.list objectAtIndex:row] string];
     }
+}
+
+- (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+    return false;
 }
 
 -(IBAction)checkBoxState:(id)sender {

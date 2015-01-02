@@ -12,6 +12,7 @@
 #import <AppKit/AppKit.h>
 
 #import "Brain.h"
+#import "TabButton.h"
 #import "AlgebraTab.h"
 #import "GraphingTab.h"
 #import "PreferencesWindow.h"
@@ -24,8 +25,9 @@
 @property Brain *brain;
 @property Preferences *preferences;
 
-@property NSButton *algebraButton;
-@property NSButton *graphingButton;
+@property TabButton *algebraButton;
+@property TabButton *graphingButton;
+@property NSView *buttonContainer;
 @property PreferencesWindow *preferencesWindow;
 
 @property NSMutableArray *tabs;

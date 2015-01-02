@@ -24,27 +24,37 @@
     self.tabs = [[NSMutableArray alloc] init];
     self.preferences = [[Preferences alloc] init];
     
+    double width = self.window.frame.size.width;
     double height = self.window.frame.size.height;
     
-    self.algebraButton = [[NSButton alloc] initWithFrame:NSMakeRect(0, height-40, 100, 20)];
-    [self.window.contentView addSubview: self.algebraButton];
+    self.buttonContainer = [[NSView alloc] initWithFrame:NSMakeRect(0, height-46, width, 26)];
+    // [self.buttonContainer ];
+    
+    self.algebraButton = [[TabButton alloc] initWithFrame:NSMakeRect(3, 3, 100, 20)];
+    [self.buttonContainer addSubview: self.algebraButton];
     [self.algebraButton setTitle: @"Algebra"];
     [self.algebraButton setButtonType:NSMomentaryPushInButton];
-    [self.algebraButton setBezelStyle:NSSmallSquareBezelStyle];
+    [self.algebraButton setBezelStyle:NSRecessedBezelStyle];
+    [self.algebraButton setBordered:false];
     [self.algebraButton setTarget:self];
     [self.algebraButton setAction:@selector(algebraButtonPressed)];
     [self.algebraButton setAutoresizingMask: NSViewMinYMargin];
+    [self.algebraButton createTrackingArea];
     [self.tabs addObject:[[AlgebraTab alloc] initWithContentViewBrainAndPreferences:self.window.contentView brain:self.brain preferences:self.preferences]];
     
-    self.graphingButton = [[NSButton alloc] initWithFrame:NSMakeRect(100, height-40, 100, 20)];
-    [self.window.contentView addSubview: self.graphingButton];
+    self.graphingButton = [[TabButton alloc] initWithFrame:NSMakeRect(106, 3, 100, 20)];
+    [self.buttonContainer addSubview: self.graphingButton];
     [self.graphingButton setTitle: @"Graphing"];
     [self.graphingButton setButtonType:NSMomentaryPushInButton];
-    [self.graphingButton setBezelStyle:NSSmallSquareBezelStyle];
+    [self.graphingButton setBezelStyle:NSRecessedBezelStyle];
+    [self.graphingButton setBordered:false];
     [self.graphingButton setTarget:self];
     [self.graphingButton setAction:@selector(graphingButtonPressed)];
     [self.graphingButton setAutoresizingMask: NSViewMinYMargin];
+    [self.graphingButton createTrackingArea];
     [self.tabs addObject:[[GraphingTab alloc] initWithContentViewBrainAndPreferences:self.window.contentView brain:self.brain preferences:self.preferences]];
+    
+    [self.window.contentView addSubview:self.buttonContainer];
     
     [self algebraButtonPressed];
 }

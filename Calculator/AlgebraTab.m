@@ -40,13 +40,16 @@
     [scrollview setDocumentView:theTextView];
     [self.contentView addSubview:scrollview];
     [scrollview removeFromSuperview];
+    [scrollview setBorderType:NSBezelBorder];
     
     self.algeabraHistoryScrollView = scrollview;
     self.algebraHistory = theTextView;
     
     self.algebraCurrent = [[CurrentAlgebraTextField alloc] initWithFrame:NSMakeRect(0, 0, 500, 20)];
     [self.algebraCurrent giveParent:self];
+    [self.algebraCurrent setBordered:false];
     [self.algebraCurrent setAction:@selector(submit)];
+    [self.algebraCurrent setFocusRingType:NSFocusRingTypeNone];
     
     self.currentHistoryLine = 0;
     return self;
@@ -60,7 +63,7 @@
     double height = [self.contentView window].frame.size.height;
     
     [self.algebraCurrent setFrame:NSMakeRect(0, 0, width, 20)];
-    [self.algeabraHistoryScrollView setFrame:NSMakeRect(0, 20, width, height-60)];
+    [self.algeabraHistoryScrollView setFrame:NSMakeRect(0, 20, width, height-64)];
 }
 
 - (void) close {
