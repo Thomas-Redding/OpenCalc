@@ -44,5 +44,6 @@
 - (void) removeFunc;
 - (void) timerFired;
 - (void) recomputeAllFunctions;
+- (void) mousePositionFunc;
 
 @end

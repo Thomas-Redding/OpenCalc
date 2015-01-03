@@ -107,14 +107,46 @@
     
     self.shouldRedraw = true;
     
-    self.mousePositionTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 100, 40)];
-    [self.mousePositionTextField setEditable:false];
-    [self.mousePositionTextField setSelectable:false];
+    self.mousePositionTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 100, 50)];
     [self.mousePositionTextField setBezeled:false];
-    [self.mousePositionTextField setBezelStyle:NSTextFieldRoundedBezel];
     [self.mousePositionTextField setDrawsBackground:false];
+    [self.mousePositionTextField setEditable:false];
+    [self.mousePositionTextField setSelectable:true];
     
     return self;
+}
+
+- (void) open {
+    [self.contentView addSubview:self.graphingView];
+    [self.contentView addSubview:self.currentFunction];
+    [self.contentView addSubview:self.scrollView];
+    [self.contentView addSubview:self.addButton];
+    [self.contentView addSubview:self.removeButton];
+    [self.contentView addSubview:self.mousePositionTextField];
+    
+    double width = [self.contentView window].frame.size.width;
+    double height = [self.contentView window].frame.size.height;
+    
+    [self.graphingView setFrame:NSMakeRect(100, 0, width-100, height-64)];
+    [self.currentFunction setFrame:NSMakeRect(0, height-64, width, 20)];
+    [self.scrollView setFrame:NSMakeRect(0, 66, 100, height-129)];
+    [self.addButton setFrame:NSMakeRect(3, 44, 45.5, 20)];
+    [self.removeButton setFrame:NSMakeRect(51.5, 44, 45.5, 20)];
+    [self.mousePositionTextField setFrame:NSMakeRect(15, 2, 100, 40)];
+    
+    for(int i=0; i<self.formulas.count; i++) {
+        [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
+    }
+    
+    self.drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.05f
+                                                      target:self
+                                                    selector:@selector(timerFired)
+                                                    userInfo:nil
+                                                     repeats:YES];
+}
+
+- (void) mousePositionFunc {
+    //
 }
 
 - (void) timerFired {
@@ -142,8 +174,24 @@
 }
 
 - (NSString*) pairToString: (double) x y: (double) y {
-    NSString *str = [[NSString alloc] initWithFormat:@"x: %@\ny: %@", [self.brain doubleToNiceString:x], [self.brain doubleToNiceString:y]];
-    return str;
+    NSString *xStr = [self.brain doubleToNiceString:x];
+    NSString *yStr = [self.brain doubleToNiceString:y];
+    if([xStr characterAtIndex:0] == '-') {
+        if([yStr characterAtIndex:0] == '-') {
+            return [[NSString alloc] initWithFormat:@"x:%@\ny:%@", xStr, yStr];
+        }
+        else {
+            return [[NSString alloc] initWithFormat:@"x:%@\ny: %@", xStr, yStr];
+        }
+    }
+    else {
+        if([yStr characterAtIndex:0] == '-') {
+            return [[NSString alloc] initWithFormat:@"x: %@\ny:%@", xStr, yStr];
+        }
+        else {
+            return [[NSString alloc] initWithFormat:@"x: %@\ny: %@", xStr, yStr];
+        }
+    }
 }
 
 - (void) addFunc {
@@ -156,35 +204,6 @@
     self.selectedRows = [[NSIndexSet alloc] init];
     self.currentFormulaBeingEdited = -1;
     [self.tableView reloadData];
-}
-
-- (void) open {
-    [self.contentView addSubview:self.graphingView];
-    [self.contentView addSubview:self.currentFunction];
-    [self.contentView addSubview:self.scrollView];
-    [self.contentView addSubview:self.addButton];
-    [self.contentView addSubview:self.removeButton];
-    [self.contentView addSubview:self.mousePositionTextField];
-    
-    double width = [self.contentView window].frame.size.width;
-    double height = [self.contentView window].frame.size.height;
-    
-    [self.graphingView setFrame:NSMakeRect(100, 0, width-100, height-64)];
-    [self.currentFunction setFrame:NSMakeRect(0, height-64, width, 20)];
-    [self.scrollView setFrame:NSMakeRect(0, 66, 100, height-129)];
-    [self.addButton setFrame:NSMakeRect(3, 44, 45.5, 20)];
-    [self.removeButton setFrame:NSMakeRect(51.5, 44, 45.5, 20)];
-    [self.mousePositionTextField setFrame:NSMakeRect(11, 2, 100, 40)];
-    
-    for(int i=0; i<self.formulas.count; i++) {
-        [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
-    }
-    
-    self.drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.05f
-                                                      target:self
-                                                    selector:@selector(timerFired)
-                                                    userInfo:nil
-                                                     repeats:YES];
 }
 
 - (void) close {

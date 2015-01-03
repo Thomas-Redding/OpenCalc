@@ -798,18 +798,9 @@
 }
 
 - (NSString*) doubleToNiceString: (double) x {
-    
-    int chars = 5;
-    
-    BOOL isNegative = false;
+    int isNegative = 0;
     if(x == 0) {
         return @"0";
-    }
-    else if(x == 1) {
-        return @"1";
-    }
-    else if(x == -1) {
-        return @"-1";
     }
     else if(x == INFINITY) {
         return @"∞";
@@ -818,116 +809,76 @@
         return @"-∞";
     }
     else if(x < 0) {
-        isNegative = true;
-        chars--;
+        isNegative = 1;
         x *= -1;
     }
     
+    // x is now a positive number
+    
+    // includes "e" and "e-", excludes "-" and "."
+    // must be less than 11
+    int charsToUse = 6;
     if(x > 1) {
-        // positive exponent
-        double power = log10(x);
-        if(power < 1) {
-            if(isNegative)
-                return [[NSString alloc] initWithFormat:@"-%.5f", x];
-            else
-                return [[NSString alloc] initWithFormat:@"%.5f", x];
-        }
-        else if(power < 2) {
-            if(isNegative)
-                return [[NSString alloc] initWithFormat:@"-%.4f", x];
-            else
-                return [[NSString alloc] initWithFormat:@"%.4f", x];
-        }
-        else if(power < 3) {
-            if(isNegative)
-                return [[NSString alloc] initWithFormat:@"-%.3f", x];
-            else
-                return [[NSString alloc] initWithFormat:@"%.3f", x];
-        }
-        else if(power < 4) {
-            if(isNegative)
-                return [[NSString alloc] initWithFormat:@"-%.2f", x];
-            else
-                return [[NSString alloc] initWithFormat:@"%.2f", x];
-        }
-        else if(power < 5) {
-            if(isNegative)
-                return [[NSString alloc] initWithFormat:@"-%.1f", x];
-            else
-                return [[NSString alloc] initWithFormat:@"%.1f", x];
-        }
-        else if(power < 6) {
-            if(isNegative)
-                return [[NSString alloc] initWithFormat:@"-%.0f", x];
-            else
-                return [[NSString alloc] initWithFormat:@"%.0f", x];
-        }
+        // x is in the range (1, inf)
         
-        int powerInt = power;
-        int powerLength = log10(powerInt)+1;
-        x /= pow(10, powerInt);
-        NSLog(@"%i", powerLength);
-        if(powerLength == 1) {
-            if(isNegative)
-                return [[NSString alloc] initWithFormat:@"-%.3fe%i", x, powerInt];
-            else
-                return [[NSString alloc] initWithFormat:@"%.3fe%i", x, powerInt];
-        }
-        else if(powerLength == 2) {
-            if(isNegative)
-                return [[NSString alloc] initWithFormat:@"-%.2fe%i", x, powerInt];
-            else
-                return [[NSString alloc] initWithFormat:@"%.2fe%i", x, powerInt];
+        // 1-9 -> 0, 10-99 -> 1, 100-999 -> 2, etc
+        int power = log10(x);
+        if(power < charsToUse) {
+            // use normal notation
+            NSString *str = [self doubleToRoundedString:x decimals:charsToUse-power-1];
+            if(isNegative) {
+                return [[NSString alloc] initWithFormat:@"-%@", str];
+            }
+            else {
+                return [[NSString alloc] initWithFormat:@"%@", str];
+            }
         }
         else {
-            if(isNegative)
-                return [[NSString alloc] initWithFormat:@"-%.1fe%i", x, powerInt];
-            else
-                return [[NSString alloc] initWithFormat:@"%.1fe%i", x, powerInt];
+            // use scientific notation
+            x /= pow(10, power);
+            int powerLength = log10(power)+1;
+            NSString *str = [self doubleToRoundedString:x decimals:charsToUse-powerLength-2];
+            if(isNegative) {
+                return [[NSString alloc] initWithFormat:@"-%@e%i", str, power];
+            }
+            else {
+                return [[NSString alloc] initWithFormat:@"%@e%i", str, power];
+            }
         }
     }
     else {
-        // negative exponenet
-        double power = log10(x);
-        if(power > -1) {
-            if(isNegative)
-                return [[NSString alloc] initWithFormat:@"-%.6f", x];
-            else
-                return [[NSString alloc] initWithFormat:@"%.6f", x];
-        }
-        else if(power > -2) {
-            if(isNegative)
-                return [[NSString alloc] initWithFormat:@"-%.6f", x];
-            else
-                return [[NSString alloc] initWithFormat:@"%.6f", x];
-        }
-        
-        // use scientific notation
-        int powerInt = floor(power);
-        x /= pow(10, powerInt);
-        int powerLength = log10(abs(powerInt))+1;
-        
-        if(powerLength == 1) {
-            if(isNegative)
-                return [[NSString alloc] initWithFormat:@"-%.3fe%i", x, powerInt];
-            else
-                return [[NSString alloc] initWithFormat:@"%.3fe%i", x, powerInt];
-        }
-        else if(powerLength == 2) {
-            if(isNegative)
-                return [[NSString alloc] initWithFormat:@"-%.2fe%i", x, powerInt];
-            else
-                return [[NSString alloc] initWithFormat:@"%.2fe%i", x, powerInt];
+        // x is in the range (0, 1)
+        int power = log10(x)-1;
+        if(power >= -2) {
+            // use normal notation
+            NSString *str = [self doubleToRoundedString:x decimals:charsToUse-1];
+            if(isNegative) {
+                return [[NSString alloc] initWithFormat:@"-%@", str];
+            }
+            else {
+                return [[NSString alloc] initWithFormat:@"%@", str];
+            }
         }
         else {
-            if(isNegative)
-                return [[NSString alloc] initWithFormat:@"-%.1fe%i", x, powerInt];
-            else
-                return [[NSString alloc] initWithFormat:@"%.1fe%i", x, powerInt];
+            // use scientific notation
+            x /= pow(10, power);
+            int powerLength = log10(abs(power))+1;
+            NSString *str = [self doubleToRoundedString:x decimals:charsToUse-powerLength-3];
+            if(isNegative) {
+                return [[NSString alloc] initWithFormat:@"-%@e%i", str, power];
+            }
+            else {
+                return [[NSString alloc] initWithFormat:@"%@e%i", str, power];
+            }
         }
-        
-        return [[NSString alloc] initWithFormat:@"%i", powerInt];
     }
+    return @"";
+}
+
+- (NSString*) doubleToRoundedString: (double) myDouble decimals: (int) decimals {
+    NSString *format = [@"%." stringByAppendingFormat:@"%d", decimals];
+    format = [format stringByAppendingString:@"f"];
+    return [NSString stringWithFormat:format, myDouble];
 }
 
 @end
