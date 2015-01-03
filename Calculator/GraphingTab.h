@@ -13,6 +13,7 @@
 #import "RenderDimensions.h"
 #import "GraphingTableView.h"
 #import "GraphingEvaluateWindow.h"
+#import "GraphingButton.h"
 
 @interface GraphingTab : Tab
 
@@ -29,8 +30,8 @@
 @property int currentFormulaBeingEdited;
 @property GraphingEvaluateWindow *evaluateWindow;
 
-@property NSButton *addButton;
-@property NSButton *removeButton;
+@property GraphingButton *addButton;
+@property GraphingButton *removeButton;
 
 @property RenderDimensions *renderDimensions;
 

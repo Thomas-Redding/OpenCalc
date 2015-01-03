@@ -38,7 +38,6 @@
     [self.algebraButton setBordered:false];
     [self.algebraButton setTarget:self];
     [self.algebraButton setAction:@selector(algebraButtonPressed)];
-    [self.algebraButton setAutoresizingMask: NSViewMinYMargin];
     [self.algebraButton createTrackingArea];
     [self.tabs addObject:[[AlgebraTab alloc] initWithContentViewBrainAndPreferences:self.window.contentView brain:self.brain preferences:self.preferences]];
     
@@ -50,11 +49,11 @@
     [self.graphingButton setBordered:false];
     [self.graphingButton setTarget:self];
     [self.graphingButton setAction:@selector(graphingButtonPressed)];
-    [self.graphingButton setAutoresizingMask: NSViewMinYMargin];
     [self.graphingButton createTrackingArea];
     [self.tabs addObject:[[GraphingTab alloc] initWithContentViewBrainAndPreferences:self.window.contentView brain:self.brain preferences:self.preferences]];
     
     [self.window.contentView addSubview:self.buttonContainer];
+    [self.buttonContainer setAutoresizingMask: NSViewMinYMargin];
     
     [self algebraButtonPressed];
 }

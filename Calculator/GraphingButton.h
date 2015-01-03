@@ -1,5 +1,5 @@
 //
-//  TabButton.h
+//  GraphingButton.h
 //  Calculator
 //
 //  Created by Thomas Redding on 1/2/15.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TabButton : NSButton
+@interface GraphingButton : NSButton
 
 - (void)createTrackingArea;
 

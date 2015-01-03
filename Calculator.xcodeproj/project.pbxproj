@@ -64,6 +64,7 @@
 		2865ACE71A1571D6007FED08 /* MathPoissonDistribution.m in Sources */ = {isa = PBXBuildFile; fileRef = 2865ACE21A1571D6007FED08 /* MathPoissonDistribution.m */; };
 		2865ACE81A1571D6007FED08 /* Saver.m in Sources */ = {isa = PBXBuildFile; fileRef = 2865ACE41A1571D6007FED08 /* Saver.m */; };
 		286ECDF71A57424700080001 /* TabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 286ECDF61A57424700080001 /* TabButton.m */; };
+		286ECDFA1A574FAD00080001 /* GraphingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 286ECDF91A574FAD00080001 /* GraphingButton.m */; };
 		287A5C451A0A9D4A00D6B333 /* MathPoissonRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 287A5C441A0A9D4A00D6B333 /* MathPoissonRandom.m */; };
 		287A5C4B1A0AA04900D6B333 /* MathBinomialRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 287A5C4A1A0AA04900D6B333 /* MathBinomialRandom.m */; };
 		287A5C4E1A0AA15400D6B333 /* MathExponentialRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 287A5C4D1A0AA15400D6B333 /* MathExponentialRandom.m */; };
@@ -223,6 +224,8 @@
 		2865ACE41A1571D6007FED08 /* Saver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Saver.m; sourceTree = "<group>"; };
 		286ECDF51A57424700080001 /* TabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabButton.h; sourceTree = "<group>"; };
 		286ECDF61A57424700080001 /* TabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabButton.m; sourceTree = "<group>"; };
+		286ECDF81A574FAD00080001 /* GraphingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphingButton.h; sourceTree = "<group>"; };
+		286ECDF91A574FAD00080001 /* GraphingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphingButton.m; sourceTree = "<group>"; };
 		287A5C431A0A9D4A00D6B333 /* MathPoissonRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathPoissonRandom.h; sourceTree = "<group>"; };
 		287A5C441A0A9D4A00D6B333 /* MathPoissonRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathPoissonRandom.m; sourceTree = "<group>"; };
 		287A5C491A0AA04900D6B333 /* MathBinomialRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathBinomialRandom.h; sourceTree = "<group>"; };
@@ -502,6 +505,8 @@
 			children = (
 				2865ACDD1A1571D6007FED08 /* GraphingTab.h */,
 				2865ACDE1A1571D6007FED08 /* GraphingTab.m */,
+				286ECDF81A574FAD00080001 /* GraphingButton.h */,
+				286ECDF91A574FAD00080001 /* GraphingButton.m */,
 				2890D98C1A4132BF0095855D /* GraphingFunction.h */,
 				2890D98D1A4132BF0095855D /* GraphingFunction.m */,
 				2890D9861A41197E0095855D /* GraphingTableController.h */,
@@ -904,6 +909,7 @@
 				283F21BA1A4BC73E00683DFF /* MathMatrix.m in Sources */,
 				2890D98E1A4132BF0095855D /* GraphingFunction.m in Sources */,
 				282B84D61A154F2800793C6D /* MathExponentialQuantile.m in Sources */,
+				286ECDFA1A574FAD00080001 /* GraphingButton.m in Sources */,
 				2850E47E19D9CCFC00F65EE7 /* MathCotangent.m in Sources */,
 				287A5C4E1A0AA15400D6B333 /* MathExponentialRandom.m in Sources */,
 				28925FF219DDF40100D22F4B /* MathAbsoluteValue.m in Sources */,

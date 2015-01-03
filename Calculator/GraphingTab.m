@@ -26,15 +26,15 @@
     GraphingFunction *templateA = [[GraphingFunction alloc] initWithBrain:self.brain];
     templateA.string = @"x";
     templateA.index = 0;
-    [templateA update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
+    [templateA update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
     GraphingFunction *templateB = [[GraphingFunction alloc] initWithBrain:self.brain];
     templateB.string = @"x^2";
     templateB.index = 1;
-    [templateB update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
+    [templateB update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
     GraphingFunction *templateC = [[GraphingFunction alloc] initWithBrain:self.brain];
     templateC.string = @"log(x)";
     templateC.index = 2;
-    [templateC update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
+    [templateC update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
     self.formulas = [[NSMutableArray alloc] initWithObjects:templateA, templateB, templateC, nil];
     
     double width = [[self.contentView window] frame].size.width;
@@ -52,6 +52,7 @@
     [self.currentFunction setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];
     [self.currentFunction setAction:@selector(submit)];
     [self.currentFunction setFocusRingType:NSFocusRingTypeNone];
+    [self.currentFunction setEditable:false];
     
     // left-side table of formulas
     NSTableColumn *columnVisible = [[NSTableColumn alloc] initWithIdentifier:@"isVisible"];
@@ -83,15 +84,23 @@
     [self.tableController setParent:self];
     [self.tableView setFocusRingType:NSFocusRingTypeNone];
     
-    self.addButton = [[NSButton alloc] initWithFrame:NSMakeRect(0, 60, 50, 20)];
+    self.addButton = [[GraphingButton alloc] initWithFrame:NSMakeRect(3, 60, 45.5, 20)];
     [self.addButton setTitle:@"+"];
     [self.addButton setTarget:self];
     [self.addButton setAction:@selector(addFunc)];
+    [self.addButton setButtonType:NSMomentaryPushInButton];
+    [self.addButton setBezelStyle:NSRecessedBezelStyle];
+    [self.addButton setBordered:false];
+    [self.addButton createTrackingArea];
     
-    self.removeButton = [[NSButton alloc] initWithFrame:NSMakeRect(50, 60, 50, 20)];
+    self.removeButton = [[GraphingButton alloc] initWithFrame:NSMakeRect(51.5, 60, 45.5, 20)];
     [self.removeButton setTitle:@"-"];
     [self.removeButton setTarget:self];
     [self.removeButton setAction:@selector(removeFunc)];
+    [self.removeButton setButtonType:NSMomentaryPushInButton];
+    [self.removeButton setBezelStyle:NSRecessedBezelStyle];
+    [self.removeButton setBordered:false];
+    [self.removeButton createTrackingArea];
     
     self.selectedRows = [[NSIndexSet alloc] init];
     self.currentFormulaBeingEdited = -1;
@@ -102,6 +111,7 @@
     [self.mousePositionTextField setEditable:false];
     [self.mousePositionTextField setSelectable:false];
     [self.mousePositionTextField setBezeled:false];
+    [self.mousePositionTextField setBezelStyle:NSTextFieldRoundedBezel];
     [self.mousePositionTextField setDrawsBackground:false];
     
     return self;
@@ -132,7 +142,7 @@
 }
 
 - (NSString*) pairToString: (double) x y: (double) y {
-    NSString *str = [[NSString alloc] initWithFormat:@"x: %.3f\ny: %.3f", x, y];
+    NSString *str = [[NSString alloc] initWithFormat:@"x: %@\ny: %@", [self.brain doubleToNiceString:x], [self.brain doubleToNiceString:y]];
     return str;
 }
 
@@ -161,13 +171,13 @@
     
     [self.graphingView setFrame:NSMakeRect(100, 0, width-100, height-64)];
     [self.currentFunction setFrame:NSMakeRect(0, height-64, width, 20)];
-    [self.scrollView setFrame:NSMakeRect(0, 90, 100, height-153)];
-    [self.addButton setFrame:NSMakeRect(0, 69, 50, 20)];
-    [self.removeButton setFrame:NSMakeRect(50, 69, 50, 20)];
-    [self.mousePositionTextField setFrame:NSMakeRect(0, 0, 100, 40)];
+    [self.scrollView setFrame:NSMakeRect(0, 66, 100, height-129)];
+    [self.addButton setFrame:NSMakeRect(3, 44, 45.5, 20)];
+    [self.removeButton setFrame:NSMakeRect(51.5, 44, 45.5, 20)];
+    [self.mousePositionTextField setFrame:NSMakeRect(11, 2, 100, 40)];
     
     for(int i=0; i<self.formulas.count; i++) {
-        [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
+        [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
     }
     
     self.drawTimer = [NSTimer scheduledTimerWithTimeInterval:0.05f
@@ -193,7 +203,7 @@
     if(self.currentFormulaBeingEdited != -1) {
         // update old cell being edited
         [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] setString:self.currentFunction.stringValue];
-        [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
+        [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
     }
     self.shouldRedraw = true;
     [self.tableView reloadData];
@@ -207,7 +217,8 @@
     // array of changed indices (see the function's coments for details)
     NSMutableArray *changes = [self changedIndex];
     
-    for(int i=0; i<changes.count; i++) {
+    int i;
+    for(i=0; i<changes.count; i++) {
         if([changes objectAtIndex:i] > 0) {
             // cell 'changes[i]-1' was selected
             int index = [[changes objectAtIndex:i] intValue]-1;
@@ -215,14 +226,22 @@
             if(self.currentFormulaBeingEdited != -1) {
                 // update old cell being edited
                 [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] setString:self.currentFunction.stringValue];
-                [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
+                [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
             }
             
             self.currentFormulaBeingEdited = index;
             [self.currentFunction setStringValue:[[self.formulas objectAtIndex:index] string]];
+            [self.currentFunction setEditable:true];
             break;
         }
     }
+    
+    if(i == changes.count) {
+        self.currentFormulaBeingEdited = -1;
+        [self.currentFunction setStringValue:@""];
+        [self.currentFunction setEditable:false];
+    }
+    
     [self.tableView reloadData];
 }
 
@@ -267,7 +286,7 @@
 
 - (void) recomputeAllFunctions {
     for(int i=0; i<self.formulas.count; i++) {
-        [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:1000];
+        [[self.formulas objectAtIndex:i] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
     }
 }
 

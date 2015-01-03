@@ -71,5 +71,6 @@
 - (double) findSlope: (NSString*) func x: (double) x;
 - (double) integrate: (NSString*) func x1: (double) x1 x2: (double) x2;
 - (double) findIntersect:(NSString *)funcA funcB: (NSString*) funcB x:(double)x;
+- (NSString*) doubleToNiceString: (double) x;
 
 @end
