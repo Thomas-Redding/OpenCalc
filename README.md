@@ -9,7 +9,7 @@ See TestBranch for up-to-date information
 
 This is a free open source calculator app. As of February 18, 2014, this app is still in the early stages, but it supports the vast majority of algebra needed for precalculus including graphing.
 
-I'm hoping to incorporate a real-time equation editor in a few days, but, considering the scope of creating such an editor, it is its own GitHub project.
+Rest assured, I have not abandonded this project. At the moment I'm hoping to incorporate a real-time equation editor in a few days, but, considering the scope of creating such an editor, it is its own GitHub project. I expect to return to this project within a few days.
 
 OPERATORS
 * =   is defined as (does not store to hard drive)
