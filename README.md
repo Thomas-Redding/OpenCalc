@@ -7,12 +7,9 @@ An Intuitive and Powerful Open Source Calculator for OS X
 
 See TestBranch for up-to-date information
 
-This is a free open source calculator app. As of December 23, 2014, this app is still in the early stages, but it supports the vast majority of algebra needed for precalculus including graphing. Below is a tenative schedule:
+This is a free open source calculator app. As of February 18, 2014, this app is still in the early stages, but it supports the vast majority of algebra needed for precalculus including graphing.
 
-* Dec 24 - 25 - implement matrices
-* Dec 26 - Dec 28 - implement a derivative calculator
-* Dec 29 - Jan 2 - finish GraphingEvaluateWindow's functionality
-* Jan 3 - Jan 9 - add help book
+I'm hoping to incorporate a real-time equation editor in a few days, but, considering the scope of creating such an editor, it is its own GitHub project.
 
 OPERATORS
 * =   is defined as (does not store to hard drive)
