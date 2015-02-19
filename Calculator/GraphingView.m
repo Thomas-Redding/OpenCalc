@@ -182,7 +182,7 @@
     [theMenu insertItemWithTitle:@"FindRoot" action:@selector(findRoot) keyEquivalent:@"" atIndex:0];
     [theMenu insertItemWithTitle:@"Integrate" action:@selector(integrate) keyEquivalent:@"" atIndex:1];
     [theMenu insertItemWithTitle:@"FindIntersect" action:@selector(findIntersect) keyEquivalent:@"" atIndex:0];
-    
+    [theMenu insertItemWithTitle:@"Save as PNG" action:@selector(saveImageAsPNG) keyEquivalent:@"" atIndex:0];
     [NSMenu popUpContextMenu:theMenu withEvent:theEvent forView:self];
 }
 
@@ -234,6 +234,87 @@
     self.mouseY = -1;
     [self.parent mouseUp: theEvent];
     [self.parent childToParentMessage:@"MouseUp"];
+}
+
+- (void) saveImageAsPNG {
+    NSImage* img = [self getImage];
+    CGImageSourceRef source = CGImageSourceCreateWithData((CFDataRef)[img TIFFRepresentation], NULL);
+    CGImageRef maskRef =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
+    NSBitmapImageRep *imgRep = [[NSBitmapImageRep alloc] initWithCGImage:maskRef];
+    NSData *exportedData = [imgRep representationUsingType:NSPNGFileType properties:nil];
+    
+    NSSavePanel *savepanel = [NSSavePanel savePanel];
+    savepanel.title = @"Save chart";
+    
+    [savepanel setAllowedFileTypes:[NSArray arrayWithObjects:@"png", nil]];
+    
+    
+    [savepanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result)
+     {
+         if(NSFileHandlingPanelOKButton == result)
+         {
+             NSURL* fileURL = [savepanel URL];
+             if ([fileURL.pathExtension isEqualToString:@""])
+                 fileURL = [fileURL URLByAppendingPathExtension:@"png"];
+             [exportedData writeToURL:fileURL atomically:YES];
+         }
+     }];
+}
+
+- (NSImage*) getImage
+{
+    int height, width, bytesPerRow;
+    NSBitmapImageRep *imageRep;
+    unsigned char *bitmapData;
+    NSImage *image;
+    
+    imageRep = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes: NULL
+                                                       pixelsWide: self.frame.size.width
+                                                       pixelsHigh: self.frame.size.height
+                                                    bitsPerSample: 8
+                                                  samplesPerPixel: 4
+                                                         hasAlpha: YES
+                                                         isPlanar: NO
+                                                   colorSpaceName: NSCalibratedRGBColorSpace
+                                                      bytesPerRow: 0				// indicates no empty bytes at row end
+                                                     bitsPerPixel: 0];
+    
+    [[self openGLContext] makeCurrentContext];
+				
+    bitmapData = [imageRep bitmapData];
+    
+    bytesPerRow = (int) [imageRep bytesPerRow];
+    
+    glPixelStorei(GL_PACK_ROW_LENGTH, 8*bytesPerRow/[imageRep bitsPerPixel]);
+    
+    glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, bitmapData);
+    
+    // Flip the bitmap vertically to account for OpenGL coordinate system difference
+    // from NSImage coordinate system.
+    
+    /*
+    for (row = 0; row < height/2; row++)
+    {
+        unsigned char *a, *b;
+        
+        a = bitmapData + row * bytesPerRow;
+        b = bitmapData + (height - 1 - row) * bytesPerRow;
+        
+        memswap(a, b, bytesPerRow);
+    }
+    */
+    
+    // Create the NSImage from the bitmap
+    
+    image = [[NSImage alloc] initWithSize: NSMakeSize(width, height)];
+    [image addRepresentation: imageRep];
+    return image;
+    
+    /*
+    NSData *data = [self dataWithPDFInsideRect:[self bounds]];
+    NSImage *img = [[NSImage alloc] initWithData:data];
+    return img;
+     */
 }
 
 

@@ -23,9 +23,11 @@
         return [NSNumber numberWithBool:[[self.list objectAtIndex:row] isVisible]];
     }
     else {
+        /*
         NSTableCellView *cellView = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
-        [cellView.textField setEditable:NO];
-        [cellView.textField setSelectable:NO];
+        [cellView.textField setEditable:YES];
+        [cellView.textField setSelectable:YES];
+        */
         return [[self.list objectAtIndex:row] string];
     }
 }

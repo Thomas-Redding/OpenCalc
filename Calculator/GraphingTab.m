@@ -247,7 +247,6 @@
                 [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] setString:self.currentFunction.stringValue];
                 [[self.formulas objectAtIndex:self.currentFormulaBeingEdited] update:self.renderDimensions.x-self.renderDimensions.width/2 end:self.renderDimensions.x+self.renderDimensions.width/2 steps:100];
             }
-            
             self.currentFormulaBeingEdited = index;
             [self.currentFunction setStringValue:[[self.formulas objectAtIndex:index] string]];
             [self.currentFunction setEditable:true];

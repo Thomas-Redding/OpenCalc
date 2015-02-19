@@ -8,7 +8,8 @@ An Intuitive and Powerful Open Source Calculator for OS X
 This is a free open source calculator app. As of December 23, 2014, this app is still in the early stages, but it supports the vast majority of algebra needed for precalculus including graphing. Below is a tenative schedule:
 
 * Jan 3 - Jan 4 - add seq(x^2, x, 1, 7); add sum(vector or matrix), add ser(x^2, x, 1, 7)
-* Jan 5 - Jan 11 - add help book
+* Jan 5 - Jan 11 - add equation editor
+* Jan 12 - Jan 18 - add help-book
 
 OPERATORS
 * =   is defined as (does not store to hard drive)
