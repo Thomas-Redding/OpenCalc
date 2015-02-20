@@ -15,6 +15,7 @@
 #import "TabButton.h"
 #import "AlgebraTab.h"
 #import "GraphingTab.h"
+#import "EquationEditingTab.h"
 #import "PreferencesWindow.h"
 #import "AppBlueprinter.h"
 
@@ -27,6 +28,8 @@
 
 @property TabButton *algebraButton;
 @property TabButton *graphingButton;
+@property TabButton *equationEditingButton;
+
 @property NSView *buttonContainer;
 @property PreferencesWindow *preferencesWindow;
 
@@ -37,6 +40,8 @@
 
 - (void)algebraButtonPressed;
 - (void)graphingButtonPressed;
+- (void)equationEditingButtonPressed;
+
 - (void)loadVariablesAndFunctions;
 - (void)saveVariablesAndFunctions;
 
