@@ -263,7 +263,7 @@
 
 - (NSImage*) getImage
 {
-    int height, width, bytesPerRow;
+    int height, width, row, bytesPerRow;
     NSBitmapImageRep *imageRep;
     unsigned char *bitmapData;
     NSImage *image;
@@ -292,7 +292,6 @@
     // Flip the bitmap vertically to account for OpenGL coordinate system difference
     // from NSImage coordinate system.
     
-    /*
     for (row = 0; row < height/2; row++)
     {
         unsigned char *a, *b;
@@ -300,9 +299,8 @@
         a = bitmapData + row * bytesPerRow;
         b = bitmapData + (height - 1 - row) * bytesPerRow;
         
-        memswap(a, b, bytesPerRow);
+        // memswap(a, b, bytesPerRow);
     }
-    */
     
     // Create the NSImage from the bitmap
     
