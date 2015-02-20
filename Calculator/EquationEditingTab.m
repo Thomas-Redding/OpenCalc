@@ -28,6 +28,10 @@ BOOL isOpen = false;
     [self.eqField setBackgroundColor:[NSColor colorWithCalibratedRed:shade green:shade blue:shade alpha:1]];
     self.eqField.frame = NSMakeRect(0, 0, width, height-45);
     
+    shade = 0.721568627;
+    [self.eqField.layer setBorderWidth:1];
+    [self.eqField.layer setBorderColor:[NSColor colorWithCalibratedRed:shade green:shade blue:shade alpha:1].CGColor];
+    
     // this line will eventually be removed when the equation editor project is complete
     [self.eqField deleteEquation];
     
