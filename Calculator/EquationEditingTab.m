@@ -24,7 +24,12 @@ BOOL isOpen = false;
     double height = [[self.contentView window] frame].size.height;
     self.fontManager = [[FontManager alloc] init];
     self.eqField = [[EquationField alloc] initWithFont:self.fontManager];
-    self.eqField.frame = NSMakeRect(0, 0, width, height-20);
+    double shade = 0.905882353;
+    [self.eqField setBackgroundColor:[NSColor colorWithCalibratedRed:shade green:shade blue:shade alpha:1]];
+    self.eqField.frame = NSMakeRect(0, 0, width, height-45);
+    
+    // this line will eventually be removed when the equation editor project is complete
+    [self.eqField deleteEquation];
     
     [self.eqField setAutoresizingMask: NSViewMaxXMargin | NSViewWidthSizable | NSViewHeightSizable];
     
@@ -33,6 +38,9 @@ BOOL isOpen = false;
 
 - (void) open {
     isOpen = true;
+    double width = [[self.contentView window] frame].size.width;
+    double height = [[self.contentView window] frame].size.height;
+    self.eqField.frame = NSMakeRect(0, 0, width, height-45);
     [self.contentView addSubview:self.eqField];
     [self.window makeFirstResponder:self.eqField];
     [self autoRedraw];
