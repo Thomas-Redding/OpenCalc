@@ -15,7 +15,7 @@
   - create any GUI elements you want to be persistent, but do NOT add them to contentView
   - make sure to save contentView, brain, and preferences
 */
-- (Tab*) initWithContentViewBrainAndPreferences: (id) contentView brain: (Brain*) brain preferences: (Preferences*) preferences {
+- (Tab*) initWithContentViewBrainAndPreferences: (NSWindow*) window brain: (Brain*) brain preferences: (Preferences*) preferences {
     return self;
 }
 

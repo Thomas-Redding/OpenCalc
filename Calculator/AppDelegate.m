@@ -39,7 +39,7 @@
     [self.algebraButton setTarget:self];
     [self.algebraButton setAction:@selector(algebraButtonPressed)];
     [self.algebraButton createTrackingArea];
-    [self.tabs addObject:[[AlgebraTab alloc] initWithContentViewBrainAndPreferences:self.window.contentView brain:self.brain preferences:self.preferences]];
+    [self.tabs addObject:[[AlgebraTab alloc] initWithContentViewBrainAndPreferences:self.window brain:self.brain preferences:self.preferences]];
     
     self.graphingButton = [[TabButton alloc] initWithFrame:NSMakeRect(106, 3, 100, 20)];
     [self.buttonContainer addSubview: self.graphingButton];
@@ -50,18 +50,18 @@
     [self.graphingButton setTarget:self];
     [self.graphingButton setAction:@selector(graphingButtonPressed)];
     [self.graphingButton createTrackingArea];
-    [self.tabs addObject:[[GraphingTab alloc] initWithContentViewBrainAndPreferences:self.window.contentView brain:self.brain preferences:self.preferences]];
+    [self.tabs addObject:[[GraphingTab alloc] initWithContentViewBrainAndPreferences:self.window brain:self.brain preferences:self.preferences]];
     
     self.equationEditingButton = [[TabButton alloc] initWithFrame:NSMakeRect(209, 3, 100, 20)];
     [self.buttonContainer addSubview: self.equationEditingButton];
-    [self.equationEditingButton setTitle: @"Eq Editing"];
+    [self.equationEditingButton setTitle: @"Eq. Editor"];
     [self.equationEditingButton setButtonType:NSMomentaryPushInButton];
     [self.equationEditingButton setBezelStyle:NSRecessedBezelStyle];
     [self.equationEditingButton setBordered:false];
     [self.equationEditingButton setTarget:self];
     [self.equationEditingButton setAction:@selector(equationEditingButtonPressed)];
     [self.equationEditingButton createTrackingArea];
-    [self.tabs addObject:[[EquationEditingTab alloc] initWithContentViewBrainAndPreferences:self.window.contentView brain:self.brain preferences:self.preferences]];
+    [self.tabs addObject:[[EquationEditingTab alloc] initWithContentViewBrainAndPreferences:self.window brain:self.brain preferences:self.preferences]];
     
     [self.window.contentView addSubview:self.buttonContainer];
     [self.buttonContainer setAutoresizingMask: NSViewMinYMargin];

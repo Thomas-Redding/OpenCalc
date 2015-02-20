@@ -12,8 +12,8 @@
 
 
 
-- (Tab*) initWithContentViewBrainAndPreferences: (id) contentView brain: (Brain*) brain preferences: (Preferences*) preferences {
-    self.contentView = contentView;
+- (Tab*) initWithContentViewBrainAndPreferences: (NSWindow*) window brain: (Brain*) brain preferences: (Preferences*) preferences {
+    self.contentView = window.contentView;
     self.brain = brain;
     self.preferences = preferences;
     
@@ -126,7 +126,7 @@
 }
 
 - (void) resized: (double) width height: (double) height {
-    [self.algebraCurrent setFrame:NSMakeRect(0, 0, width, 20)];
+    // do nothing
 }
 
 @end

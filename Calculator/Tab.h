@@ -17,7 +17,7 @@
 @property Brain *brain;
 @property Preferences *preferences;
 
-- (Tab*) initWithContentViewBrainAndPreferences: (id) contentView brain: (Brain*) brain preferences: (Preferences*) preferences;
+- (Tab*) initWithContentViewBrainAndPreferences: (NSWindow*) window brain: (Brain*) brain preferences: (Preferences*) preferences;
 - (void) open;
 - (void) close;
 - (void) submit;

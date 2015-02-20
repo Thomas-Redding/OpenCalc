@@ -7,7 +7,13 @@
 //
 
 #import "Tab.h"
+#import "EquationField.h"
+#import "FontManager.h"
 
 @interface EquationEditingTab : Tab
+
+@property EquationField *eqField;
+@property FontManager *fontManager;
+@property NSWindow *window;
 
 @end

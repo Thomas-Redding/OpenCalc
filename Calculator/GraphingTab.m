@@ -10,8 +10,8 @@
 
 @implementation GraphingTab
 
-- (Tab*) initWithContentViewBrainAndPreferences: (id) contentView brain: (Brain*) brain preferences: (Preferences*) preferences {
-    self.contentView = contentView;
+- (Tab*) initWithContentViewBrainAndPreferences: (NSWindow*) window brain: (Brain*) brain preferences: (Preferences*) preferences {
+    self.contentView = window.contentView;
     self.brain = brain;
     self.preferences = preferences;
     
@@ -386,8 +386,8 @@
     }
     else if(self.tableView.selectedRowIndexes.count == 2) {
         
-        unsigned long a = self.tableView.selectedRowIndexes.firstIndex;
-        unsigned long b = self.tableView.selectedRowIndexes.lastIndex;
+        // unsigned long a = self.tableView.selectedRowIndexes.firstIndex;
+        // unsigned long b = self.tableView.selectedRowIndexes.lastIndex;
         
         
         self.evaluateWindow.funcA = [self.formulas objectAtIndex:self.tableView.selectedRowIndexes.firstIndex];

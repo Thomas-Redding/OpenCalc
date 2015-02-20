@@ -79,6 +79,14 @@
 		289B57CB1A465ED800E35A5C /* AppBlueprinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 289B57CA1A465ED800E35A5C /* AppBlueprinter.m */; };
 		289CBFB919DB3F6B00DC7788 /* MathPersistentExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 289CBFB819DB3F6B00DC7788 /* MathPersistentExpression.m */; };
 		289D5D201A97B2CE00FEBA51 /* EquationEditingTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 289D5D1F1A97B2CE00FEBA51 /* EquationEditingTab.m */; };
+		289D5D351A97BA2500FEBA51 /* EquationField.m in Sources */ = {isa = PBXBuildFile; fileRef = 289D5D261A97BA2500FEBA51 /* EquationField.m */; };
+		289D5D361A97BA2500FEBA51 /* EquationFieldComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 289D5D281A97BA2500FEBA51 /* EquationFieldComponent.m */; };
+		289D5D371A97BA2500FEBA51 /* latinmodern-math.otf in Resources */ = {isa = PBXBuildFile; fileRef = 289D5D2B1A97BA2500FEBA51 /* latinmodern-math.otf */; };
+		289D5D381A97BA2500FEBA51 /* STIXMathJax_Main-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 289D5D2C1A97BA2500FEBA51 /* STIXMathJax_Main-Italic.otf */; };
+		289D5D391A97BA2500FEBA51 /* FontManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 289D5D2E1A97BA2500FEBA51 /* FontManager.m */; };
+		289D5D3B1A97BA2500FEBA51 /* integration.png in Resources */ = {isa = PBXBuildFile; fileRef = 289D5D301A97BA2500FEBA51 /* integration.png */; };
+		289D5D3D1A97BA2500FEBA51 /* root.png in Resources */ = {isa = PBXBuildFile; fileRef = 289D5D321A97BA2500FEBA51 /* root.png */; };
+		289D5D3E1A97BA2500FEBA51 /* summation.png in Resources */ = {isa = PBXBuildFile; fileRef = 289D5D331A97BA2500FEBA51 /* summation.png */; };
 		28B99A4619DDF6F800C15CFA /* MathCombination.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B99A4519DDF6F800C15CFA /* MathCombination.m */; };
 		28BB00561A3F8D1600A53CD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BB00551A3F8D1600A53CD4 /* Foundation.framework */; };
 		28BB00581A3F8D1D00A53CD4 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BB00571A3F8D1D00A53CD4 /* AppKit.framework */; };
@@ -253,6 +261,18 @@
 		289CBFB819DB3F6B00DC7788 /* MathPersistentExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathPersistentExpression.m; sourceTree = "<group>"; };
 		289D5D1E1A97B2CE00FEBA51 /* EquationEditingTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquationEditingTab.h; sourceTree = "<group>"; };
 		289D5D1F1A97B2CE00FEBA51 /* EquationEditingTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquationEditingTab.m; sourceTree = "<group>"; };
+		289D5D251A97BA2500FEBA51 /* EquationField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquationField.h; sourceTree = "<group>"; };
+		289D5D261A97BA2500FEBA51 /* EquationField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquationField.m; sourceTree = "<group>"; };
+		289D5D271A97BA2500FEBA51 /* EquationFieldComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquationFieldComponent.h; sourceTree = "<group>"; };
+		289D5D281A97BA2500FEBA51 /* EquationFieldComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquationFieldComponent.m; sourceTree = "<group>"; };
+		289D5D291A97BA2500FEBA51 /* EquationFieldComponentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquationFieldComponentType.h; sourceTree = "<group>"; };
+		289D5D2B1A97BA2500FEBA51 /* latinmodern-math.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "latinmodern-math.otf"; sourceTree = "<group>"; };
+		289D5D2C1A97BA2500FEBA51 /* STIXMathJax_Main-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "STIXMathJax_Main-Italic.otf"; sourceTree = "<group>"; };
+		289D5D2D1A97BA2500FEBA51 /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontManager.h; sourceTree = "<group>"; };
+		289D5D2E1A97BA2500FEBA51 /* FontManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontManager.m; sourceTree = "<group>"; };
+		289D5D301A97BA2500FEBA51 /* integration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = integration.png; sourceTree = "<group>"; };
+		289D5D321A97BA2500FEBA51 /* root.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = root.png; sourceTree = "<group>"; };
+		289D5D331A97BA2500FEBA51 /* summation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = summation.png; sourceTree = "<group>"; };
 		28A6204B19E8AEC2002D7F5C /* GraphType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphType.h; sourceTree = "<group>"; };
 		28B99A4419DDF6F800C15CFA /* MathCombination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathCombination.h; sourceTree = "<group>"; };
 		28B99A4519DDF6F800C15CFA /* MathCombination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathCombination.m; sourceTree = "<group>"; };
@@ -497,11 +517,31 @@
 			name = "3. Equation Editing Tab";
 			sourceTree = "<group>";
 		};
-		289D5D211A97B94E00FEBA51 /* Equation Editing */ = {
+		289D5D221A97BA2500FEBA51 /* EquationEditor */ = {
 			isa = PBXGroup;
 			children = (
+				289D5D251A97BA2500FEBA51 /* EquationField.h */,
+				289D5D261A97BA2500FEBA51 /* EquationField.m */,
+				289D5D271A97BA2500FEBA51 /* EquationFieldComponent.h */,
+				289D5D281A97BA2500FEBA51 /* EquationFieldComponent.m */,
+				289D5D291A97BA2500FEBA51 /* EquationFieldComponentType.h */,
+				289D5D2A1A97BA2500FEBA51 /* FontFolder */,
+				289D5D2D1A97BA2500FEBA51 /* FontManager.h */,
+				289D5D2E1A97BA2500FEBA51 /* FontManager.m */,
+				289D5D301A97BA2500FEBA51 /* integration.png */,
+				289D5D321A97BA2500FEBA51 /* root.png */,
+				289D5D331A97BA2500FEBA51 /* summation.png */,
 			);
-			name = "Equation Editing";
+			path = EquationEditor;
+			sourceTree = "<group>";
+		};
+		289D5D2A1A97BA2500FEBA51 /* FontFolder */ = {
+			isa = PBXGroup;
+			children = (
+				289D5D2B1A97BA2500FEBA51 /* latinmodern-math.otf */,
+				289D5D2C1A97BA2500FEBA51 /* STIXMathJax_Main-Italic.otf */,
+			);
+			path = FontFolder;
 			sourceTree = "<group>";
 		};
 		28B99A4719DDF72900C15CFA /* Other */ = {
@@ -647,7 +687,7 @@
 				28E9EC921A0C800E0063523B /* Math */,
 				28F31EED19D8BE1B008D25CD /* Images.xcassets */,
 				28F31EEF19D8BE1C008D25CD /* MainMenu.xib */,
-				289D5D211A97B94E00FEBA51 /* Equation Editing */,
+				289D5D221A97BA2500FEBA51 /* EquationEditor */,
 				28F31EE619D8BE1B008D25CD /* Supporting Files */,
 			);
 			path = Calculator;
@@ -845,11 +885,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				289D5D371A97BA2500FEBA51 /* latinmodern-math.otf in Resources */,
+				289D5D3E1A97BA2500FEBA51 /* summation.png in Resources */,
+				289D5D3D1A97BA2500FEBA51 /* root.png in Resources */,
 				285445BA1A46210F0017B53C /* PreferencesWindow.xib in Resources */,
+				289D5D3B1A97BA2500FEBA51 /* integration.png in Resources */,
 				28847C931A43B75200900A52 /* Preferences.txt in Resources */,
 				281E45571A4A020B00F546C0 /* GraphingEvaluateWindow.xib in Resources */,
 				28F31EEE19D8BE1B008D25CD /* Images.xcassets in Resources */,
 				2893D02A19DF2F86002F04CF /* Memory.txt in Resources */,
+				289D5D381A97BA2500FEBA51 /* STIXMathJax_Main-Italic.otf in Resources */,
 				28F31EF119D8BE1C008D25CD /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -878,6 +923,7 @@
 				285445B91A46210F0017B53C /* PreferencesWindow.m in Sources */,
 				2850E48119D9CD2D00F65EE7 /* MathSecant.m in Sources */,
 				285445B81A46210F0017B53C /* Preferences.m in Sources */,
+				289D5D361A97BA2500FEBA51 /* EquationFieldComponent.m in Sources */,
 				281E45651A4A69D800F546C0 /* MathCotangentB.m in Sources */,
 				28EBFFC019DB1FED008B662F /* MathSine.m in Sources */,
 				2850E47B19D9CCDD00F65EE7 /* MathTangent.m in Sources */,
@@ -921,6 +967,7 @@
 				283F21C01A4BD9F000683DFF /* MathDeterminant.m in Sources */,
 				2833E23819D949DD00D8686B /* MathDivision.m in Sources */,
 				28F31F3B19D9308A008D25CD /* MathExpression.m in Sources */,
+				289D5D351A97BA2500FEBA51 /* EquationField.m in Sources */,
 				2865ACE61A1571D6007FED08 /* MathErrorFunction.m in Sources */,
 				283B94C319E07C7200CA7287 /* MathNull.m in Sources */,
 				282B84EA1A15701400793C6D /* MathBinomialQuantile.m in Sources */,
@@ -939,6 +986,7 @@
 				2812046719E325C4005948C0 /* MathNotEqualTo.m in Sources */,
 				28C848A519D9E605000282F5 /* MathFactorial.m in Sources */,
 				28C8B2B419D9E87600D26D53 /* MathEquality.m in Sources */,
+				289D5D391A97BA2500FEBA51 /* FontManager.m in Sources */,
 				281E455F1A4A258900F546C0 /* MathVector.m in Sources */,
 				287A5C451A0A9D4A00D6B333 /* MathPoissonRandom.m in Sources */,
 				283F21BD1A4BC83E00683DFF /* MathConstructMatrix.m in Sources */,
