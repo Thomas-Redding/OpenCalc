@@ -300,6 +300,9 @@
     else if([str isEqual: @"deleteEvaluateWindow"]) {
         self.evaluateWindow = nil;
     }
+    else if([str isEqual: @"setWindow"]) {
+        [self openEvaluateWindow:@"setWindow"];
+    }
 }
 
 - (void) recomputeAllFunctions {
@@ -379,6 +382,7 @@
     self.evaluateWindow.brain = self.brain;
     self.evaluateWindow.parent = self;
     self.evaluateWindow.windowType = str;
+    self.evaluateWindow.renderDimensions = self.renderDimensions;
     
     if(self.tableView.selectedRowIndexes.count == 1) {
         self.evaluateWindow.funcA = [self.formulas objectAtIndex:self.tableView.selectedRowIndexes.firstIndex];

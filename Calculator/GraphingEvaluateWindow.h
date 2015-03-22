@@ -10,6 +10,7 @@
 #import "Brain.h"
 #import "Tab.h"
 #import "GraphingFunction.h"
+#import "RenderDimensions.h"
 
 @interface GraphingEvaluateWindow : NSWindowController
 
@@ -19,5 +20,6 @@
 @property GraphingFunction *funcB;
 @property NSString *windowType;     // evaluate, findRoot, integrate, findIntersect
 @property NSMutableArray *elements;
+@property RenderDimensions *renderDimensions;
 
 @end

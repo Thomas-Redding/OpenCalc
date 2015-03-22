@@ -178,10 +178,7 @@
 
 - (void) rightMouseDown: (NSEvent*) theEvent {
     NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@"Contextual Menu"];
-    [theMenu insertItemWithTitle:@"Evaluate" action:@selector(evaluate) keyEquivalent:@"" atIndex:0];
-    [theMenu insertItemWithTitle:@"FindRoot" action:@selector(findRoot) keyEquivalent:@"" atIndex:0];
-    [theMenu insertItemWithTitle:@"Integrate" action:@selector(integrate) keyEquivalent:@"" atIndex:1];
-    [theMenu insertItemWithTitle:@"FindIntersect" action:@selector(findIntersect) keyEquivalent:@"" atIndex:0];
+    [theMenu insertItemWithTitle:@"Set Window" action:@selector(setWindow) keyEquivalent:@"" atIndex:0];
     [theMenu insertItemWithTitle:@"Save as PNG" action:@selector(saveImageAsPNG) keyEquivalent:@"" atIndex:0];
     [NSMenu popUpContextMenu:theMenu withEvent:theEvent forView:self];
 }
@@ -213,20 +210,8 @@
     }
 }
 
-- (void) evaluate {
-    [self.parent childToParentMessage:@"evaluate"];
-}
-
-- (void) findRoot {
-    [self.parent childToParentMessage:@"findRoot"];
-}
-
-- (void) integrate {
-    [self.parent childToParentMessage:@"integrate"];
-}
-
-- (void) findIntersect {
-    [self.parent childToParentMessage:@"findIntersect"];
+- (void) setWindow {
+    [self.parent childToParentMessage:@"setWindow"];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {

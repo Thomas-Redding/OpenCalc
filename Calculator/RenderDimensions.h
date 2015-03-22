@@ -10,6 +10,8 @@
 
 @interface RenderDimensions : NSObject
 
+// (x,y) refers to the coordinate of the window's center, not its upper-left or upper-right corner
+
 @property double x;
 @property double y;
 @property double width;

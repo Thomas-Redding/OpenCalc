@@ -353,6 +353,90 @@
             NSLog(@"error in GraphingEvaluateWindow (findIntersect)");
         }
     }
+    else if([self.windowType isEqual: @"setWindow"]) {
+        // valid inputs
+        /*
+         GUI
+         0. minX
+         1. (inputed by user)
+         2. maxX
+         3. (inputed by user)
+         4. minY
+         5. (inputed by user)
+         6. maxY
+         7. (inputed by user)
+         8. [submit button]
+         */
+        // 0. minX
+        [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(20, windSize.height-80, 80, 20)]];
+        [self.window.contentView addSubview:[self.elements objectAtIndex:0]];
+        [[self.elements objectAtIndex:0] setStringValue:@"Minimum X"];
+        [[self.elements objectAtIndex:0] setEditable:false];
+        [[self.elements objectAtIndex:0] setSelectable:true];
+        [[self.elements objectAtIndex:0] setBezeled:false];
+        [[self.elements objectAtIndex:0] setDrawsBackground:false];
+        
+        // 1. (inputed by user)
+        [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(100, windSize.height-80, windSize.width-120, 20)]];
+        [self.window.contentView addSubview:[self.elements objectAtIndex:1]];
+        [[self.elements objectAtIndex:1] setStringValue:[[NSString alloc] initWithFormat:@"%f", self.renderDimensions.x-self.renderDimensions.width/2]];
+        [[self.elements objectAtIndex:1] setEditable:true];
+        [[self.elements objectAtIndex:1] setSelectable:true];
+        
+        // 2. maxX
+        [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(20, windSize.height-120, 80, 20)]];
+        [self.window.contentView addSubview:[self.elements objectAtIndex:2]];
+        [[self.elements objectAtIndex:2] setStringValue:@"Maximum X"];
+        [[self.elements objectAtIndex:2] setEditable:false];
+        [[self.elements objectAtIndex:2] setSelectable:true];
+        [[self.elements objectAtIndex:2] setBezeled:false];
+        [[self.elements objectAtIndex:2] setDrawsBackground:false];
+        
+        // 3. (inputed by user)
+        [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(100, windSize.height-120, windSize.width-120, 20)]];
+        [self.window.contentView addSubview:[self.elements objectAtIndex:3]];
+        [[self.elements objectAtIndex:3] setStringValue:[[NSString alloc] initWithFormat:@"%f", self.renderDimensions.x+self.renderDimensions.width/2]];
+        [[self.elements objectAtIndex:3] setEditable:true];
+        [[self.elements objectAtIndex:3] setSelectable:true];
+        
+        // 4. minY
+        [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(20, windSize.height-160, 80, 20)]];
+        [self.window.contentView addSubview:[self.elements objectAtIndex:4]];
+        [[self.elements objectAtIndex:4] setStringValue:@"Minimum Y"];
+        [[self.elements objectAtIndex:4] setEditable:false];
+        [[self.elements objectAtIndex:4] setSelectable:true];
+        [[self.elements objectAtIndex:4] setBezeled:false];
+        [[self.elements objectAtIndex:4] setDrawsBackground:false];
+        
+        // 5. (inputed by user)
+        [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(100, windSize.height-160, windSize.width-120, 20)]];
+        [self.window.contentView addSubview:[self.elements objectAtIndex:5]];
+        [[self.elements objectAtIndex:5] setStringValue:[[NSString alloc] initWithFormat:@"%f", self.renderDimensions.y-self.renderDimensions.height/2]];
+        [[self.elements objectAtIndex:5] setEditable:true];
+        [[self.elements objectAtIndex:5] setSelectable:true];
+        
+        // 6. maxY
+        [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(20, windSize.height-200, 80, 20)]];
+        [self.window.contentView addSubview:[self.elements objectAtIndex:6]];
+        [[self.elements objectAtIndex:6] setStringValue:@"Maximum Y"];
+        [[self.elements objectAtIndex:6] setEditable:false];
+        [[self.elements objectAtIndex:6] setSelectable:true];
+        [[self.elements objectAtIndex:6] setBezeled:false];
+        [[self.elements objectAtIndex:6] setDrawsBackground:false];
+        
+        // 7. (inputed by user)
+        [self.elements addObject:[[NSTextField alloc] initWithFrame:NSMakeRect(100, windSize.height-200, windSize.width-120, 20)]];
+        [self.window.contentView addSubview:[self.elements objectAtIndex:7]];
+        [[self.elements objectAtIndex:7] setStringValue:[[NSString alloc] initWithFormat:@"%f", self.renderDimensions.y+self.renderDimensions.height/2]];
+        [[self.elements objectAtIndex:7] setEditable:true];
+        [[self.elements objectAtIndex:7] setSelectable:true];
+    
+        // 8. [submit button]
+        [self.elements addObject:[[NSButton alloc] initWithFrame:NSMakeRect(20, windSize.height-240, windSize.width-40, 20)]];
+        [self.window.contentView addSubview:[self.elements objectAtIndex:8]];
+        [[self.elements objectAtIndex:8] setTitle:@"Submit"];
+        [[self.elements objectAtIndex:8] setAction:@selector(submit)];
+    }
 }
 
 - (void) windowDidResignMain:(NSNotification *)notification
@@ -505,6 +589,17 @@
                 answer = [self.brain graphRun:[self.funcA getName] x:answer];
                 [[self.elements objectAtIndex:8] setStringValue:[[NSString alloc] initWithFormat:@"%f", answer]];
             }
+        }
+        else if([self.windowType isEqual: @"setWindow"]) {
+            double minX = [[self.brain evaluate:[[NSString alloc] initWithFormat:@"%@", [[self.elements objectAtIndex:1] stringValue]]] getDouble];
+            double maxX = [[self.brain evaluate:[[NSString alloc] initWithFormat:@"%@", [[self.elements objectAtIndex:3] stringValue]]] getDouble];
+            double minY = [[self.brain evaluate:[[NSString alloc] initWithFormat:@"%@", [[self.elements objectAtIndex:5] stringValue]]] getDouble];
+            double maxY = [[self.brain evaluate:[[NSString alloc] initWithFormat:@"%@", [[self.elements objectAtIndex:7] stringValue]]] getDouble];
+            
+            self.renderDimensions.width = maxX-minX;
+            self.renderDimensions.height = maxY-minY;
+            self.renderDimensions.x = (minX+maxX)/2;
+            self.renderDimensions.y = (minY+maxY)/2;
         }
     }
 }
