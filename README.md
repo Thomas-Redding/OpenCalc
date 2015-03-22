@@ -5,19 +5,22 @@ An Intuitive and Powerful Open Source Calculator for OS X
 
 ========
 
-This is a free open source calculator app. As of February 27, 2014, this app is still in the early stages, but it supports the vast majority of algebra needed for precalculus including graphing. It also includes numeric integration, slope-calculating, intersect-finding, and root-finding capabilities.
+This is a free open source calculator app. As of March 22, 2014, this app is still in the early stages, but it supports the vast majority of algebra needed for precalculus including graphing. It also includes numeric integration, slope-calculating, intersect-finding, and root-finding capabilities. In the grapher tab, right-clicking is your friend.
 
 For about a month now, progress has been very slow. The reason is that I am working on OpenEquations, which should vastly reduce glitches with the current equation editor and improve functionality. Progress on OpenCalc should resume in early March.
 
-The current plans for March/April are
-
+Here is a tenative schedule:
+MARCH
+* implementing "save as PNG"
+* saving the window and equations between sessions
+* fixing a glitch that prevents saving variables and functions between sessions
+APRIL
+* improving OpenEquations
 * integration of OpenEquations with OpenCalc
+MAY
 * arbitrary digit precision
-* derivative calculator
-* additional functionality in general
-
-Looking past April, I'm hoping to add
-* 3d graphing capabilities Tab
+* 3d graphing
+SUMMER OF 2015
 * statistical analysis capabilities (still trying to determine the best GUI for this, if you have any ideas I'd be happy to hear from you)
 
 ========
